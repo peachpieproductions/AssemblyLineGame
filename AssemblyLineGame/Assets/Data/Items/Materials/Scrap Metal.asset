@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f165e03a45f1a744788df808d23a33c7, type: 3}
+  m_Name: Scrap Metal
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 21300000, guid: f337848d69c596f4c9d17f4ddd5c48ac, type: 3}
+  basePrice: 2
+  priceVariant: 0.9860391
+  popularity: 0.50260854
+  isProduct: 0
+  recipe: []
+  craftingOutputCount: 1
