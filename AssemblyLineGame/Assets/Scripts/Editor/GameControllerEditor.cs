@@ -16,6 +16,7 @@ public class GameControllerEditor : Editor {
         if (GUILayout.Button("Get Data")) {
             gCon.entityDatas.Clear();
             gCon.itemDatas.Clear();
+            gCon.researchDatas.Clear();
 
             //gCon.clientNames.Clear();
             //gCon.LoadClientNames();
@@ -27,6 +28,10 @@ public class GameControllerEditor : Editor {
             //Load Item Datas
             found = AssetDatabase.FindAssets("t:ItemData");
             foreach (string s in found) gCon.itemDatas.Add((ItemData)AssetDatabase.LoadAssetAtPath(AssetDatabase.GUIDToAssetPath(s), typeof(ItemData)));
+
+            //Load Research Datas
+            found = AssetDatabase.FindAssets("t:ResearchData");
+            foreach (string s in found) gCon.researchDatas.Add((ResearchData)AssetDatabase.LoadAssetAtPath(AssetDatabase.GUIDToAssetPath(s), typeof(ResearchData)));
         }
 
         GUI.color = new Color(.8f, 1, .8f);

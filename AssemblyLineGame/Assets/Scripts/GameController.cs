@@ -40,6 +40,7 @@ public class GameController : MonoBehaviour {
     [Header("Refs")]
     public List<EntityData> entityDatas = new List<EntityData>();
     public List<ItemData> itemDatas = new List<ItemData>();
+    public List<ResearchData> researchDatas = new List<ResearchData>();
     public GameObject itemPrefab;
     public GameObject packagePrefab;
     public GameObject blueprintFloor;
@@ -56,6 +57,7 @@ public class GameController : MonoBehaviour {
     public OverlayMenu marketplaceMenu;
     public OverlayMenu contractsMenu;
     public OverlayMenu PackageInfoPopup;
+    public OverlayMenu ItemInfoPopup;
     public OverlayMenu TopHud;
 
     #endregion
@@ -297,6 +299,7 @@ public class GameController : MonoBehaviour {
 
         inp_stm.Close();
     }*/
+
     public string GetClientName() {
         return clientNames[Random.Range(0, clientNames.Count)];
     }
@@ -407,6 +410,7 @@ public class GameController : MonoBehaviour {
     }
 
     public void DespawnItem(Item item) {
+        if (item.inEntityZone) item.inEntityZone.itemsInZone.Remove(item.transform);
         itemPool.Add(item);
         item.gameObject.SetActive(false);
     }

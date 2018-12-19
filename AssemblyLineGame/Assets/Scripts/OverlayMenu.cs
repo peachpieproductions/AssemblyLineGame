@@ -13,9 +13,12 @@ public class OverlayMenu : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     public Color buttonSelectedColor = Color.white;
     public Vector2 openTargetPosition;
     public Vector2 closedTargetPosition;
+    public float lerpSpeed = 1;
     public bool open;
     public Transform follow;
+    public bool followMouse;
     public bool blockScrolling;
+    public bool closesImmediately;
     public UIButton miscButton1;
     public TextMeshProUGUI miscText1;
     public TextMeshProUGUI miscText2;
@@ -35,10 +38,10 @@ public class OverlayMenu : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     private void Update() {
 
         if (open) {
-            rect.anchoredPosition = Vector2.Lerp(rect.anchoredPosition, openTargetPosition, Time.deltaTime * 5);
+            rect.anchoredPosition = Vector2.Lerp(rect.anchoredPosition, openTargetPosition, Time.deltaTime * 5 * lerpSpeed);
         } else {
-            rect.anchoredPosition = Vector2.Lerp(rect.anchoredPosition, closedTargetPosition, Time.deltaTime * 5);
-            if (Vector2.Distance(rect.anchoredPosition, closedTargetPosition) < 5) gameObject.SetActive(false);
+            rect.anchoredPosition = Vector2.Lerp(rect.anchoredPosition, closedTargetPosition, Time.deltaTime * 5 * lerpSpeed);
+            if (Vector2.Distance(rect.anchoredPosition, closedTargetPosition) < 10 || closesImmediately) gameObject.SetActive(false);
         }
 
         if (follow) {
@@ -79,6 +82,7 @@ public class OverlayMenu : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
             var selEntity = GameController.inst.selectedEntity;
             if (selEntity) {
                 miscButton1.gameObject.SetActive(selEntity is Assembler);
+                miscText1.text = selEntity.data.name;
                 if (selEntity is Assembler) {
                     var assem = selEntity as Assembler;
                     miscButton1.image.enabled = assem.assemblingItem;
@@ -111,11 +115,21 @@ public class OverlayMenu : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
             }
         }
 
+        else if (menuName == "ItemInfoPopup") {
+            var selPackage = GameController.inst.selectedPackage;
+            if (selPackage) {
+                follow = selPackage.transform;
+                miscText1.text = selPackage.storage.data.name;
+                miscText2.text = selPackage.storage.itemCount.ToString();
+                miscImage1.sprite = selPackage.storage.data.sprite;
+            }
+        }
+
         else if (menuName == "RecipeListMenu") {
             foreach (ItemData item in GameController.inst.recipeList) {
                 var newButton = Instantiate(temp, temp.transform.parent);
                 buttons.Add(newButton);
-                //newButton.text.text = ent.name;
+                newButton.text.text = item.name;
                 newButton.image.sprite = item.sprite;
                 newButton.itemData = item;
             }
@@ -168,6 +182,33 @@ public class OverlayMenu : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
                 if (cont.completed) newButton.SetButtonColor(new Color(.8f, 1, .8f));
                 else newButton.SetButtonColor(Color.white);
             }
+            
+        }
+
+        else if (menuName == "Research") {
+
+            /*foreach (ItemContract cont in GameController.inst.contractList) {
+                var newButton = Instantiate(temp, temp.transform.parent);
+                buttons.Add(newButton);
+                newButton.text.text = cont.clientName;
+                newButton.miscText2.text = "$" + cont.paymentAmount.ToString();
+                newButton.miscText3.text = ((int)cont.hoursTimeRemaining).ToString() + "hrs";
+                newButton.image.sprite = cont.itemsRequested[0].data.sprite;
+                newButton.image.GetComponentInChildren<TextMeshProUGUI>().text = cont.itemsRequested[0].itemCount.ToString();
+                if (cont.itemsRequested.Count > 1) {
+                    newButton.miscImages[0].sprite = cont.itemsRequested[1].data.sprite;
+                    newButton.miscImages[0].gameObject.SetActive(true);
+                }
+                else newButton.miscImages[0].gameObject.SetActive(false);
+                if (cont.itemsRequested.Count > 2) {
+                    newButton.miscImages[1].sprite = cont.itemsRequested[2].data.sprite;
+                    newButton.miscImages[1].gameObject.SetActive(true);
+                } 
+                else newButton.miscImages[1].gameObject.SetActive(false);
+                newButton.miscImages[2].transform.GetChild(0).gameObject.SetActive(cont.completed);
+                if (cont.completed) newButton.SetButtonColor(new Color(.8f, 1, .8f));
+                else newButton.SetButtonColor(Color.white);
+            }*/
             
         }
 

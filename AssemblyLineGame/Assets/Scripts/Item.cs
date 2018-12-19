@@ -30,12 +30,19 @@ public class ItemContract {
 public class Item : MonoBehaviour {
 
     public ItemData data;
-
     public SpriteRenderer spr;
+    public BaseEntity inEntityZone;
 
     public void Set(ItemData data) {
         if (data) this.data = data;
         spr.sprite = data.sprite;
+    }
+
+    private void OnMouseDown() {
+        if (GameController.inst.AddToInventory(data, 1)) {
+            GameController.inst.DespawnItem(this);
+        }
+
     }
 
 }

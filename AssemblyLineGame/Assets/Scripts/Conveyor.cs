@@ -15,8 +15,7 @@ public class Conveyor : BaseEntity {
     public void FixedUpdate() {
 
         for (var i = itemsInZone.Count-1; i >= 0; i--) {
-            if (!itemsInZone[i].gameObject.activeSelf) itemsInZone.Remove(itemsInZone[i]);
-            else itemsInZone[i].position += (pushDir - itemsInZone[i].position) * Time.deltaTime;
+            itemsInZone[i].position += (pushDir - itemsInZone[i].position) * Time.deltaTime;
         }
 
     }

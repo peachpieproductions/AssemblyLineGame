@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 50938224909795030}
   m_Layer: 0
   m_Name: Item
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -101,6 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data: {fileID: 0}
   spr: {fileID: 212494652277200864}
+  inEntityZone: {fileID: 0}
 --- !u!212 &212494652277200864
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -9,12 +9,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f165e03a45f1a744788df808d23a33c7, type: 3}
-  m_Name: Walky Talky
+  m_Name: Walkie Talkie
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300040, guid: 07776979e69aeef4eb014bebbf876481, type: 3}
   basePrice: 5
-  priceVariant: 1.0203131
-  popularity: 0.50191414
+  priceVariant: 1.0224234
+  popularity: 0.5046918
   isProduct: 1
   recipe:
   - ingredient: {fileID: 11400000, guid: 6077bac4685ecc2429c73d6e4ff55484, type: 2}

@@ -114,11 +114,17 @@ public class BaseEntity : MonoBehaviour {
     }
 
     public virtual void OnTriggerEnter2D(Collider2D collision) {
-        itemsInZone.Add(collision.transform);
+        if (collision.CompareTag("Item")) {
+            collision.GetComponent<Item>().inEntityZone = this;
+            itemsInZone.Add(collision.transform);
+        }
     }
 
     public virtual void OnTriggerExit2D(Collider2D collision) {
-        itemsInZone.Remove(collision.transform);
+        if (collision.CompareTag("Item")) {
+            if (collision.GetComponent<Item>().inEntityZone == this) collision.GetComponent<Item>().inEntityZone = null;
+            itemsInZone.Remove(collision.transform);
+        }
     }
 
     public IEnumerator DispenseCycle() {
