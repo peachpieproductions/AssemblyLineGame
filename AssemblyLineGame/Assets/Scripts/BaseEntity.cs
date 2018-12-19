@@ -115,14 +115,14 @@ public class BaseEntity : MonoBehaviour {
 
     public virtual void OnTriggerEnter2D(Collider2D collision) {
         if (collision.CompareTag("Item")) {
-            collision.GetComponent<Item>().inEntityZone = this;
+            collision.GetComponent<Item>().inEntityZone.Add(this);
             itemsInZone.Add(collision.transform);
         }
     }
 
     public virtual void OnTriggerExit2D(Collider2D collision) {
         if (collision.CompareTag("Item")) {
-            if (collision.GetComponent<Item>().inEntityZone == this) collision.GetComponent<Item>().inEntityZone = null;
+            collision.GetComponent<Item>().inEntityZone.Remove(this);
             itemsInZone.Remove(collision.transform);
         }
     }

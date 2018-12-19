@@ -410,7 +410,7 @@ public class GameController : MonoBehaviour {
     }
 
     public void DespawnItem(Item item) {
-        if (item.inEntityZone) item.inEntityZone.itemsInZone.Remove(item.transform);
+        foreach (BaseEntity entity in item.inEntityZone) entity.itemsInZone.Remove(item.transform);
         itemPool.Add(item);
         item.gameObject.SetActive(false);
     }

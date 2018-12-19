@@ -17,21 +17,19 @@ public class ItemDelivery {
 
 [System.Serializable]
 public class ItemContract {
-
     public bool completed;
     public List<StorageSlot> itemsRequested = new List<StorageSlot>();
     public string clientName;
     public int paymentAmount;
     public bool recurring;
     public float hoursTimeRemaining;
-
 }
 
 public class Item : MonoBehaviour {
 
     public ItemData data;
     public SpriteRenderer spr;
-    public BaseEntity inEntityZone;
+    public List<BaseEntity> inEntityZone = new List<BaseEntity>();
 
     public void Set(ItemData data) {
         if (data) this.data = data;
@@ -42,7 +40,6 @@ public class Item : MonoBehaviour {
         if (GameController.inst.AddToInventory(data, 1)) {
             GameController.inst.DespawnItem(this);
         }
-
     }
 
 }
