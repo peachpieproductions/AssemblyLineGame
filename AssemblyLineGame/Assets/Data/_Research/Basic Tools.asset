@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e98bf2474402fb45813a4ba579fd457, type: 3}
+  m_Name: Basic Tools
+  m_EditorClassIdentifier: 
+  beingResearched: 0
+  researched: 0
+  cost: 150
+  items:
+  - {fileID: 11400000, guid: a13da47e0a23a284eac0a5b76e2be73a, type: 2}
+  - {fileID: 11400000, guid: e5590ed591283dc4e900425bd2ab8860, type: 2}
+  - {fileID: 11400000, guid: 8c844bf80950ad84c84493fa0add7161, type: 2}
+  - {fileID: 11400000, guid: 6d15829ad9f1f7342b077be63c226e4e, type: 2}
+  - {fileID: 11400000, guid: e3b39e8d3b2684f4f93b2e00857784e3, type: 2}
+  entities: []

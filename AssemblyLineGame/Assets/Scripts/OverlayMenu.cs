@@ -187,28 +187,33 @@ public class OverlayMenu : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
         else if (menuName == "Research") {
 
-            /*foreach (ItemContract cont in GameController.inst.contractList) {
+            foreach (ResearchData res in GameController.inst.researchDatas) {
                 var newButton = Instantiate(temp, temp.transform.parent);
                 buttons.Add(newButton);
-                newButton.text.text = cont.clientName;
-                newButton.miscText2.text = "$" + cont.paymentAmount.ToString();
-                newButton.miscText3.text = ((int)cont.hoursTimeRemaining).ToString() + "hrs";
-                newButton.image.sprite = cont.itemsRequested[0].data.sprite;
-                newButton.image.GetComponentInChildren<TextMeshProUGUI>().text = cont.itemsRequested[0].itemCount.ToString();
-                if (cont.itemsRequested.Count > 1) {
-                    newButton.miscImages[0].sprite = cont.itemsRequested[1].data.sprite;
-                    newButton.miscImages[0].gameObject.SetActive(true);
+                newButton.text.text = res.name;
+                newButton.researchData = res;
+
+                if (res.beingResearched) {
+                    newButton.miscImages[4].transform.localScale = new Vector3(GameController.inst.researchProgress / res.cost, 1, 1);
+                    newButton.miscText2.text = Mathf.Floor((GameController.inst.researchProgress / res.cost) * 100) + "%";
+                    newButton.miscText2.color = new Color(0, 0, .75f);
+                } else if (!res.researched) newButton.miscText2.text = "$" + res.cost.ToString();
+                else newButton.miscImages[4].transform.localScale = new Vector3(1, 1, 1);
+                if (res.researched) {
+                    newButton.image.gameObject.SetActive(true);
+                    newButton.miscText2.enabled = false;
                 }
-                else newButton.miscImages[0].gameObject.SetActive(false);
-                if (cont.itemsRequested.Count > 2) {
-                    newButton.miscImages[1].sprite = cont.itemsRequested[2].data.sprite;
-                    newButton.miscImages[1].gameObject.SetActive(true);
-                } 
-                else newButton.miscImages[1].gameObject.SetActive(false);
-                newButton.miscImages[2].transform.GetChild(0).gameObject.SetActive(cont.completed);
-                if (cont.completed) newButton.SetButtonColor(new Color(.8f, 1, .8f));
-                else newButton.SetButtonColor(Color.white);
-            }*/
+
+
+                if (res.items.Length > 0) newButton.miscImages[0].sprite = res.items[0].sprite;
+                else newButton.miscImages[0].enabled = false;
+                if (res.items.Length > 1) newButton.miscImages[1].sprite = res.items[1].sprite;
+                else newButton.miscImages[1].enabled = false;
+                if (res.items.Length > 2) newButton.miscImages[2].sprite = res.items[2].sprite;
+                else newButton.miscImages[2].enabled = false;
+                if (res.items.Length > 3) newButton.miscImages[3].sprite = res.items[3].sprite;
+                else newButton.miscImages[3].enabled = false;
+            }
             
         }
 

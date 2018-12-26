@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e98bf2474402fb45813a4ba579fd457, type: 3}
+  m_Name: Basic Glass Items
+  m_EditorClassIdentifier: 
+  beingResearched: 0
+  researched: 1
+  cost: 150
+  items:
+  - {fileID: 11400000, guid: 98430c7cc3c0b9243853580812f6f2fe, type: 2}
+  - {fileID: 11400000, guid: 991f76fbdd3f3b64c9d2c2843558cb4f, type: 2}
+  - {fileID: 11400000, guid: 31668df966b120d4ab188941b7a9bd59, type: 2}
+  entities: []

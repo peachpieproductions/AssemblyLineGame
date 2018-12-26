@@ -17,6 +17,8 @@ public class GameController : MonoBehaviour {
     public List<BaseEntity> entities = new List<BaseEntity>();
     public int[,] entityGrid = new int[50,50];
     public List<Item> itemPool = new List<Item>();
+    public ResearchData researching;
+    public float researchProgress;
 
     [Header("UI")]
     public EntityData currentBuildEntity;
@@ -56,6 +58,7 @@ public class GameController : MonoBehaviour {
     public OverlayMenu recipeListMenu;
     public OverlayMenu marketplaceMenu;
     public OverlayMenu contractsMenu;
+    public OverlayMenu researchMenu;
     public OverlayMenu PackageInfoPopup;
     public OverlayMenu ItemInfoPopup;
     public OverlayMenu TopHud;
@@ -94,6 +97,16 @@ public class GameController : MonoBehaviour {
             if (d.recipe.Length > 0) {
                 recipeList.Add(d);
             }
+        }
+
+        //Init Research
+        foreach(ResearchData r in researchDatas) {
+            foreach(ItemData i in r.items) {
+                i.isUnlocked = false;
+            }
+            r.researched = false;
+            r.beingResearched = false;
+            r.GenerateCost();
         }
 
         UpdateMoney(0);
@@ -485,6 +498,31 @@ public class GameController : MonoBehaviour {
         inventoryMenu.BuildMenu();
     } 
 
+    public void StartResearch(ResearchData data) {
+        if (!data.researched && researching == null && money >= data.cost) {
+            UpdateMoney(-data.cost);
+            researching = data;
+            researching.beingResearched = true;
+            researchProgress = 0;
+            StartCoroutine(Research());
+        }
+    }
 
+    public IEnumerator Research() {
+        while(researching) {
+            researchProgress += 1f;
+            if (researchMenu.gameObject.activeSelf) researchMenu.BuildMenu();
+            if (researchProgress >= researching.cost) {
+                foreach(ItemData i in researching.items) {
+                    i.isUnlocked = true;
+                }
+                researching.researched = true;
+                researching.beingResearched = false;
+                researching = null;
+                if (researchMenu.gameObject.activeSelf) researchMenu.BuildMenu();
+            }
+            yield return new WaitForSeconds(1f);
+        }
+    }
 
 }

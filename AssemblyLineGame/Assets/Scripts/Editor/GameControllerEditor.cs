@@ -32,6 +32,14 @@ public class GameControllerEditor : Editor {
             //Load Research Datas
             found = AssetDatabase.FindAssets("t:ResearchData");
             foreach (string s in found) gCon.researchDatas.Add((ResearchData)AssetDatabase.LoadAssetAtPath(AssetDatabase.GUIDToAssetPath(s), typeof(ResearchData)));
+
+            //Set item required research
+            foreach(ResearchData r in gCon.researchDatas) {
+                foreach (ItemData i in r.items) {
+                    i.researchRequired = r;
+                    if (i.recipe.Length == 0) Debug.Log(i.name + " is a raw material, but is included in " + r.name);
+                }
+            }
         }
 
         GUI.color = new Color(.8f, 1, .8f);

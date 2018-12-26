@@ -12,6 +12,7 @@ public class UIButton : MonoBehaviour {
     [HideInInspector] public bool selected;
     public EntityData entityData;
     public ItemData itemData;
+    public ResearchData researchData;
     public StorageSlot storageSlot;
 
     [Header("Refs")]
@@ -60,6 +61,10 @@ public class UIButton : MonoBehaviour {
                 GameController.inst.AddToInventory(storageSlot.data, storageSlot.itemCount, storageSlot);
             }
             GameController.inst.RefreshOverlays();
+        }
+
+        else if (function == "ResearchListing") {
+            GameController.inst.StartResearch(researchData);
         }
 
     }

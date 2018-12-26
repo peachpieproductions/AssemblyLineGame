@@ -9,5 +9,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1e98bf2474402fb45813a4ba579fd457, type: 3}
-  m_Name: New Research Data
+  m_Name: 'Food Items #1'
   m_EditorClassIdentifier: 
+  beingResearched: 0
+  researched: 0
+  cost: 150
+  items:
+  - {fileID: 11400000, guid: 52682e1f98574ae4893c2437c11dcca5, type: 2}
+  entities: []
