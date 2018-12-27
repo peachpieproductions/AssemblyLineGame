@@ -20,6 +20,7 @@ public class OverlayMenu : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     public bool blockScrolling;
     public bool closesImmediately;
     public UIButton miscButton1;
+    public UIButton miscButton2;
     public TextMeshProUGUI miscText1;
     public TextMeshProUGUI miscText2;
     public Image miscImage1;
@@ -82,11 +83,23 @@ public class OverlayMenu : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
             var selEntity = GameController.inst.selectedEntity;
             if (selEntity) {
                 miscButton1.gameObject.SetActive(selEntity is Assembler);
+                miscButton2.transform.parent.gameObject.SetActive(false);
                 miscText1.text = selEntity.data.name;
                 if (selEntity is Assembler) {
                     var assem = selEntity as Assembler;
                     miscButton1.image.enabled = assem.assemblingItem;
-                    if (assem.assemblingItem) miscButton1.image.sprite = assem.assemblingItem.sprite;
+                    if (assem.assemblingItem) {
+                        miscButton1.image.sprite = assem.assemblingItem.sprite;
+                        miscButton2.transform.parent.gameObject.SetActive(true);
+                        foreach(UIButton b in miscButton2.transform.parent.GetComponentsInChildren<UIButton>()) { if (b != miscButton2) Destroy(b.gameObject); }
+                        int i = 0; foreach(ItemData.CraftingIngredient ing in assem.assemblingItem.recipe) {
+                            var button = miscButton2;
+                            UIButton b; if (i == 0) b = button; else b = Instantiate(button, button.transform.parent);
+                            b.image.sprite = ing.ingredient.sprite;
+                            b.text.text = ing.ingredientCount.ToString();
+                            i++;
+                        }
+                    }
                 }
                 for (var i = 0; i < selEntity.storage.Count; i++) {
                     var newButton = Instantiate(temp, temp.transform.parent);
@@ -116,13 +129,13 @@ public class OverlayMenu : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         }
 
         else if (menuName == "ItemInfoPopup") {
-            var selPackage = GameController.inst.selectedPackage;
+            /*var selPackage = GameController.inst.selectedPackage;
             if (selPackage) {
                 follow = selPackage.transform;
                 miscText1.text = selPackage.storage.data.name;
                 miscText2.text = selPackage.storage.itemCount.ToString();
                 miscImage1.sprite = selPackage.storage.data.sprite;
-            }
+            }*/
         }
 
         else if (menuName == "RecipeListMenu") {

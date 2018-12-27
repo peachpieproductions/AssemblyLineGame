@@ -9,15 +9,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f165e03a45f1a744788df808d23a33c7, type: 3}
-  m_Name: Wooden Shield
+  m_Name: Carbon
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 7a62a9434641b8c4f8f6f774838fbfc6, type: 3}
-  basePrice: 5
-  priceVariant: 0.978511
-  popularity: 0.52227986
-  isProduct: 1
-  recipe:
-  - ingredient: {fileID: 11400000, guid: b59841efef30af34dafc86f0641628c8, type: 2}
-    ingredientCount: 4
+  sprite: {fileID: 21300000, guid: e4b39e336b057724f899d79a6ac5231b, type: 3}
+  basePrice: 2
+  priceVariant: 1.0158825
+  popularity: 0.5625129
+  isProduct: 0
+  recipe: []
   craftingOutputCount: 1
+  researchRequired: {fileID: 0}
   isUnlocked: 1

@@ -19,6 +19,7 @@ public class GameController : MonoBehaviour {
     public List<Item> itemPool = new List<Item>();
     public ResearchData researching;
     public float researchProgress;
+    //public List<ItemData> recipeList = new List<ItemData>();
 
     [Header("UI")]
     public EntityData currentBuildEntity;
@@ -92,13 +93,6 @@ public class GameController : MonoBehaviour {
         BuildModeMenu.gameObject.SetActive(false);
         computer.gameObject.SetActive(false);
 
-        recipeList.Clear();
-        foreach(ItemData d in itemDatas) {
-            if (d.recipe.Length > 0) {
-                recipeList.Add(d);
-            }
-        }
-
         //Init Research
         foreach(ResearchData r in researchDatas) {
             foreach(ItemData i in r.items) {
@@ -107,6 +101,14 @@ public class GameController : MonoBehaviour {
             r.researched = false;
             r.beingResearched = false;
             r.GenerateCost();
+        }
+
+        //Recipe List
+        recipeList.Clear();
+        foreach (ItemData d in itemDatas) {
+            if (d.recipe.Length > 0 && d.isUnlocked) {
+                recipeList.Add(d);
+            }
         }
 
         UpdateMoney(0);
@@ -263,36 +265,6 @@ public class GameController : MonoBehaviour {
         incomingDeliveries.Remove(delivery);
     }
 
-    public void GenerateContracts() {
-
-        foreach(ItemContract c in contractList) {
-            if (c.hoursTimeRemaining <= 0) {
-                //remove if too old
-            } 
-        }
-
-        if (contractList.Count < 8 && Random.value > .4f) {
-            for (var j = 0; j < Random.Range(0, 3); j++) {
-                ItemContract newContract = new ItemContract();
-                newContract.clientName = GetClientName();
-                for (var i = 0; i < Random.Range(1, 2); i++) {
-                    StorageSlot itemRequirement = new StorageSlot();
-                    itemRequirement.data = itemDatas[Random.Range(0, itemDatas.Count)];
-                    while (itemRequirement.data.isProduct == false) itemRequirement.data = itemDatas[Random.Range(0, itemDatas.Count)];
-                    itemRequirement.itemCount = Random.Range(1, 17);
-                    newContract.paymentAmount += itemRequirement.data.basePrice * itemRequirement.itemCount;
-                    newContract.itemsRequested.Add(itemRequirement);
-                }
-                newContract.hoursTimeRemaining = Random.Range(3, 48);
-                newContract.paymentAmount = Mathf.RoundToInt(newContract.paymentAmount * (1 + Random.Range(.1f, .3f)));
-                contractList.Add(newContract);
-            }
-        }
-
-        CheckForCompletedContracts();
-
-    }
-
     /*public void LoadClientNames() {
         clientNames.Clear();
         readTextFile(Application.dataPath + "/Data/Names.txt");
@@ -312,34 +284,6 @@ public class GameController : MonoBehaviour {
 
         inp_stm.Close();
     }*/
-
-    public string GetClientName() {
-        return clientNames[Random.Range(0, clientNames.Count)];
-    }
-
-    public void CheckForCompletedContracts() {
-        //Check if completed
-        foreach (ItemContract c in contractList) {
-            bool contractComplete = true;
-            foreach (StorageSlot req in c.itemsRequested) {
-                bool itemSetComplete = false;
-                int totalItemCount = 0;
-                foreach (Package p in outboundPackages) {
-                    if (p.storage.data == req.data) {
-                        totalItemCount += p.storage.itemCount;
-                        if (totalItemCount >= req.itemCount) {
-                            itemSetComplete = true;
-                            break;
-                        }
-                    }
-                }
-                if (contractComplete) contractComplete = itemSetComplete;
-            }
-            c.completed = contractComplete;
-        }
-
-        if (contractsMenu.open) contractsMenu.BuildMenu();
-    }
 
     public void RefreshOverlays() {
         foreach(OverlayMenu menu in FindObjectsOfType<OverlayMenu>()) {
@@ -477,6 +421,35 @@ public class GameController : MonoBehaviour {
         
     }
 
+    public void GenerateContracts() {
+
+        foreach (ItemContract c in contractList) {
+            if (c.hoursTimeRemaining <= 0) {
+                //remove if too old
+            }
+        }
+
+        if (contractList.Count < 8 && Random.value > .4f && recipeList.Count > 0) {
+            for (var j = 0; j < Random.Range(0, 3); j++) {
+                ItemContract newContract = new ItemContract();
+                newContract.clientName = GetClientName();
+                for (var i = 0; i < Random.Range(1, 2); i++) {
+                    StorageSlot itemRequirement = new StorageSlot();
+                    itemRequirement.data = recipeList[Random.Range(0, recipeList.Count)];
+                    itemRequirement.itemCount = Random.Range(5, 20);
+                    newContract.paymentAmount += itemRequirement.data.basePrice * itemRequirement.itemCount;
+                    newContract.itemsRequested.Add(itemRequirement);
+                }
+                newContract.hoursTimeRemaining = Random.Range(3, 48);
+                newContract.paymentAmount = Mathf.RoundToInt(newContract.paymentAmount * (1 + Random.Range(.1f, .3f)));
+                contractList.Add(newContract);
+            }
+        }
+
+        CheckForCompletedContracts();
+
+    }
+
     public void CompleteContract(UIButton contractListing) {
         var contract = contractList[contractListing.transform.GetSiblingIndex() - 1];
         foreach (StorageSlot req in contract.itemsRequested) {
@@ -496,7 +469,35 @@ public class GameController : MonoBehaviour {
         Destroy(contractListing.gameObject);
         CheckForCompletedContracts();
         inventoryMenu.BuildMenu();
-    } 
+    }
+
+    public string GetClientName() {
+        return clientNames[Random.Range(0, clientNames.Count)];
+    }
+
+    public void CheckForCompletedContracts() {
+        //Check if completed
+        foreach (ItemContract c in contractList) {
+            bool contractComplete = true;
+            foreach (StorageSlot req in c.itemsRequested) {
+                bool itemSetComplete = false;
+                int totalItemCount = 0;
+                foreach (Package p in outboundPackages) {
+                    if (p.storage.data == req.data) {
+                        totalItemCount += p.storage.itemCount;
+                        if (totalItemCount >= req.itemCount) {
+                            itemSetComplete = true;
+                            break;
+                        }
+                    }
+                }
+                if (contractComplete) contractComplete = itemSetComplete;
+            }
+            c.completed = contractComplete;
+        }
+
+        if (contractsMenu.open) contractsMenu.BuildMenu();
+    }
 
     public void StartResearch(ResearchData data) {
         if (!data.researched && researching == null && money >= data.cost) {
@@ -515,6 +516,7 @@ public class GameController : MonoBehaviour {
             if (researchProgress >= researching.cost) {
                 foreach(ItemData i in researching.items) {
                     i.isUnlocked = true;
+                    recipeList.Add(i);
                 }
                 researching.researched = true;
                 researching.beingResearched = false;

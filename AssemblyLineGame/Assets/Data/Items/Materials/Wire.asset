@@ -16,5 +16,9 @@ MonoBehaviour:
   priceVariant: 0.9921756
   popularity: 0.4874544
   isProduct: 0
-  recipe: []
+  recipe:
+  - ingredient: {fileID: 11400000, guid: 6077bac4685ecc2429c73d6e4ff55484, type: 2}
+    ingredientCount: 2
   craftingOutputCount: 1
+  researchRequired: {fileID: 11400000, guid: 860a7fdcf40149641a0ed61b7c75ef57, type: 2}
+  isUnlocked: 1

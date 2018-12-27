@@ -12,9 +12,13 @@ MonoBehaviour:
   m_Name: Gold Ingot
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: f2b8fa97f24176d49bf73af55279a5ee, type: 3}
-  basePrice: 1
+  basePrice: 2
   priceVariant: 1.008371
   popularity: 0.48591185
   isProduct: 0
-  recipe: []
+  recipe:
+  - ingredient: {fileID: 11400000, guid: 68d3f04c24dadd940b6bbfc899db0ad2, type: 2}
+    ingredientCount: 2
   craftingOutputCount: 1
+  researchRequired: {fileID: 11400000, guid: 7412bf828bc830141ac51d0a65281de4, type: 2}
+  isUnlocked: 1

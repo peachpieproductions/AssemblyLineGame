@@ -9,14 +9,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f165e03a45f1a744788df808d23a33c7, type: 3}
-  m_Name: Safety Vest
+  m_Name: Crude Oil
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 74b0b51f10c99924b92dbf09e90a0c6f, type: 3}
-  basePrice: 5
-  priceVariant: 1.1925585
-  popularity: 0.21973129
-  isProduct: 1
-  recipe:
-  - ingredient: {fileID: 11400000, guid: e527a2a6c810a2443941cbde70188ea7, type: 2}
-    ingredientCount: 3
+  sprite: {fileID: 21300104, guid: 07776979e69aeef4eb014bebbf876481, type: 3}
+  basePrice: 1
+  priceVariant: 1.0231597
+  popularity: 0.52224356
+  isProduct: 0
+  recipe: []
   craftingOutputCount: 1
+  researchRequired: {fileID: 0}
+  isUnlocked: 1

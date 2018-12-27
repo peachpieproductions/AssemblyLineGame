@@ -33,13 +33,23 @@ public class GameControllerEditor : Editor {
             found = AssetDatabase.FindAssets("t:ResearchData");
             foreach (string s in found) gCon.researchDatas.Add((ResearchData)AssetDatabase.LoadAssetAtPath(AssetDatabase.GUIDToAssetPath(s), typeof(ResearchData)));
 
-            //Set item required research
+            //Research Stuff
+            foreach(ItemData i in gCon.itemDatas) {
+                i.researchRequired = null;
+            }
             foreach(ResearchData r in gCon.researchDatas) {
                 foreach (ItemData i in r.items) {
+                    if (i.researchRequired != null) Debug.Log(i.name + " belongs to " + i.researchRequired.name + " and " + r.name);
                     i.researchRequired = r;
                     if (i.recipe.Length == 0) Debug.Log(i.name + " is a raw material, but is included in " + r.name);
                 }
             }
+            foreach (ItemData i in gCon.itemDatas) {
+                if (i.recipe.Length > 0 && i.researchRequired == null) Debug.Log(i.name + " is a product, but requires no research");
+            }
+
+            //Sort Research Listings
+            gCon.researchDatas.Sort((d1,d2) => d1.cost.CompareTo(d2.cost));
         }
 
         GUI.color = new Color(.8f, 1, .8f);
