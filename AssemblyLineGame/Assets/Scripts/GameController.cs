@@ -19,7 +19,7 @@ public class GameController : MonoBehaviour {
     public List<Item> itemPool = new List<Item>();
     public ResearchData researching;
     public float researchProgress;
-    //public List<ItemData> recipeList = new List<ItemData>();
+    public bool buildMode;
 
     [Header("UI")]
     public EntityData currentBuildEntity;
@@ -30,6 +30,7 @@ public class GameController : MonoBehaviour {
     public List<OverlayMenu> hoveringList = new List<OverlayMenu>();
     public bool selectingRecipe;
     public ItemData selectedRecipe;
+    public ItemData selectedItemData;
 
     [Header("Player")]
     public int money = 250;
@@ -66,7 +67,7 @@ public class GameController : MonoBehaviour {
 
     #endregion
 
-    bool buildMode;
+    
     Camera cam;
     Vector2 camMoveVelocity;
     float camZoomAmount = 5;
@@ -101,6 +102,7 @@ public class GameController : MonoBehaviour {
             r.researched = false;
             r.beingResearched = false;
             r.GenerateCost();
+            if (r.researchedOnStart) r.UnlockResearch();
         }
 
         //Recipe List
@@ -131,6 +133,7 @@ public class GameController : MonoBehaviour {
                     selectedPackage = null;
                     PackageInfoPopup.ToggleOpenClose(false);
                 }
+                if (ItemInfoPopup.gameObject.activeSelf) ItemInfoPopup.ToggleOpenClose(false);
             }
         }
 
@@ -258,6 +261,7 @@ public class GameController : MonoBehaviour {
         while (itemCount > 0) {
             var newPackage = Instantiate(packagePrefab, (Vector2)zone.transform.position + placement,Quaternion.identity).GetComponent<Package>();
             newPackage.storage.data = delivery.data;
+            newPackage.spriteRenderer.sprite = delivery.data.sprite;
             newPackage.storage.itemCount = Mathf.Min(10, itemCount);
             newPackage.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f));
             itemCount -= 10;
@@ -367,7 +371,7 @@ public class GameController : MonoBehaviour {
     }
 
     public void DespawnItem(Item item) {
-        foreach (BaseEntity entity in item.inEntityZone) entity.itemsInZone.Remove(item.transform);
+        foreach (BaseEntity entity in item.inEntityZone) { if (entity) entity.itemsInZone.Remove(item.transform); }
         itemPool.Add(item);
         item.gameObject.SetActive(false);
     }
@@ -423,9 +427,10 @@ public class GameController : MonoBehaviour {
 
     public void GenerateContracts() {
 
-        foreach (ItemContract c in contractList) {
-            if (c.hoursTimeRemaining <= 0) {
-                //remove if too old
+        for (int i = contractList.Count - 1; i >= 0; i--) {
+            contractList[i].hoursTimeRemaining -= .166f;
+            if (contractList[i].hoursTimeRemaining <= 0) {
+                contractList.Remove(contractList[i]);
             }
         }
 
@@ -435,12 +440,12 @@ public class GameController : MonoBehaviour {
                 newContract.clientName = GetClientName();
                 for (var i = 0; i < Random.Range(1, 2); i++) {
                     StorageSlot itemRequirement = new StorageSlot();
-                    itemRequirement.data = recipeList[Random.Range(0, recipeList.Count)];
+                    do { itemRequirement.data = recipeList[Random.Range(0, recipeList.Count)]; } while (!itemRequirement.data.isProduct);
                     itemRequirement.itemCount = Random.Range(5, 20);
                     newContract.paymentAmount += itemRequirement.data.basePrice * itemRequirement.itemCount;
                     newContract.itemsRequested.Add(itemRequirement);
                 }
-                newContract.hoursTimeRemaining = Random.Range(3, 48);
+                newContract.hoursTimeRemaining = Random.Range(2, 28);
                 newContract.paymentAmount = Mathf.RoundToInt(newContract.paymentAmount * (1 + Random.Range(.1f, .3f)));
                 contractList.Add(newContract);
             }
@@ -514,17 +519,18 @@ public class GameController : MonoBehaviour {
             researchProgress += 1f;
             if (researchMenu.gameObject.activeSelf) researchMenu.BuildMenu();
             if (researchProgress >= researching.cost) {
-                foreach(ItemData i in researching.items) {
-                    i.isUnlocked = true;
-                    recipeList.Add(i);
-                }
-                researching.researched = true;
-                researching.beingResearched = false;
+                researching.UnlockResearch();
                 researching = null;
                 if (researchMenu.gameObject.activeSelf) researchMenu.BuildMenu();
             }
             yield return new WaitForSeconds(1f);
         }
+    }
+
+    public void OpenItemDataInfo(ItemData itemData) {
+        selectedItemData = itemData;
+        ItemInfoPopup.ToggleOpenClose(true);
+        ItemInfoPopup.BuildMenu();
     }
 
 }

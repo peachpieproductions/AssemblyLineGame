@@ -29,6 +29,7 @@ public class Assembler : BaseEntity {
                                     break;
                                 }
                             } else {
+                                storage[i].differenceToApply = -ing.ingredientCount;
                                 break;
                             }
                         }
@@ -36,8 +37,11 @@ public class Assembler : BaseEntity {
 
                     if (canCraft) {
                         craftingSuccessful = true;
-                        storage[0].itemCount -= assemblingItem.recipe[0].ingredientCount;
-                        if (storage[0].itemCount == 0) storage[0].data = null;
+                        foreach(StorageSlot s in storage) {
+                            s.itemCount += s.differenceToApply;
+                            if (s.itemCount == 0) s.data = null;
+                        }
+                        
                         for (var i = 0; i < assemblingItem.craftingOutputCount; i++) {
                             Dispense(assemblingItem);
                             yield return new WaitForSeconds(.1f);

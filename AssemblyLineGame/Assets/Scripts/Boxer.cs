@@ -22,6 +22,7 @@ public class Boxer : BaseEntity {
                         if (s.itemCount >= 10) {
                             var inst = Instantiate(box,(Vector2)transform.position + n.dir,Quaternion.identity).GetComponent<Package>();
                             inst.storage.data = s.data;
+                            inst.spriteRenderer.sprite = s.data.sprite;
                             inst.storage.itemCount = 10;
                             inst.GetComponent<Rigidbody2D>().velocity = n.dir * 3 + new Vector2(Random.Range(-1f,1f), Random.Range(-1f, 1f));
                             s.itemCount -= 10;

@@ -95,6 +95,7 @@ public class OverlayMenu : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
                         int i = 0; foreach(ItemData.CraftingIngredient ing in assem.assemblingItem.recipe) {
                             var button = miscButton2;
                             UIButton b; if (i == 0) b = button; else b = Instantiate(button, button.transform.parent);
+                            b.itemData = ing.ingredient;
                             b.image.sprite = ing.ingredient.sprite;
                             b.text.text = ing.ingredientCount.ToString();
                             i++;
@@ -129,13 +130,42 @@ public class OverlayMenu : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         }
 
         else if (menuName == "ItemInfoPopup") {
-            /*var selPackage = GameController.inst.selectedPackage;
-            if (selPackage) {
-                follow = selPackage.transform;
-                miscText1.text = selPackage.storage.data.name;
-                miscText2.text = selPackage.storage.itemCount.ToString();
-                miscImage1.sprite = selPackage.storage.data.sprite;
-            }*/
+            var selItemData = GameController.inst.selectedItemData;
+            if (selItemData) {
+                miscText1.text = selItemData.name;
+                //miscText2.text = ITEM DATA INFO
+                miscImage1.sprite = selItemData.sprite;
+
+                //crafting recipe
+                miscButton1.gameObject.SetActive(false);
+                foreach (UIButton b in miscButton1.transform.parent.GetComponentsInChildren<UIButton>()) { if (b != miscButton1) Destroy(b.gameObject); }
+                if (selItemData.recipe.Length > 0) {
+                    miscButton1.gameObject.SetActive(true);
+                    int i = 0; foreach (ItemData.CraftingIngredient ing in selItemData.recipe) {
+                        var button = miscButton1;
+                        UIButton b; if (i == 0) b = button; else b = Instantiate(button, button.transform.parent);
+                        b.itemData = ing.ingredient;
+                        b.image.sprite = ing.ingredient.sprite;
+                        b.text.text = ing.ingredientCount.ToString();
+                        i++;
+                    }
+                }
+
+                //used to craft list
+                miscButton2.gameObject.SetActive(false);
+                foreach (UIButton b in miscButton2.transform.parent.GetComponentsInChildren<UIButton>()) { if (b != miscButton2) Destroy(b.gameObject); }
+                if (selItemData.usedToCraft.Count > 0) {
+                    miscButton2.gameObject.SetActive(true);
+                    int i = 0; foreach (ItemData d in selItemData.usedToCraft) {
+                        var button = miscButton2;
+                        UIButton b; if (i == 0) b = button; else b = Instantiate(button, button.transform.parent);
+                        b.itemData = d;
+                        b.image.sprite = d.sprite;
+                        b.text.text = "";
+                        i++;
+                    }
+                }
+            }
         }
 
         else if (menuName == "RecipeListMenu") {
@@ -178,7 +208,7 @@ public class OverlayMenu : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
                 buttons.Add(newButton);
                 newButton.text.text = cont.clientName;
                 newButton.miscText2.text = "$" + cont.paymentAmount.ToString();
-                newButton.miscText3.text = ((int)cont.hoursTimeRemaining).ToString() + "hrs";
+                newButton.miscText3.text = Mathf.CeilToInt(cont.hoursTimeRemaining).ToString() + " hrs";
                 newButton.image.sprite = cont.itemsRequested[0].data.sprite;
                 newButton.image.GetComponentInChildren<TextMeshProUGUI>().text = cont.itemsRequested[0].itemCount.ToString();
                 if (cont.itemsRequested.Count > 1) {

@@ -67,12 +67,20 @@ public class UIButton : MonoBehaviour {
             GameController.inst.StartResearch(researchData);
         }
 
+        else if (function == "OpenItemInfo") {
+            GameController.inst.OpenItemDataInfo(itemData);
+        }
+
     }
 
     public void SetButtonColor(Color color) {
         var cols = button.colors;
         cols.normalColor = color;
         button.colors = cols;
+    }
+
+    public void OpenItemInfo() {
+        if (itemData) GameController.inst.OpenItemDataInfo(itemData);
     }
 
 }

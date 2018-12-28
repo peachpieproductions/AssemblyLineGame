@@ -5,6 +5,10 @@ using UnityEngine;
 public class Package : MonoBehaviour {
 
     public StorageSlot storage;
+    public Rigidbody2D rb;
+    public SpriteRenderer spriteRenderer;
+
+    bool updating = true;
 
     private void Start() {
         StartCoroutine(UpdatePackage());
@@ -34,12 +38,19 @@ public class Package : MonoBehaviour {
 
     public IEnumerator UpdatePackage() {
 
-        while (true) {
+        while (!rb.IsSleeping()) {
 
             transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.y * .01f);
 
-            yield return new WaitForSeconds(.5f);
+            yield return null;
+
         }
+        updating = false;
+
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision) {
+        if (!updating) StartCoroutine(UpdatePackage());
     }
 
     private void OnDestroy() {

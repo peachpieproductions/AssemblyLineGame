@@ -6,6 +6,7 @@ using UnityEngine;
 public class StorageSlot {
     public ItemData data;
     public int itemCount;
+    [HideInInspector] public int differenceToApply;
 }
 
 [System.Serializable]

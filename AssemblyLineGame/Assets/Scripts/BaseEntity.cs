@@ -24,7 +24,7 @@ public class BaseEntity : MonoBehaviour {
     protected GameController gCon;
 
     private void OnMouseUp() {
-        if (!GameController.inst.hoveringOverlay) {
+        if (!GameController.inst.hoveringOverlay && !GameController.inst.buildMode) {
             GameController.inst.selectedEntity = this;
             GameController.inst.entityMenu.ToggleOpenClose(true);
         }
@@ -114,16 +114,16 @@ public class BaseEntity : MonoBehaviour {
     }
 
     public virtual void OnTriggerEnter2D(Collider2D collision) {
+        itemsInZone.Add(collision.transform);
         if (collision.CompareTag("Item")) {
             collision.GetComponent<Item>().inEntityZone.Add(this);
-            itemsInZone.Add(collision.transform);
         }
     }
 
     public virtual void OnTriggerExit2D(Collider2D collision) {
+        itemsInZone.Remove(collision.transform);
         if (collision.CompareTag("Item")) {
             collision.GetComponent<Item>().inEntityZone.Remove(this);
-            itemsInZone.Remove(collision.transform);
         }
     }
 
@@ -162,7 +162,6 @@ public class BaseEntity : MonoBehaviour {
                             storage[j].data = item.data;
                             storage[j].itemCount++;
                             gCon.DespawnItem(item);
-                            itemsInZone.Remove(itemsInZone[i]);
                             break;
                         }
                     }

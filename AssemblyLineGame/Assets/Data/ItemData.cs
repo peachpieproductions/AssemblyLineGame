@@ -20,6 +20,7 @@ public class ItemData : ScriptableObject {
     public int craftingOutputCount = 1;
     public ResearchData researchRequired;
     public bool isUnlocked = true;
+    public List<ItemData> usedToCraft = new List<ItemData>();
 
     public int getCurrentPrice() {
         return Mathf.Max(Mathf.RoundToInt(basePrice * priceVariant),1);

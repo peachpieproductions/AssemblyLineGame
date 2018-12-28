@@ -13,11 +13,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   beingResearched: 0
   researched: 0
-  cost: 170
+  cost: 160
   items:
   - {fileID: 11400000, guid: 8a0389c15ffc458498b38257aa1b4d30, type: 2}
   - {fileID: 11400000, guid: 390d7869dae471d43b51b45d4dae360f, type: 2}
-  - {fileID: 11400000, guid: b59841efef30af34dafc86f0641628c8, type: 2}
   - {fileID: 11400000, guid: 51e9de5756030554e805a5edd4d8a779, type: 2}
   - {fileID: 11400000, guid: cf3fe8cbd7c50b8449093e4fcabf2329, type: 2}
   - {fileID: 11400000, guid: d1ee3b06e976432459b0993ec8516f94, type: 2}

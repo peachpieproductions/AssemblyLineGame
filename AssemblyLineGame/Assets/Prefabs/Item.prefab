@@ -101,7 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data: {fileID: 0}
   spr: {fileID: 212494652277200864}
-  inEntityZone: {fileID: 0}
+  inEntityZone: []
 --- !u!212 &212494652277200864
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -36,6 +36,7 @@ public class GameControllerEditor : Editor {
             //Research Stuff
             foreach(ItemData i in gCon.itemDatas) {
                 i.researchRequired = null;
+                i.usedToCraft.Clear();
             }
             foreach(ResearchData r in gCon.researchDatas) {
                 foreach (ItemData i in r.items) {
@@ -43,6 +44,7 @@ public class GameControllerEditor : Editor {
                     i.researchRequired = r;
                     if (i.recipe.Length == 0) Debug.Log(i.name + " is a raw material, but is included in " + r.name);
                 }
+                r.GenerateCost();
             }
             foreach (ItemData i in gCon.itemDatas) {
                 if (i.recipe.Length > 0 && i.researchRequired == null) Debug.Log(i.name + " is a product, but requires no research");
@@ -50,6 +52,15 @@ public class GameControllerEditor : Editor {
 
             //Sort Research Listings
             gCon.researchDatas.Sort((d1,d2) => d1.cost.CompareTo(d2.cost));
+
+            //Set Item Datas 'used to craft' list
+            foreach (ItemData i in gCon.itemDatas) {
+                foreach (ItemData.CraftingIngredient ing in i.recipe) {
+                    if (!ing.ingredient.usedToCraft.Contains(i)) {
+                        ing.ingredient.usedToCraft.Add(i);
+                    }
+                }
+            }
         }
 
         GUI.color = new Color(.8f, 1, .8f);
