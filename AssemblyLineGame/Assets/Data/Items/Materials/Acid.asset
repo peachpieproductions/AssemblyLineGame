@@ -9,12 +9,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f165e03a45f1a744788df808d23a33c7, type: 3}
-  m_Name: Crude Oil
+  m_Name: Acid
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300110, guid: 2a4068a34e2b37c42ad5d8adf9d38c32, type: 3}
-  basePrice: 1
-  priceVariant: 1.013857
-  popularity: 0.48930937
+  sprite: {fileID: 21300000, guid: 7476bb181995b1e4a8fced6cf26555ea, type: 3}
+  basePrice: 2
+  priceVariant: 1.0158825
+  popularity: 0.5625129
   isProduct: 0
   recipe: []
   craftingOutputCount: 1

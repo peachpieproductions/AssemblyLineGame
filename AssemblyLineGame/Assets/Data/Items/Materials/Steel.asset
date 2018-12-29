@@ -9,14 +9,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f165e03a45f1a744788df808d23a33c7, type: 3}
-  m_Name: Crude Oil
+  m_Name: Steel
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300110, guid: 2a4068a34e2b37c42ad5d8adf9d38c32, type: 3}
-  basePrice: 1
-  priceVariant: 1.013857
-  popularity: 0.48930937
+  sprite: {fileID: 21300000, guid: f337848d69c596f4c9d17f4ddd5c48ac, type: 3}
+  basePrice: 2
+  priceVariant: 0.9860391
+  popularity: 0.50260854
   isProduct: 0
-  recipe: []
+  recipe:
+  - ingredient: {fileID: 11400000, guid: e8ccd25aa3a641c4687da4ecc6aec862, type: 2}
+    ingredientCount: 1
+  - ingredient: {fileID: 11400000, guid: 6618c24f2f396684fad5fbebf900a653, type: 2}
+    ingredientCount: 1
   craftingOutputCount: 1
   researchRequired: {fileID: 0}
   isUnlocked: 1

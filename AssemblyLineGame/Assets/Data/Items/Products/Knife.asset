@@ -9,17 +9,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f165e03a45f1a744788df808d23a33c7, type: 3}
-  m_Name: Guitar
+  m_Name: Knife
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 290713e1b92287a4a974ed63220719ed, type: 3}
+  sprite: {fileID: 21300098, guid: 07776979e69aeef4eb014bebbf876481, type: 3}
   basePrice: 5
-  priceVariant: 0.9799911
-  popularity: 0.51998276
+  priceVariant: 1.0008318
+  popularity: 0.5139985
   isProduct: 1
   recipe:
+  - ingredient: {fileID: 11400000, guid: b59841efef30af34dafc86f0641628c8, type: 2}
+    ingredientCount: 1
+  - ingredient: {fileID: 11400000, guid: d785823743edf264a84ad6c781fe3049, type: 2}
+    ingredientCount: 1
   - ingredient: {fileID: 11400000, guid: 6077bac4685ecc2429c73d6e4ff55484, type: 2}
-    ingredientCount: 3
+    ingredientCount: 1
   craftingOutputCount: 1
-  researchRequired: {fileID: 11400000, guid: d6992406a583f27439b0e597e4f56426, type: 2}
-  isUnlocked: 0
+  researchRequired: {fileID: 11400000, guid: 83ef5c5d1a0cf8740ba70ca37cbb72df, type: 2}
+  isUnlocked: 1
   usedToCraft: []
