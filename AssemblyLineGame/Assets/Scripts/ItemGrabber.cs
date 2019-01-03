@@ -50,6 +50,7 @@ public class ItemGrabber : BaseEntity {
                                 break;
                             }
                         }
+                        if (GameController.inst.selectedEntity == nextToStorage) GameController.inst.entityMenu.BuildMenu();
                     } else {
                         foreach (Transform t in itemsInZone) { //Grab Items in Zone
                             if (t.GetComponent<Rigidbody2D>()) {

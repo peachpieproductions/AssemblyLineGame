@@ -53,6 +53,8 @@ public class OverlayMenu : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     public void BuildMenu() {
 
+        if (!open) return;
+
         for (var i = buttons.Count - 1; i >= 0; i--) {
             var b = buttons[i];
             buttons.Remove(buttons[i]);
@@ -89,6 +91,7 @@ public class OverlayMenu : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
                     var assem = selEntity as Assembler;
                     miscButton1.image.enabled = assem.assemblingItem;
                     if (assem.assemblingItem) {
+                        miscButton1.itemData = assem.assemblingItem;
                         miscButton1.image.sprite = assem.assemblingItem.sprite;
                         miscButton2.transform.parent.gameObject.SetActive(true);
                         foreach(UIButton b in miscButton2.transform.parent.GetComponentsInChildren<UIButton>()) { if (b != miscButton2) Destroy(b.gameObject); }
@@ -169,6 +172,7 @@ public class OverlayMenu : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         }
 
         else if (menuName == "RecipeListMenu") {
+            GameController.inst.ItemInfoPopup.ToggleOpenClose(false);
             foreach (ItemData item in GameController.inst.recipeList) {
                 var newButton = Instantiate(temp, temp.transform.parent);
                 buttons.Add(newButton);
@@ -279,14 +283,16 @@ public class OverlayMenu : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     }
 
     public void ToggleOpenClose(bool open) {
-        this.open = open;
-        if (open) {
-            if (!gameObject.activeSelf) gameObject.SetActive(true);
-            else BuildMenu();
-            rect.anchoredPosition = closedTargetPosition;
-        } else {
-            if (follow) gameObject.SetActive(false);
-            CloseMenu();
+        if (this.open != open) {
+            this.open = open;
+            if (open) {
+                if (!gameObject.activeSelf) gameObject.SetActive(true);
+                else BuildMenu();
+                rect.anchoredPosition = closedTargetPosition;
+            } else {
+                if (follow) gameObject.SetActive(false);
+                CloseMenu();
+            }
         }
     }
 

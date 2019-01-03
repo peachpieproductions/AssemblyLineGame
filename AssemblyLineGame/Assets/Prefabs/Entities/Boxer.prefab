@@ -9,45 +9,45 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1574673790495662}
+  m_RootGameObject: {fileID: 1815247281769616}
   m_IsPrefabAsset: 1
---- !u!1 &1574673790495662
+--- !u!1 &1815247281769616
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4638386113480792}
-  - component: {fileID: 114929687378800966}
-  - component: {fileID: 212265893514975056}
-  - component: {fileID: 61632722185660192}
+  - component: {fileID: 4164502470586492}
+  - component: {fileID: 114032177116724326}
+  - component: {fileID: 212564252182084182}
+  - component: {fileID: 61286513540340982}
   m_Layer: 0
-  m_Name: Dispensor
+  m_Name: Boxer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4638386113480792
+--- !u!4 &4164502470586492
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1574673790495662}
+  m_GameObject: {fileID: 1815247281769616}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.5, y: 5.5, z: 0.083984375}
+  m_LocalPosition: {x: 14.5, y: 3.5, z: 0.083984375}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &61632722185660192
+--- !u!61 &61286513540340982
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1574673790495662}
+  m_GameObject: {fileID: 1815247281769616}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -67,18 +67,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.7, y: 0.7}
   m_EdgeRadius: 0
---- !u!114 &114929687378800966
+--- !u!114 &114032177116724326
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1574673790495662}
+  m_GameObject: {fileID: 1815247281769616}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd96b4e96e5f36348ad5cb45948f5e7c, type: 3}
+  m_Script: {fileID: 11500000, guid: ac12b992f55012f478ed336eaefc589a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: 6a1f4604a8d33bd48a3c74c039423290, type: 2}
+  data: {fileID: 11400000, guid: 0e439897cda29974c90e343cd46d6690, type: 2}
   neighbors:
   - entity: {fileID: 0}
     dir: {x: 0, y: 0}
@@ -92,21 +92,26 @@ MonoBehaviour:
   storage:
   - data: {fileID: 0}
     itemCount: 0
+    differenceToApply: 0
   - data: {fileID: 0}
     itemCount: 0
+    differenceToApply: 0
   - data: {fileID: 0}
     itemCount: 0
+    differenceToApply: 0
   currentCoord: {x: 0, y: 0}
   itemsInZone: []
   storesItems: 1
-  dispense: 1
+  dispense: 0
+  ignoredByDispensors: 0
   size: {x: 1, y: 1}
---- !u!212 &212265893514975056
+  box: {fileID: 1287549444747040, guid: 6fe493369a15d4c4d844e611fe0888d5, type: 2}
+--- !u!212 &212564252182084182
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1574673790495662}
+  m_GameObject: {fileID: 1815247281769616}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -137,7 +142,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 79e878a97e75ec64bbca0260b5d9e183, type: 3}
-  m_Color: {r: 1, g: 0.504717, b: 0.504717, a: 1}
+  m_Color: {r: 0.1033731, g: 0.9528302, b: 0.91367376, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

@@ -19,12 +19,13 @@ public class BaseEntity : MonoBehaviour {
     public bool storesItems;
     public bool dispense;
     public bool ignoredByDispensors;
+    public bool noEntityMenu;
     public Vector2Int size = new Vector2Int(1, 1);
 
     protected GameController gCon;
 
     private void OnMouseUp() {
-        if (!GameController.inst.hoveringOverlay && !GameController.inst.buildMode) {
+        if (!noEntityMenu && !GameController.inst.hoveringOverlay && !GameController.inst.buildMode) {
             GameController.inst.selectedEntity = this;
             GameController.inst.entityMenu.ToggleOpenClose(true);
         }
@@ -157,13 +158,27 @@ public class BaseEntity : MonoBehaviour {
             for (var i = itemsInZone.Count - 1; i >= 0; i--) {
                 var item = itemsInZone[i].GetComponent<Item>();
                 if (item) {
+                    bool stored = false;
                     for (var j = 0; j < storage.Count; j++) {
-                        if (storage[j].data == item.data || storage[j].itemCount == 0) {
-                            storage[j].data = item.data;
+                        if (storage[j].data == item.data) {
                             storage[j].itemCount++;
                             gCon.DespawnItem(item);
+                            stored = true;
                             break;
                         }
+                    }
+                    if (!stored) {
+                        for (var j = 0; j < storage.Count; j++) {
+                            if (storage[j].itemCount == 0) {
+                                storage[j].data = item.data;
+                                storage[j].itemCount++;
+                                gCon.DespawnItem(item);
+                                break;
+                            }
+                        }
+                    }
+                    if (GameController.inst.selectedEntity == this) {
+                        GameController.inst.entityMenu.BuildMenu();
                     }
                 }
             }

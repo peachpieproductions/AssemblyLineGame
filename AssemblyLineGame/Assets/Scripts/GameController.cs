@@ -125,6 +125,9 @@ public class GameController : MonoBehaviour {
 
         if (Input.GetMouseButtonDown(0)) {
             if (!hoveringOverlay) {
+                if (computer.open) {
+                    computer.ToggleOpenClose(false);
+                }
                 if (selectedEntity) {
                     selectedEntity = null;
                     entityMenu.ToggleOpenClose(false);
@@ -144,6 +147,15 @@ public class GameController : MonoBehaviour {
             selectedRecipe = null;
             entityMenu.BuildMenu();
             recipeListMenu.ToggleOpenClose(false);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            if (computer.open) computer.ToggleOpenClose(false);
+            else if (ItemInfoPopup.open) ItemInfoPopup.ToggleOpenClose(false);
+            else if (recipeListMenu.open) recipeListMenu.ToggleOpenClose(false);
+            else if (entityMenu.open) entityMenu.ToggleOpenClose(false);
+            
+            if (buildMode) ToggleBuildMode();
         }
 
         if (Input.GetKeyDown(KeyCode.Tab)) {
@@ -301,6 +313,7 @@ public class GameController : MonoBehaviour {
         blueprintFloor.SetActive(buildMode);
         BuildModeMenu.ToggleOpenClose(buildMode);
         if (buildMode) StartCoroutine(BuildMode());
+        else currentBuildEntity = null;
     }
 
     public void UpdateEntityGrid() {
@@ -317,21 +330,24 @@ public class GameController : MonoBehaviour {
 
     public void CameraMovement() {
 
-        //Camera Movement and Bounds
-        camMoveVelocity += new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")) * Time.deltaTime;
-        camMoveVelocity *= .9f;
-        cam.transform.position += (Vector3)camMoveVelocity;
-        cam.transform.position = new Vector3(Mathf.Clamp(cam.transform.position.x, cam.orthographicSize * cam.aspect, 50 - cam.orthographicSize * cam.aspect), 
-            Mathf.Clamp(cam.transform.position.y, cam.orthographicSize, 50 - cam.orthographicSize), cam.transform.position.z);
-
         //Camera Zoom
+        float camMoveZoomMult = 0;
         if (Input.mouseScrollDelta.y != 0) {
             if (!hoveringOverlay || (hoveringList.Count > 0 && !hoveringList[0].blockScrolling)) {
                 camZoomAmount -= Input.mouseScrollDelta.y;
                 camZoomAmount = Mathf.Clamp(camZoomAmount, 1f, 15f);
+                camMoveZoomMult = (1f / cam.orthographicSize * Input.mouseScrollDelta.y);
             }
         }
         cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, camZoomAmount, Time.deltaTime * 10f);
+
+        //Camera Movement and Bounds
+        camMoveVelocity += new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")) * Time.deltaTime;
+        camMoveVelocity *= .9f;
+        camMoveVelocity += (mouseWorldPos - (Vector2)cam.transform.position) * camMoveZoomMult * .1f; //zoom towards mouse cursor
+        cam.transform.position += (Vector3)camMoveVelocity;
+        cam.transform.position = new Vector3(Mathf.Clamp(cam.transform.position.x, cam.orthographicSize * cam.aspect, 50 - cam.orthographicSize * cam.aspect),
+            Mathf.Clamp(cam.transform.position.y, cam.orthographicSize, 50 - cam.orthographicSize), cam.transform.position.z);
 
     }
 

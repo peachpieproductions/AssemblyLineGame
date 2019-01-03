@@ -81,9 +81,11 @@ MonoBehaviour:
   selected: 0
   entityData: {fileID: 0}
   itemData: {fileID: 0}
+  researchData: {fileID: 0}
   storageSlot:
     data: {fileID: 0}
     itemCount: 0
+    differenceToApply: 0
   button: {fileID: 114868568480186124}
   image: {fileID: 114325986150572010}
   text: {fileID: 114109300704786452}
@@ -299,7 +301,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 114075108634827536}
         m_MethodName: Clicked
-        m_Mode: 1
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

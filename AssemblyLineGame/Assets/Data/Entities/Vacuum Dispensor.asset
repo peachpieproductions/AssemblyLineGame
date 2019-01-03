@@ -9,11 +9,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 21cdbe759897da94abe0552fc9c2e354, type: 3}
-  m_Name: Storage
+  m_Name: Vacuum Dispensor
   m_EditorClassIdentifier: 
-  prefab: {fileID: 1570848219668366, guid: 806eb07ccac444444918c7e80122ac61, type: 2}
-  sprite: {fileID: 21300000, guid: f6cd3f2f4d0e6274c81a5b01770db998, type: 3}
-  placementSprite: {fileID: 0}
-  cost: 20
+  prefab: {fileID: 1432450092117072, guid: 6fb26d1e21aa3a34790567df5154e087, type: 2}
+  sprite: {fileID: 21300000, guid: 79e878a97e75ec64bbca0260b5d9e183, type: 3}
+  placementSprite: {fileID: 21300000, guid: d2c26c39c47a5fc4f99c59e1a33e6498, type: 3}
+  cost: 25
   size: {x: 1, y: 1}
   cantBeRotated: 0

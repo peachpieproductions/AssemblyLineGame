@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
 
-public class UIButton : MonoBehaviour {
+public class UIButton : MonoBehaviour, IPointerClickHandler {
 
     [HideInInspector] public OverlayMenu overlayMenu;
     public string function;
@@ -28,7 +29,7 @@ public class UIButton : MonoBehaviour {
         overlayMenu = GetComponentInParent<OverlayMenu>();
     }
 
-    public void Clicked() {
+    public void Clicked(bool rightClick = false) {
         if (selectedOnClick) {
             selected = true;
             overlayMenu.ResetButtons();
@@ -45,21 +46,40 @@ public class UIButton : MonoBehaviour {
         } 
 
         else if (function == "OpenRecipeList") {
-            GameController.inst.selectingRecipe = true;
-            GameController.inst.recipeListMenu.ToggleOpenClose(true);
+            if (rightClick) {
+                if (itemData) GameController.inst.OpenItemDataInfo(itemData);
+            } else {
+                GameController.inst.selectingRecipe = true;
+                GameController.inst.recipeListMenu.ToggleOpenClose(true);
+            }
         } 
 
         else if (function == "InventorySlot") {
-            if (Input.GetKey(KeyCode.LeftShift) && GameController.inst.entityMenu.open) {
-                GameController.inst.selectedEntity.AddToStorage(storageSlot.data, storageSlot.itemCount, storageSlot);
+            if (rightClick) {
+                if (GameController.inst.entityMenu.open) {
+                    if (Input.GetKey(KeyCode.LeftShift)) {
+                        GameController.inst.selectedEntity.AddToStorage(storageSlot.data, storageSlot.itemCount / 2, storageSlot);
+                    } else {
+                        GameController.inst.selectedEntity.AddToStorage(storageSlot.data, storageSlot.itemCount, storageSlot);
+                    }
+                }
+            } else {
+                if (storageSlot.itemCount > 0) GameController.inst.OpenItemDataInfo(storageSlot.data);
             }
             GameController.inst.RefreshOverlays();
         } 
 
         else if (function == "StorageSlot") {
-            if (Input.GetKey(KeyCode.LeftShift)) {
-                GameController.inst.AddToInventory(storageSlot.data, storageSlot.itemCount, storageSlot);
+            if (rightClick) {
+                if (Input.GetKey(KeyCode.LeftShift)) {
+                    GameController.inst.AddToInventory(storageSlot.data, storageSlot.itemCount / 2, storageSlot);
+                } else {
+                    GameController.inst.AddToInventory(storageSlot.data, storageSlot.itemCount, storageSlot);
+                }
+            } else {
+                if (storageSlot.itemCount > 0) GameController.inst.OpenItemDataInfo(storageSlot.data);
             }
+            
             GameController.inst.RefreshOverlays();
         }
 
@@ -71,6 +91,12 @@ public class UIButton : MonoBehaviour {
             GameController.inst.OpenItemDataInfo(itemData);
         }
 
+    }
+
+    public void OnPointerClick(PointerEventData eventData) {
+        if (eventData.button == PointerEventData.InputButton.Right) {
+            Clicked(true);
+        }
     }
 
     public void SetButtonColor(Color color) {
