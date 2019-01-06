@@ -1,0 +1,1486 @@
+fileFormatVersion: 2
+guid: d59ecc43f30f6a54a9bd8968fac553d8
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Emojies_0
+    21300002: Emojies_1
+    21300004: Emojies_2
+    21300006: Emojies_3
+    21300008: Emojies_4
+    21300010: Emojies_5
+    21300012: Emojies_6
+    21300014: Emojies_7
+    21300016: Emojies_8
+    21300018: Emojies_9
+    21300020: Emojies_10
+    21300022: Emojies_11
+    21300024: Emojies_12
+    21300026: Emojies_13
+    21300028: Emojies_14
+    21300030: Emojies_15
+    21300032: Emojies_16
+    21300034: Emojies_17
+    21300036: Emojies_18
+    21300038: Emojies_19
+    21300040: Emojies_20
+    21300042: Emojies_21
+    21300044: Emojies_22
+    21300046: Emojies_23
+    21300048: Emojies_24
+    21300050: Emojies_25
+    21300052: Emojies_26
+    21300054: Emojies_27
+    21300056: Emojies_28
+    21300058: Emojies_29
+    21300060: Emojies_30
+    21300062: Emojies_31
+    21300064: Emojies_32
+    21300066: Emojies_33
+    21300068: Emojies_34
+    21300070: Emojies_35
+    21300072: Emojies_36
+    21300074: Emojies_37
+    21300076: Emojies_38
+    21300078: Emojies_39
+    21300080: Emojies_40
+    21300082: Emojies_41
+    21300084: Emojies_42
+    21300086: Emojies_43
+    21300088: Emojies_44
+    21300090: Emojies_45
+    21300092: Emojies_46
+    21300094: Emojies_47
+    21300096: Emojies_48
+    21300098: Emojies_49
+    21300100: Emojies_50
+    21300102: Emojies_51
+    21300104: Emojies_52
+    21300106: Emojies_53
+    21300108: Emojies_54
+    21300110: Emojies_55
+    21300112: Emojies_56
+    21300114: Emojies_57
+    21300116: Emojies_58
+    21300118: Emojies_59
+    21300120: Emojies_60
+    21300122: Emojies_61
+    21300124: Emojies_62
+    21300126: Emojies_63
+    21300128: Emojies_64
+  externalObjects: {}
+  serializedVersion: 7
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 0
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 1
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 1
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 1
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 1
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Emojies_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 144.9
+        width: 17
+        height: 16.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5931ade126174243b8c9bf4f6b7bd54
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Emojies_1
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 144.9
+        width: 17
+        height: 16.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e326286eea58164eb46c08a06bab2f9
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Emojies_2
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 144.9
+        width: 17
+        height: 16.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7e19efd4626dd148a523c7218194094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Emojies_3
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 144.9
+        width: 17
+        height: 16.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b5a16320fdaa1e41a70b6ad84a0f19c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Emojies_4
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 144.9
+        width: 17
+        height: 16.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09dfe08ce43721d48976d7593dcc9449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Emojies_5
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 144.9
+        width: 17
+        height: 16.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef86590e5d7818b46ba79eaa5ab3b36e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Emojies_6
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 144.9
+        width: 17
+        height: 16.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a30a73c9bad41d48908269b603d9908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Emojies_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 129
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0aae0fa68a3c6db4cbfe06be5c147bd6
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Emojies_8
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 128.9
+        width: 17
+        height: 16.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a04a5d5b0ad630249a656bd854d4a7cb
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Emojies_9
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 128.9
+        width: 17
+        height: 16.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60a1575b94e49a8408105d12f5d251a2
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Emojies_10
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 128.9
+        width: 17
+        height: 16.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5a47db64f502124d8a7716c63af2d86
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Emojies_11
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 128.9
+        width: 17
+        height: 16.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4ebcc883614d4f48baf00cb64da400c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Emojies_12
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 128.9
+        width: 17
+        height: 16.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02e760aac007a084ebbc2a8095ed6d88
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Emojies_13
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 128.9
+        width: 17
+        height: 16.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 139b6eb95456c6b44b3aa80e7f0e8dca
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Emojies_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 112.9
+        width: 17
+        height: 16.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1766274930d608c45b8a37c786e31e22
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Emojies_15
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 112.9
+        width: 17
+        height: 16.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d26fe79fb44ea74f90e0cbf0ac282a0
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Emojies_16
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 112.9
+        width: 17
+        height: 16.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f374e484adee1684da05796503c7b074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Emojies_17
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 112.9
+        width: 17
+        height: 16.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2cd80dadf63b0845885982aa572f276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Emojies_18
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 112.9
+        width: 17
+        height: 16.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc6a826eeaf09384dbbd78eb460a05f3
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Emojies_19
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 112.9
+        width: 17
+        height: 16.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f6855f62744d0143baeb96c533ca150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Emojies_20
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 112.9
+        width: 17
+        height: 16.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a418c15b1870f64d841a5ee09ef7923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Emojies_21
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 96.9
+        width: 17
+        height: 16.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76e64e17bab661c43b087cf2f2b692ca
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Emojies_22
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 96.9
+        width: 17
+        height: 16.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e02ccb2a5ecffe442be679329f90c460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Emojies_23
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 96.9
+        width: 17
+        height: 16.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d74341a7db9ea7442a30cf60ee5fc56e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Emojies_24
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 96.9
+        width: 17
+        height: 16.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66b0401f7554ded47ae13c4d3f7702e4
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Emojies_25
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 96.9
+        width: 17
+        height: 16.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5509d81c4fdfa64199aed0c74807899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Emojies_26
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 96.9
+        width: 17
+        height: 16.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0be99ce0f4a07e45aca37164a96db4c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Emojies_27
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 96.9
+        width: 17
+        height: 16.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87cfe0292cbdbc842a0c85e12c7655ae
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Emojies_28
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 80.9
+        width: 17
+        height: 16.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67074c64eb41cf9469194747050051e4
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Emojies_29
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 80.9
+        width: 17
+        height: 16.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90078aff9f48de544952163f374019ac
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Emojies_30
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 80.9
+        width: 17
+        height: 16.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e9993989775fb646be396d24ba09abb
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Emojies_31
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 80.9
+        width: 17
+        height: 16.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3338d022bb925846b0fa8185566ff69
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Emojies_32
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 80.9
+        width: 17
+        height: 16.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 820276f7f5448c4458012d8858db5913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Emojies_33
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 80.9
+        width: 17
+        height: 16.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7286852725a3a34aad74cc8c727d3ae
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Emojies_34
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 80.9
+        width: 17
+        height: 16.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9bdb09e8b60f37347b8e9c2ae54bea92
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Emojies_35
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64.9
+        width: 17
+        height: 16.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11e4460fc01e17a46b5e5f0ef77a3d09
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Emojies_36
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 64.9
+        width: 17
+        height: 16.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f01579b57344e124c994d628185b9105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Emojies_37
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 64.9
+        width: 17
+        height: 16.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f9773d226c82bd40a12ea802cea2b6e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Emojies_38
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 64.9
+        width: 17
+        height: 16.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23890f79defdb614f995d3b3c12b8394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Emojies_39
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 64.9
+        width: 17
+        height: 16.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36f4d67dc3d3a4347985436c03275b6f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Emojies_40
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 64.9
+        width: 17
+        height: 16.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e09efdaef7270cb4fa91b488e7ea14aa
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Emojies_41
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 64.9
+        width: 17
+        height: 16.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 065f22473ca202141a565beb29763295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Emojies_42
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 48.9
+        width: 17
+        height: 16.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 330805b8b4636a54ebcd579f1f175161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Emojies_43
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 48.9
+        width: 17
+        height: 16.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d06a89ee45d95a4e9c2dabb5eb198da
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Emojies_44
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 48.9
+        width: 17
+        height: 16.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae3fa94d69f8f4645900066605d5aaf4
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Emojies_45
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 48.9
+        width: 17
+        height: 16.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b009365fd3241849a3a28e94abc0080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Emojies_46
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 48.9
+        width: 17
+        height: 16.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c713ef10fe539a4da2101e062eda7af
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Emojies_47
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 48.9
+        width: 17
+        height: 16.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5cc369b595ccecb44a8e10e6d2a916ed
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Emojies_48
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 48.9
+        width: 17
+        height: 16.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40e91857a4e46e749919f377e4ad7698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Emojies_49
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32.9
+        width: 17
+        height: 16.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 322e5d3db84f3f049b4094af59344602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Emojies_50
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 32.9
+        width: 17
+        height: 16.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f00de0c553c1c447b34c4286c817589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Emojies_51
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 32.9
+        width: 17
+        height: 16.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad46bf0c4cbc0cc4083d979e4be091e0
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Emojies_52
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 32.9
+        width: 17
+        height: 16.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82f3c56eff8124e4fb91f5a1720a8fac
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Emojies_53
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 32.9
+        width: 17
+        height: 16.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93022c8facd82b44d83ae0cc5e448b4d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Emojies_54
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 32.9
+        width: 17
+        height: 16.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9bc475cc17ee37c4aa66e5b874e43b08
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Emojies_55
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 16.9
+        width: 17
+        height: 16.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3d392ac34d8c6849b994bd3e8d72d00
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Emojies_56
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 16.9
+        width: 17
+        height: 16.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04c988fda942c754a827e982a4747d1e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Emojies_57
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 16.9
+        width: 17
+        height: 16.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd3b67b15ba46f84f8213161004a26b2
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Emojies_58
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 17
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f48126ebbb0325d4fba6b33ac2289870
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Emojies_59
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 16.9
+        width: 17
+        height: 16.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f18dc59b0196454590d31f9a315950f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Emojies_60
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0.8999996
+        width: 17
+        height: 16.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 231a383eca312394bade2963f1b71027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Emojies_61
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 0.8999996
+        width: 17
+        height: 16.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43024dab388519d4da973193df99c2a4
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Emojies_62
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 0.8999996
+        width: 17
+        height: 16.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf1ef0f54d888c64f853daac69bd4d59
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Emojies_63
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 0.8999996
+        width: 17
+        height: 16.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d57e5d69882efb4c81decb9b8794e0c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Emojies_64
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 0.8999996
+        width: 17
+        height: 16.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ba7a5693c0d4f04cbb15f798a3b7453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 795fb8828218f9849b576246b9616876
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

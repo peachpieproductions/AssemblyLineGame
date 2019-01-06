@@ -21,19 +21,28 @@ public class Package : MonoBehaviour {
 
     private void OnMouseOver() {
         if (Input.GetMouseButtonUp(1)) {
-            Unpackage();
+            UnpackageIntoInventory();
         }
     }
 
-    public void Unpackage() {
+    public void UnpackageIntoInventory() {
         if (GameController.inst.AddToInventory(storage.data, storage.itemCount)) {
             if (GameController.inst.selectedPackage == this) {
                 GameController.inst.selectedPackage = null;
-                GameController.inst.PackageInfoPopup.ToggleOpenClose(false);
+                if (GameController.inst.selectedPackage == this) GameController.inst.PackageInfoPopup.ToggleOpenClose(false);
             }
             Destroy(gameObject);
         }
+    }
 
+    public void UnpackageIntoStorage(BaseEntity entity) {
+        if (entity.AddToStorage(storage.data, storage.itemCount)) {
+            if (GameController.inst.selectedPackage == this) {
+                GameController.inst.selectedPackage = null;
+                if (GameController.inst.selectedPackage == this) GameController.inst.PackageInfoPopup.ToggleOpenClose(false);
+            }
+            Destroy(gameObject);
+        }
     }
 
     public IEnumerator UpdatePackage() {

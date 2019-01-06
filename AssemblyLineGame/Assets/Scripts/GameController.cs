@@ -184,7 +184,7 @@ public class GameController : MonoBehaviour {
                 var canPlace = true;
                 for(var x = 0; x < currentBuildEntity.size.x; x++) { //Check if can be placed
                     for (var y = 0; y < currentBuildEntity.size.y; y++) {
-                        if (entityGrid[currentUnit.x + x, currentUnit.y + y] != 0) {
+                        if (entityGrid[Mathf.Min(currentUnit.x + x, 49), Mathf.Min(currentUnit.y + y, 49)] != 0 || currentUnit.x + x == 0 || currentUnit.x + x == 49 || currentUnit.y + y == 0 || currentUnit.y + y == 49) {
                             if (canPlace) currentBuildObject.GetComponent<SpriteRenderer>().color = gameColors[1];
                             canPlace = false;
                         }
@@ -335,8 +335,8 @@ public class GameController : MonoBehaviour {
         if (Input.mouseScrollDelta.y != 0) {
             if (!hoveringOverlay || (hoveringList.Count > 0 && !hoveringList[0].blockScrolling)) {
                 camZoomAmount -= Input.mouseScrollDelta.y;
-                camZoomAmount = Mathf.Clamp(camZoomAmount, 1f, 15f);
                 camMoveZoomMult = (1f / cam.orthographicSize * Input.mouseScrollDelta.y);
+                camZoomAmount = Mathf.Clamp(camZoomAmount, 1f, 14f);
             }
         }
         cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, camZoomAmount, Time.deltaTime * 10f);

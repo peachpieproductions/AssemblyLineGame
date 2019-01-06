@@ -180,6 +180,11 @@ public class BaseEntity : MonoBehaviour {
                     if (GameController.inst.selectedEntity == this) {
                         GameController.inst.entityMenu.BuildMenu();
                     }
+                } else {
+                    var package = itemsInZone[i].GetComponent<Package>();
+                    if (package) {
+                        package.UnpackageIntoStorage(this);
+                    }
                 }
             }
 

@@ -11,10 +11,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f165e03a45f1a744788df808d23a33c7, type: 3}
   m_Name: Acid
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 7476bb181995b1e4a8fced6cf26555ea, type: 3}
+  sprite: {fileID: 21300004, guid: a16dc3d1af6a3aa43bf669dace3bbdf0, type: 3}
   basePrice: 2
-  priceVariant: 1.0158825
-  popularity: 0.5625129
+  priceVariant: 1.0415709
+  popularity: 0.46006376
   isProduct: 0
   recipe: []
   craftingOutputCount: 1

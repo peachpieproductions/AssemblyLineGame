@@ -23,6 +23,7 @@ public class OverlayMenu : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     public UIButton miscButton2;
     public TextMeshProUGUI miscText1;
     public TextMeshProUGUI miscText2;
+    public TextMeshProUGUI miscText3;
     public Image miscImage1;
 
     RectTransform rect;
@@ -137,6 +138,8 @@ public class OverlayMenu : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
             if (selItemData) {
                 miscText1.text = selItemData.name;
                 //miscText2.text = ITEM DATA INFO
+                if (selItemData.researchRequired) miscText3.text = "Research Required: " + selItemData.researchRequired.name;
+                else miscText3.text = "Research Required: None";
                 miscImage1.sprite = selItemData.sprite;
 
                 //crafting recipe
