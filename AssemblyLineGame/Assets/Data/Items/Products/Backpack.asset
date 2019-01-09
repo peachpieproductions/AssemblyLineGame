@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Name: Backpack
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300018, guid: 07776979e69aeef4eb014bebbf876481, type: 3}
-  basePrice: 5
-  priceVariant: 1.0986449
-  popularity: 0.6290409
+  basePrice: 6
+  priceVariant: 1.0638083
+  popularity: 0.45326218
   isProduct: 1
   recipe:
   - ingredient: {fileID: 11400000, guid: d1ee3b06e976432459b0993ec8516f94, type: 2}

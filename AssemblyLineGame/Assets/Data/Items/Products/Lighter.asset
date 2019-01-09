@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Name: Lighter
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300150, guid: 07776979e69aeef4eb014bebbf876481, type: 3}
-  basePrice: 5
-  priceVariant: 1.0085638
-  popularity: 0.5098184
+  basePrice: 28
+  priceVariant: 1.0467904
+  popularity: 0.5091194
   isProduct: 1
   recipe:
   - ingredient: {fileID: 11400000, guid: ff3c07a83c4d1184ab6f72b2546a3122, type: 2}
@@ -22,6 +22,6 @@ MonoBehaviour:
   - ingredient: {fileID: 11400000, guid: 8a0389c15ffc458498b38257aa1b4d30, type: 2}
     ingredientCount: 1
   craftingOutputCount: 1
-  researchRequired: {fileID: 0}
+  researchRequired: {fileID: 11400000, guid: 45538035c39cb5044b6b3c7251abe341, type: 2}
   isUnlocked: 0
   usedToCraft: []

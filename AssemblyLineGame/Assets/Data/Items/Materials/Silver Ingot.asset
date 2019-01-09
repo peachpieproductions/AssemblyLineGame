@@ -12,13 +12,17 @@ MonoBehaviour:
   m_Name: Silver Ingot
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 7be29aadad230be449d7f09fd8c11af3, type: 3}
-  basePrice: 1
-  priceVariant: 1.008371
-  popularity: 0.48591185
+  basePrice: 34
+  priceVariant: 0.93560183
+  popularity: 0.5720016
   isProduct: 0
   recipe:
   - ingredient: {fileID: 11400000, guid: 4a341ff7af3499946a3284057d6dc2c7, type: 2}
     ingredientCount: 2
   craftingOutputCount: 1
   researchRequired: {fileID: 11400000, guid: 1dce8e127925fd94b833c768901c6000, type: 2}
-  isUnlocked: 1
+  isUnlocked: 0
+  usedToCraft:
+  - {fileID: 11400000, guid: b4ab40655ca4d8d4cafe272335e2ec91, type: 2}
+  - {fileID: 11400000, guid: 4d13149de37e3b14dadce700dc13992e, type: 2}
+  - {fileID: 11400000, guid: 40efd4414fd01c348b367004e37eeab7, type: 2}

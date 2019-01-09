@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Name: Tent
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300044, guid: 07776979e69aeef4eb014bebbf876481, type: 3}
-  basePrice: 5
-  priceVariant: 0.9978919
-  popularity: 0.51565635
+  basePrice: 18
+  priceVariant: 1.0687544
+  popularity: 0.48234558
   isProduct: 1
   recipe:
   - ingredient: {fileID: 11400000, guid: d1ee3b06e976432459b0993ec8516f94, type: 2}
@@ -22,6 +22,6 @@ MonoBehaviour:
   - ingredient: {fileID: 11400000, guid: 6077bac4685ecc2429c73d6e4ff55484, type: 2}
     ingredientCount: 1
   craftingOutputCount: 1
-  researchRequired: {fileID: 0}
+  researchRequired: {fileID: 11400000, guid: 45538035c39cb5044b6b3c7251abe341, type: 2}
   isUnlocked: 0
   usedToCraft: []

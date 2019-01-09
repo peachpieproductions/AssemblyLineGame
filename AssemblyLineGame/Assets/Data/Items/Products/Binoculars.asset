@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Name: Binoculars
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: acb94ae0f6a926d4fbf7d8e159ad758c, type: 3}
-  basePrice: 5
-  priceVariant: 0.9876528
-  popularity: 0.5178996
+  basePrice: 8
+  priceVariant: 0.9293029
+  popularity: 0.4645465
   isProduct: 1
   recipe:
   - ingredient: {fileID: 11400000, guid: ff3c07a83c4d1184ab6f72b2546a3122, type: 2}
@@ -22,6 +22,6 @@ MonoBehaviour:
   - ingredient: {fileID: 11400000, guid: e527a2a6c810a2443941cbde70188ea7, type: 2}
     ingredientCount: 1
   craftingOutputCount: 1
-  researchRequired: {fileID: 0}
+  researchRequired: {fileID: 11400000, guid: 45538035c39cb5044b6b3c7251abe341, type: 2}
   isUnlocked: 0
   usedToCraft: []

@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Name: Gold Key
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: b0537349c0f763343a8833860d0277d0, type: 3}
-  basePrice: 5
-  priceVariant: 1.0039425
-  popularity: 0.4920379
+  basePrice: 67
+  priceVariant: 0.95461535
+  popularity: 0.53312564
   isProduct: 1
   recipe:
   - ingredient: {fileID: 11400000, guid: 81451f9ffa3c0104cbcbb39fef9cde12, type: 2}
     ingredientCount: 1
   craftingOutputCount: 1
-  researchRequired: {fileID: 0}
+  researchRequired: {fileID: 11400000, guid: 7412bf828bc830141ac51d0a65281de4, type: 2}
   isUnlocked: 0
   usedToCraft: []

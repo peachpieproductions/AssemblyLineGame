@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Name: Compass
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300064, guid: 07776979e69aeef4eb014bebbf876481, type: 3}
-  basePrice: 5
-  priceVariant: 0.9864337
-  popularity: 0.48491332
+  basePrice: 64
+  priceVariant: 0.9394229
+  popularity: 0.3691794
   isProduct: 1
   recipe:
   - ingredient: {fileID: 11400000, guid: f93792af4fa2a20418fc967915e95ac4, type: 2}
@@ -24,6 +24,6 @@ MonoBehaviour:
   - ingredient: {fileID: 11400000, guid: 4b0a8c1f579c54d468ea4f59bf035a8e, type: 2}
     ingredientCount: 1
   craftingOutputCount: 1
-  researchRequired: {fileID: 0}
+  researchRequired: {fileID: 11400000, guid: 45538035c39cb5044b6b3c7251abe341, type: 2}
   isUnlocked: 0
   usedToCraft: []

@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Name: Silver Plate
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 6cea14bcafe862d44977738750c65dee, type: 3}
-  basePrice: 5
-  priceVariant: 0.9984451
-  popularity: 0.51908815
+  basePrice: 78
+  priceVariant: 0.92630154
+  popularity: 0.47837996
   isProduct: 1
   recipe:
   - ingredient: {fileID: 11400000, guid: 033b0eb036b1d0240911a732c3681a06, type: 2}
     ingredientCount: 2
   craftingOutputCount: 1
-  researchRequired: {fileID: 0}
+  researchRequired: {fileID: 11400000, guid: 1dce8e127925fd94b833c768901c6000, type: 2}
   isUnlocked: 0
   usedToCraft: []

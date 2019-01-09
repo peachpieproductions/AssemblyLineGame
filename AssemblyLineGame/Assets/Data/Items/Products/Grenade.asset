@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Name: Grenade
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 16f9575fd1af36b4db44f04196b8d718, type: 3}
-  basePrice: 5
-  priceVariant: 0.9910624
-  popularity: 0.5014877
+  basePrice: 15
+  priceVariant: 0.92582834
+  popularity: 0.49065462
   isProduct: 1
   recipe:
   - ingredient: {fileID: 11400000, guid: 700224f1ca174b349b2b4bf8e0afa07a, type: 2}
@@ -22,6 +22,6 @@ MonoBehaviour:
   - ingredient: {fileID: 11400000, guid: ff3c07a83c4d1184ab6f72b2546a3122, type: 2}
     ingredientCount: 1
   craftingOutputCount: 1
-  researchRequired: {fileID: 0}
+  researchRequired: {fileID: 11400000, guid: 07dbc7b9d51b5484f8ebcf18c3b6552d, type: 2}
   isUnlocked: 0
   usedToCraft: []

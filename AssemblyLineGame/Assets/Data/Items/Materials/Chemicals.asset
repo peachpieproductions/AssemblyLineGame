@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Name: Chemicals
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300018, guid: a16dc3d1af6a3aa43bf669dace3bbdf0, type: 3}
-  basePrice: 2
-  priceVariant: 1.0158825
-  popularity: 0.5625129
+  basePrice: 3
+  priceVariant: 0.89269704
+  popularity: 0.4169843
   isProduct: 0
   recipe: []
   craftingOutputCount: 1

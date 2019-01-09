@@ -12,11 +12,15 @@ MonoBehaviour:
   m_Name: Antidote
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300118, guid: 07776979e69aeef4eb014bebbf876481, type: 3}
-  basePrice: 5
-  priceVariant: 1.1925585
-  popularity: 0.21973129
+  basePrice: 3
+  priceVariant: 0.92686516
+  popularity: 0.6253505
   isProduct: 1
   recipe:
   - ingredient: {fileID: 11400000, guid: e527a2a6c810a2443941cbde70188ea7, type: 2}
     ingredientCount: 3
   craftingOutputCount: 1
+  researchRequired: {fileID: 11400000, guid: d9f30c2b84064b7498e0dabafd8dedee, type: 2}
+  isUnlocked: 0
+  usedToCraft:
+  - {fileID: 11400000, guid: 99c8999a0ab6b4446b2741a58f9b2a5f, type: 2}

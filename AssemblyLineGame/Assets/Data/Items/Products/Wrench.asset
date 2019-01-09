@@ -12,11 +12,15 @@ MonoBehaviour:
   m_Name: Wrench
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 6eba6f7c8ed26b3409aeb89e5bf7c179, type: 3}
-  basePrice: 5
-  priceVariant: 1.0203131
-  popularity: 0.50191414
+  basePrice: 7
+  priceVariant: 1.0612152
+  popularity: 0.4817737
   isProduct: 1
   recipe:
   - ingredient: {fileID: 11400000, guid: 6077bac4685ecc2429c73d6e4ff55484, type: 2}
     ingredientCount: 3
   craftingOutputCount: 1
+  researchRequired: {fileID: 11400000, guid: 35c02865627f3714d8c7d646e5477ebe, type: 2}
+  isUnlocked: 0
+  usedToCraft:
+  - {fileID: 11400000, guid: bdd002f267952244fbf691bf3320b773, type: 2}

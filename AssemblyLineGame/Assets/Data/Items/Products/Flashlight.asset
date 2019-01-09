@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Name: Flashlight
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300224, guid: 07776979e69aeef4eb014bebbf876481, type: 3}
-  basePrice: 5
-  priceVariant: 1.0237252
-  popularity: 0.49261895
+  basePrice: 60
+  priceVariant: 0.9677127
+  popularity: 0.47189072
   isProduct: 1
   recipe:
   - ingredient: {fileID: 11400000, guid: f93792af4fa2a20418fc967915e95ac4, type: 2}
@@ -22,6 +22,6 @@ MonoBehaviour:
   - ingredient: {fileID: 11400000, guid: f940fd0c4e955d241aebd8428e48a95f, type: 2}
     ingredientCount: 1
   craftingOutputCount: 1
-  researchRequired: {fileID: 0}
+  researchRequired: {fileID: 11400000, guid: 50798387ffa4dd64c9820b90618aa693, type: 2}
   isUnlocked: 0
   usedToCraft: []

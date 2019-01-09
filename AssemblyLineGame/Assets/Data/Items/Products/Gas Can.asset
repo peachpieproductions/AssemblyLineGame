@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Name: Gas Can
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300174, guid: 07776979e69aeef4eb014bebbf876481, type: 3}
-  basePrice: 5
-  priceVariant: 0.99670625
-  popularity: 0.50665444
+  basePrice: 12
+  priceVariant: 1.0603237
+  popularity: 0.4769679
   isProduct: 1
   recipe:
   - ingredient: {fileID: 11400000, guid: f93792af4fa2a20418fc967915e95ac4, type: 2}
@@ -22,6 +22,8 @@ MonoBehaviour:
   - ingredient: {fileID: 11400000, guid: 45d937ee8a94efd4eb1f8be77c23df21, type: 2}
     ingredientCount: 1
   craftingOutputCount: 1
-  researchRequired: {fileID: 0}
+  researchRequired: {fileID: 11400000, guid: 860a7fdcf40149641a0ed61b7c75ef57, type: 2}
   isUnlocked: 0
-  usedToCraft: []
+  usedToCraft:
+  - {fileID: 11400000, guid: 600f750a7ddcd6947a688e9db8009bc1, type: 2}
+  - {fileID: 11400000, guid: 5bc50831f5611f34990899209db575b8, type: 2}

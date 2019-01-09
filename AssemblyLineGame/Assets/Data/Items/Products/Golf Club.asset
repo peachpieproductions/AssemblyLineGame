@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Name: Golf Club
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: dd57615295f9c534289091c7ded1de9a, type: 3}
-  basePrice: 5
-  priceVariant: 1.0042909
-  popularity: 0.48307255
+  basePrice: 62
+  priceVariant: 0.8736201
+  popularity: 0.42529634
   isProduct: 1
   recipe:
   - ingredient: {fileID: 11400000, guid: e8ccd25aa3a641c4687da4ecc6aec862, type: 2}
     ingredientCount: 3
   craftingOutputCount: 1
-  researchRequired: {fileID: 0}
+  researchRequired: {fileID: 11400000, guid: fe1c1a424ade5e4488da4b5be91d03d4, type: 2}
   isUnlocked: 0
   usedToCraft: []

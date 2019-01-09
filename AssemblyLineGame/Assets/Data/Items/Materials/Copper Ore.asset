@@ -12,9 +12,13 @@ MonoBehaviour:
   m_Name: Copper Ore
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 5e0c2792cef18294291f7bca77967ac9, type: 3}
-  basePrice: 1
-  priceVariant: 1.008371
-  popularity: 0.48591185
+  basePrice: 4
+  priceVariant: 1.0141898
+  popularity: 0.61081666
   isProduct: 0
   recipe: []
   craftingOutputCount: 1
+  researchRequired: {fileID: 0}
+  isUnlocked: 1
+  usedToCraft:
+  - {fileID: 11400000, guid: 3b432bfd23c53aa4f978ae0c2b394279, type: 2}

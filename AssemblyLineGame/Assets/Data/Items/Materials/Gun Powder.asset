@@ -12,9 +12,17 @@ MonoBehaviour:
   m_Name: Gun Powder
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: ac48a27a47de7e446949bbc3beefc64e, type: 3}
-  basePrice: 2
-  priceVariant: 1.0032613
-  popularity: 0.5097538
+  basePrice: 7
+  priceVariant: 0.9752566
+  popularity: 0.44829845
   isProduct: 0
   recipe: []
   craftingOutputCount: 1
+  researchRequired: {fileID: 0}
+  isUnlocked: 1
+  usedToCraft:
+  - {fileID: 11400000, guid: dd994fe5bcb44ba46b618ee349c7c397, type: 2}
+  - {fileID: 11400000, guid: f6157814f18d3044aab208df0bfdf4a3, type: 2}
+  - {fileID: 11400000, guid: 24fe3df617e862442a3be61c548e1e57, type: 2}
+  - {fileID: 11400000, guid: 9f2d37116ff678a40bc98271239bdd6d, type: 2}
+  - {fileID: 11400000, guid: 2a4f0b11a445ab74d88e10bfb282f5b7, type: 2}

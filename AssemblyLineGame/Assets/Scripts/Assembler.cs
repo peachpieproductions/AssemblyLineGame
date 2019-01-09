@@ -39,6 +39,7 @@ public class Assembler : BaseEntity {
                         craftingSuccessful = true;
                         foreach(StorageSlot s in storage) {
                             s.itemCount += s.differenceToApply;
+                            s.differenceToApply = 0;
                             if (s.itemCount == 0) s.data = null;
                         }
                         
@@ -47,6 +48,10 @@ public class Assembler : BaseEntity {
                             yield return new WaitForSeconds(.1f);
                         }
                         if (GameController.inst.entityMenu.open) GameController.inst.entityMenu.BuildMenu();
+                    } else {
+                        foreach (StorageSlot s in storage) {
+                            s.differenceToApply = 0;
+                        }
                     }
                 }
             }

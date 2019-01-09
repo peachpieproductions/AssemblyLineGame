@@ -20,7 +20,7 @@ public class ItemData : ScriptableObject {
     public int craftingOutputCount = 1;
     public ResearchData researchRequired;
     public bool isUnlocked = true;
-    public List<ItemData> usedToCraft = new List<ItemData>();
+    public List<ItemData> usedToCraft = new List<ItemData>();       
 
     public int getCurrentPrice() {
         return Mathf.Max(Mathf.RoundToInt(basePrice * priceVariant),1);
@@ -37,6 +37,7 @@ public class ItemData : ScriptableObject {
                 basePrice += Mathf.Max(1,Mathf.RoundToInt((ing.ingredient.basePrice * ing.ingredientCount) / craftingOutputCount));
                 basePrice = Mathf.RoundToInt(basePrice * 1.15f); //rarity multiplier
             }
+            
         }
     }
 

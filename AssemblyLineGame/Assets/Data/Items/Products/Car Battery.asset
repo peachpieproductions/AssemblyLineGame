@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Name: Car Battery
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300004, guid: 07776979e69aeef4eb014bebbf876481, type: 3}
-  basePrice: 5
-  priceVariant: 1.0020437
-  popularity: 0.51805866
+  basePrice: 151
+  priceVariant: 0.97447014
+  popularity: 0.46347728
   isProduct: 1
   recipe:
   - ingredient: {fileID: 11400000, guid: e8ccd25aa3a641c4687da4ecc6aec862, type: 2}
@@ -22,6 +22,6 @@ MonoBehaviour:
   - ingredient: {fileID: 11400000, guid: f940fd0c4e955d241aebd8428e48a95f, type: 2}
     ingredientCount: 2
   craftingOutputCount: 1
-  researchRequired: {fileID: 0}
+  researchRequired: {fileID: 11400000, guid: ea866bdf083f0cc41936eab8551584d4, type: 2}
   isUnlocked: 0
   usedToCraft: []

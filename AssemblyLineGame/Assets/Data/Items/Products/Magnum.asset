@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Name: Magnum
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300146, guid: 07776979e69aeef4eb014bebbf876481, type: 3}
-  basePrice: 5
-  priceVariant: 1.0174015
-  popularity: 0.4908034
+  basePrice: 71
+  priceVariant: 1.1228932
+  popularity: 0.48681262
   isProduct: 1
   recipe:
   - ingredient: {fileID: 11400000, guid: 700224f1ca174b349b2b4bf8e0afa07a, type: 2}
@@ -22,6 +22,6 @@ MonoBehaviour:
   - ingredient: {fileID: 11400000, guid: e8ccd25aa3a641c4687da4ecc6aec862, type: 2}
     ingredientCount: 3
   craftingOutputCount: 1
-  researchRequired: {fileID: 0}
+  researchRequired: {fileID: 11400000, guid: 5cab217797b734a46a8daf9116814a5e, type: 2}
   isUnlocked: 0
   usedToCraft: []

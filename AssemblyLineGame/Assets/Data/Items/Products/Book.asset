@@ -12,11 +12,14 @@ MonoBehaviour:
   m_Name: Book
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300092, guid: 07776979e69aeef4eb014bebbf876481, type: 3}
-  basePrice: 5
-  priceVariant: 1.2721477
-  popularity: 0.7446747
+  basePrice: 6
+  priceVariant: 1.0515873
+  popularity: 0.43316692
   isProduct: 1
   recipe:
   - ingredient: {fileID: 11400000, guid: cf3fe8cbd7c50b8449093e4fcabf2329, type: 2}
     ingredientCount: 5
   craftingOutputCount: 1
+  researchRequired: {fileID: 11400000, guid: 4d85dab7debad4a40942e1f16bf5f7b6, type: 2}
+  isUnlocked: 0
+  usedToCraft: []

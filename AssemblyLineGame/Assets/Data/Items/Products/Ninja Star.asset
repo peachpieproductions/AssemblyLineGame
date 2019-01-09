@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Name: Ninja Star
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 5ac0a49a1d9770f4096f529d7a6ea65f, type: 3}
-  basePrice: 5
-  priceVariant: 0.99570507
-  popularity: 0.4961442
+  basePrice: 41
+  priceVariant: 1.0541372
+  popularity: 0.47542062
   isProduct: 1
   recipe:
   - ingredient: {fileID: 11400000, guid: e8ccd25aa3a641c4687da4ecc6aec862, type: 2}
     ingredientCount: 2
   craftingOutputCount: 1
-  researchRequired: {fileID: 0}
+  researchRequired: {fileID: 11400000, guid: 5cab217797b734a46a8daf9116814a5e, type: 2}
   isUnlocked: 0
   usedToCraft: []

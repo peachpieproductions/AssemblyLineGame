@@ -267,6 +267,11 @@ public class OverlayMenu : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
             
         }
 
+        else if (menuName == "Computer") {
+            if (GameController.inst.marketplaceMenu.open) GameController.inst.marketplaceMenu.BuildMenu();
+            if (GameController.inst.contractsMenu.open) GameController.inst.contractsMenu.BuildMenu();
+        }
+
         if (temp) temp.gameObject.SetActive(false);
 
     }

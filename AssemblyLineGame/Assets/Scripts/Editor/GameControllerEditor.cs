@@ -61,6 +61,7 @@ public class GameControllerEditor : Editor {
                     }
                 }
             }
+
         }
 
         GUI.color = new Color(.8f, 1, .8f);
@@ -75,6 +76,15 @@ public class GameControllerEditor : Editor {
                     itemData.SetBasePrice();
                 }
             }
+
+        }
+
+        GUI.color = Color.white;
+        if (GUILayout.Button("Save Data")) {
+            foreach (ItemData itemData in gCon.itemDatas) { //reset prices for crafted items
+                EditorUtility.SetDirty(itemData);
+            }
+            AssetDatabase.SaveAssets();
         }
 
         GUI.color = Color.white;

@@ -165,6 +165,13 @@ public class GameController : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.B)) {
             ToggleBuildMode();
         }
+
+        if (Input.GetKeyDown(KeyCode.F)) {
+            Time.timeScale = 4;
+        }
+        if (Input.GetKeyUp(KeyCode.F)) {
+            Time.timeScale = 1;
+        }
     }
 
     public IEnumerator BuildMode() {
@@ -209,6 +216,7 @@ public class GameController : MonoBehaviour {
             if (Input.GetMouseButtonDown(1)) { //Sell Entity
                 if (entityGrid[currentUnit.x, currentUnit.y] > 0) {
                     var toSell = entities[entityGrid[currentUnit.x, currentUnit.y] - 1];
+                    UpdateMoney(toSell.data.cost / 2);
                     for (var x = 0; x < toSell.size.x; x++) { //Reset Grid Data
                         for (var y = 0; y < toSell.size.y; y++) {
                             entityGrid[toSell.currentCoord.x + x, toSell.currentCoord.y + y] = 0;
@@ -251,6 +259,7 @@ public class GameController : MonoBehaviour {
 
             foreach(ItemData data in itemDatas) {
                 data.priceVariant = Mathf.Clamp(data.priceVariant + Random.Range(-.1f, .1f) * .25f, .5f, 2);
+                if (data.priceVariant > 1.2f) data.priceVariant -= .015f;
                 data.popularity = Mathf.Clamp(data.popularity + Random.Range(-.1f, .1f) * .25f, 0, 1);
             }
             if (marketplaceMenu.open) UpdateMarketplace();

@@ -137,7 +137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 108ca1e4f80050040a216e81ccff56c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 0}
+  data: {fileID: 11400000, guid: 76135412d8d60cd40bf440d6503e1aa9, type: 2}
   neighbors:
   - entity: {fileID: 0}
     dir: {x: 0, y: 0}

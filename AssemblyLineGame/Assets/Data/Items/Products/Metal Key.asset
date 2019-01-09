@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Name: Metal Key
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300218, guid: 07776979e69aeef4eb014bebbf876481, type: 3}
-  basePrice: 5
-  priceVariant: 0.9827655
-  popularity: 0.5100324
+  basePrice: 6
+  priceVariant: 0.9816982
+  popularity: 0.52430975
   isProduct: 1
   recipe:
   - ingredient: {fileID: 11400000, guid: ff3c07a83c4d1184ab6f72b2546a3122, type: 2}
     ingredientCount: 1
   craftingOutputCount: 1
-  researchRequired: {fileID: 0}
+  researchRequired: {fileID: 11400000, guid: 6369e73f1baf5d847913c1a0006c624c, type: 2}
   isUnlocked: 0
   usedToCraft: []

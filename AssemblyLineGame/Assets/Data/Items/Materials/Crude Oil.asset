@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Name: Crude Oil
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300110, guid: 2a4068a34e2b37c42ad5d8adf9d38c32, type: 3}
-  basePrice: 1
-  priceVariant: 1.013857
-  popularity: 0.48930937
+  basePrice: 3
+  priceVariant: 0.8977089
+  popularity: 0.60936874
   isProduct: 0
   recipe: []
   craftingOutputCount: 1
   researchRequired: {fileID: 0}
   isUnlocked: 1
-  usedToCraft: []
+  usedToCraft:
+  - {fileID: 11400000, guid: 8a0389c15ffc458498b38257aa1b4d30, type: 2}

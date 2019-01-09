@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Name: Saw
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300028, guid: 07776979e69aeef4eb014bebbf876481, type: 3}
-  basePrice: 5
-  priceVariant: 0.98599845
-  popularity: 0.5183038
+  basePrice: 13
+  priceVariant: 1.006212
+  popularity: 0.50627524
   isProduct: 1
   recipe:
   - ingredient: {fileID: 11400000, guid: b59841efef30af34dafc86f0641628c8, type: 2}
@@ -22,6 +22,6 @@ MonoBehaviour:
   - ingredient: {fileID: 11400000, guid: ff3c07a83c4d1184ab6f72b2546a3122, type: 2}
     ingredientCount: 2
   craftingOutputCount: 1
-  researchRequired: {fileID: 0}
+  researchRequired: {fileID: 11400000, guid: 35c02865627f3714d8c7d646e5477ebe, type: 2}
   isUnlocked: 0
   usedToCraft: []

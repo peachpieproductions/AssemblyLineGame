@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Name: Molotov
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300196, guid: 07776979e69aeef4eb014bebbf876481, type: 3}
-  basePrice: 5
-  priceVariant: 0.98608965
-  popularity: 0.51259464
+  basePrice: 23
+  priceVariant: 1.0768181
+  popularity: 0.46021134
   isProduct: 1
   recipe:
   - ingredient: {fileID: 11400000, guid: 98430c7cc3c0b9243853580812f6f2fe, type: 2}
@@ -24,6 +24,6 @@ MonoBehaviour:
   - ingredient: {fileID: 11400000, guid: d1ee3b06e976432459b0993ec8516f94, type: 2}
     ingredientCount: 1
   craftingOutputCount: 1
-  researchRequired: {fileID: 0}
+  researchRequired: {fileID: 11400000, guid: 07dbc7b9d51b5484f8ebcf18c3b6552d, type: 2}
   isUnlocked: 0
   usedToCraft: []

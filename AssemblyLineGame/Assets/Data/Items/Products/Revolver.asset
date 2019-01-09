@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Name: Revolver
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300144, guid: 07776979e69aeef4eb014bebbf876481, type: 3}
-  basePrice: 5
-  priceVariant: 0.99556416
-  popularity: 0.5057731
+  basePrice: 71
+  priceVariant: 0.9696115
+  popularity: 0.6148631
   isProduct: 1
   recipe:
   - ingredient: {fileID: 11400000, guid: 700224f1ca174b349b2b4bf8e0afa07a, type: 2}
@@ -22,6 +22,6 @@ MonoBehaviour:
   - ingredient: {fileID: 11400000, guid: e8ccd25aa3a641c4687da4ecc6aec862, type: 2}
     ingredientCount: 3
   craftingOutputCount: 1
-  researchRequired: {fileID: 0}
+  researchRequired: {fileID: 11400000, guid: 5cab217797b734a46a8daf9116814a5e, type: 2}
   isUnlocked: 0
   usedToCraft: []

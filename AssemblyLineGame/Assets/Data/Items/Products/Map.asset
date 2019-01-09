@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Name: Map
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300042, guid: 07776979e69aeef4eb014bebbf876481, type: 3}
-  basePrice: 5
-  priceVariant: 0.9987319
-  popularity: 0.51060295
+  basePrice: 13
+  priceVariant: 1.0305042
+  popularity: 0.44666472
   isProduct: 1
   recipe:
   - ingredient: {fileID: 11400000, guid: cf3fe8cbd7c50b8449093e4fcabf2329, type: 2}
@@ -22,6 +22,6 @@ MonoBehaviour:
   - ingredient: {fileID: 11400000, guid: 51e9de5756030554e805a5edd4d8a779, type: 2}
     ingredientCount: 2
   craftingOutputCount: 1
-  researchRequired: {fileID: 0}
+  researchRequired: {fileID: 11400000, guid: 45538035c39cb5044b6b3c7251abe341, type: 2}
   isUnlocked: 0
   usedToCraft: []

@@ -17,6 +17,7 @@ public class BaseEntity : MonoBehaviour {
     public Vector2Int currentCoord;
     public List<Transform> itemsInZone = new List<Transform>();
     public bool storesItems;
+    public bool ignorePackages;
     public bool dispense;
     public bool ignoredByDispensors;
     public bool noEntityMenu;
@@ -63,7 +64,7 @@ public class BaseEntity : MonoBehaviour {
                     if (gCon.entities[index - 1] is Conveyor && gCon.entities[index - 1].GetComponent<Conveyor>().facingEntity == this) {
                         ignore = true; // if neighbor is conveyor feeding into this entity, ignore it.
                     }
-                    if (gCon.entities[index - 1] is Dispensor && this is Dispensor) ignore = true;
+                    if (gCon.entities[index - 1] is Dispensor && (this is Dispensor || this is Assembler)) ignore = true;
                     if (!ignore) neighbors[i].entity = gCon.entities[index - 1];
                 } else neighbors[i].entity = null;
             }
@@ -181,9 +182,11 @@ public class BaseEntity : MonoBehaviour {
                         GameController.inst.entityMenu.BuildMenu();
                     }
                 } else {
-                    var package = itemsInZone[i].GetComponent<Package>();
-                    if (package) {
-                        package.UnpackageIntoStorage(this);
+                    if (!ignorePackages) {
+                        var package = itemsInZone[i].GetComponent<Package>();
+                        if (package) {
+                            package.UnpackageIntoStorage(this);
+                        }
                     }
                 }
             }
@@ -193,15 +196,19 @@ public class BaseEntity : MonoBehaviour {
 
     }
 
-    public bool Dispense(ItemData data) {
-
+    public void getNextNeighbor() {
         for (var i = 1; i < 5; i++) {
             var index = currentNeighbor + i;
             if (index > 3) index -= 4;
-            if (neighbors[index].entity) { currentNeighbor = index; break; }
+            if (neighbors[index].entity && !neighbors[index].entity.ignoredByDispensors) { currentNeighbor = index; break; }
         }
+    }
 
-        if (neighbors[currentNeighbor].entity && !neighbors[currentNeighbor].entity.ignoredByDispensors) {
+    public bool Dispense(ItemData data) {
+
+        getNextNeighbor();
+
+        if (neighbors[currentNeighbor].entity) {
             var newItem = gCon.SpawnItem(data);
             newItem.transform.position = (Vector2)transform.position + (Vector2)neighbors[currentNeighbor].dir * .65f;
             return true;

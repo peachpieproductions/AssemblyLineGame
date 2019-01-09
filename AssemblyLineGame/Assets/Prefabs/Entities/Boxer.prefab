@@ -102,8 +102,10 @@ MonoBehaviour:
   currentCoord: {x: 0, y: 0}
   itemsInZone: []
   storesItems: 1
+  ignorePackages: 1
   dispense: 0
   ignoredByDispensors: 0
+  noEntityMenu: 0
   size: {x: 1, y: 1}
   box: {fileID: 1287549444747040, guid: 6fe493369a15d4c4d844e611fe0888d5, type: 2}
 --- !u!212 &212564252182084182

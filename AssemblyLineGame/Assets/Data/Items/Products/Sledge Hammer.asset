@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Name: Sledge Hammer
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300074, guid: 07776979e69aeef4eb014bebbf876481, type: 3}
-  basePrice: 5
-  priceVariant: 0.98894024
-  popularity: 0.49243742
+  basePrice: 48
+  priceVariant: 0.9879154
+  popularity: 0.36683676
   isProduct: 1
   recipe:
   - ingredient: {fileID: 11400000, guid: e8ccd25aa3a641c4687da4ecc6aec862, type: 2}
@@ -22,6 +22,6 @@ MonoBehaviour:
   - ingredient: {fileID: 11400000, guid: b59841efef30af34dafc86f0641628c8, type: 2}
     ingredientCount: 1
   craftingOutputCount: 1
-  researchRequired: {fileID: 0}
+  researchRequired: {fileID: 11400000, guid: 35c02865627f3714d8c7d646e5477ebe, type: 2}
   isUnlocked: 0
   usedToCraft: []

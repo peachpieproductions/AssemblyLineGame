@@ -28,8 +28,8 @@ public class Package : MonoBehaviour {
     public void UnpackageIntoInventory() {
         if (GameController.inst.AddToInventory(storage.data, storage.itemCount)) {
             if (GameController.inst.selectedPackage == this) {
-                GameController.inst.selectedPackage = null;
                 if (GameController.inst.selectedPackage == this) GameController.inst.PackageInfoPopup.ToggleOpenClose(false);
+                GameController.inst.selectedPackage = null;
             }
             Destroy(gameObject);
         }

@@ -12,13 +12,14 @@ MonoBehaviour:
   m_Name: Vaccine
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300166, guid: 07776979e69aeef4eb014bebbf876481, type: 3}
-  basePrice: 5
-  priceVariant: 0.9124945
-  popularity: 0.48392168
+  basePrice: 3
+  priceVariant: 1.0625341
+  popularity: 0.5886072
   isProduct: 1
   recipe:
   - ingredient: {fileID: 11400000, guid: e527a2a6c810a2443941cbde70188ea7, type: 2}
     ingredientCount: 3
   craftingOutputCount: 1
-  researchRequired: {fileID: 0}
-  isUnlocked: 1
+  researchRequired: {fileID: 11400000, guid: d9f30c2b84064b7498e0dabafd8dedee, type: 2}
+  isUnlocked: 0
+  usedToCraft: []

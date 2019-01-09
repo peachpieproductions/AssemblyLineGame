@@ -12,10 +12,17 @@ MonoBehaviour:
   m_Name: Cloth
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 9ff306f74d2742b4a83a097bcedbd43f, type: 3}
-  basePrice: 1
-  priceVariant: 1.008371
-  popularity: 0.48591185
+  basePrice: 3
+  priceVariant: 0.96471584
+  popularity: 0.5958869
+  isProduct: 0
   recipe:
   - ingredient: {fileID: 11400000, guid: 049df6b7d180c3044ab0ef99e2d5ef34, type: 2}
     ingredientCount: 3
   craftingOutputCount: 1
+  researchRequired: {fileID: 11400000, guid: 860a7fdcf40149641a0ed61b7c75ef57, type: 2}
+  isUnlocked: 0
+  usedToCraft:
+  - {fileID: 11400000, guid: 86dc9fbb72a67ec49bf91e6a43b31a35, type: 2}
+  - {fileID: 11400000, guid: 5bc50831f5611f34990899209db575b8, type: 2}
+  - {fileID: 11400000, guid: 50256b91b119d6946a6378e237d54ee0, type: 2}

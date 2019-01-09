@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Name: First Aid Kit
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300164, guid: 07776979e69aeef4eb014bebbf876481, type: 3}
-  basePrice: 5
-  priceVariant: 1.0081856
-  popularity: 0.49326608
+  basePrice: 8
+  priceVariant: 1.0040215
+  popularity: 0.48445114
   isProduct: 1
   recipe:
   - ingredient: {fileID: 11400000, guid: 15230824d4ad84e4aa4d0e5394a23140, type: 2}
@@ -22,6 +22,6 @@ MonoBehaviour:
   - ingredient: {fileID: 11400000, guid: f93792af4fa2a20418fc967915e95ac4, type: 2}
     ingredientCount: 2
   craftingOutputCount: 1
-  researchRequired: {fileID: 0}
+  researchRequired: {fileID: 11400000, guid: d9f30c2b84064b7498e0dabafd8dedee, type: 2}
   isUnlocked: 0
   usedToCraft: []
