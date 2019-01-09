@@ -31,7 +31,7 @@ public class Boxer : BaseEntity {
                         s.itemCount -= 10;
                         if (s.itemCount == 0) s.data = null;
                         if (GameController.inst.selectedEntity == this) GameController.inst.entityMenu.BuildMenu();
-                        if (GameController.inst.contractsMenu.open) GameController.inst.contractsMenu.BuildMenu();
+                        if (GameController.inst.contractsMenu.open) GameController.inst.CheckForCompletedContracts();
                     }
                 }
             }

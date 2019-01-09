@@ -13,8 +13,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300196, guid: 07776979e69aeef4eb014bebbf876481, type: 3}
   basePrice: 23
-  priceVariant: 1.0768181
-  popularity: 0.46021134
+  priceVariant: 1.0178415
+  popularity: 0.5527216
   isProduct: 1
   recipe:
   - ingredient: {fileID: 11400000, guid: 98430c7cc3c0b9243853580812f6f2fe, type: 2}

@@ -28,7 +28,6 @@ public class GameController : MonoBehaviour {
     public Package selectedPackage;
     public bool hoveringOverlay;
     public List<OverlayMenu> hoveringList = new List<OverlayMenu>();
-    public bool selectingRecipe;
     public ItemData selectedRecipe;
     public ItemData selectedItemData;
 
@@ -138,15 +137,6 @@ public class GameController : MonoBehaviour {
                 }
                 if (ItemInfoPopup.gameObject.activeSelf) ItemInfoPopup.ToggleOpenClose(false);
             }
-        }
-
-        if (selectingRecipe && selectedRecipe) {
-            selectingRecipe = false;
-            Assembler ass = selectedEntity as Assembler;
-            if (ass) ass.assemblingItem = selectedRecipe;
-            selectedRecipe = null;
-            entityMenu.BuildMenu();
-            recipeListMenu.ToggleOpenClose(false);
         }
 
         if (Input.GetKeyDown(KeyCode.Escape)) {
@@ -351,7 +341,7 @@ public class GameController : MonoBehaviour {
         cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, camZoomAmount, Time.deltaTime * 10f);
 
         //Camera Movement and Bounds
-        camMoveVelocity += new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")) * Time.deltaTime;
+        camMoveVelocity += new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")) * Time.unscaledDeltaTime;
         camMoveVelocity *= .9f;
         camMoveVelocity += (mouseWorldPos - (Vector2)cam.transform.position) * camMoveZoomMult * .1f; //zoom towards mouse cursor
         cam.transform.position += (Vector3)camMoveVelocity;

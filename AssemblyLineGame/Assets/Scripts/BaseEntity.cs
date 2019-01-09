@@ -137,13 +137,17 @@ public class BaseEntity : MonoBehaviour {
         }
         while (true) {
 
-            if (storage[0].data && storage[0].itemCount > 0) {
-                if (Dispense(storage[0].data)) {
-                    storage[0].itemCount--;
-                    if (storage[0].itemCount == 0) storage[0].data = null;
-                }
-                if (GameController.inst.selectedEntity == this) {
-                    GameController.inst.entityMenu.BuildMenu();
+            foreach (StorageSlot slot in storage) {
+                if (slot.data && slot.itemCount > 0) {
+                    if (Dispense(slot.data)) {
+                        slot.itemCount--;
+                        if (slot.itemCount == 0) slot.data = null;
+
+                        if (GameController.inst.selectedEntity == this) {
+                            GameController.inst.entityMenu.BuildMenu();
+                        }
+                        break;
+                    }
                 }
             }
 

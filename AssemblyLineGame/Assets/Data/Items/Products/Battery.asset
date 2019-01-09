@@ -13,8 +13,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300014, guid: 07776979e69aeef4eb014bebbf876481, type: 3}
   basePrice: 45
-  priceVariant: 1.1633188
-  popularity: 0.5972547
+  priceVariant: 0.96803635
+  popularity: 0.47893077
   isProduct: 1
   recipe:
   - ingredient: {fileID: 11400000, guid: db208c5d3203dd0488bdb464dc16844d, type: 2}
@@ -22,7 +22,7 @@ MonoBehaviour:
   - ingredient: {fileID: 11400000, guid: 3b432bfd23c53aa4f978ae0c2b394279, type: 2}
     ingredientCount: 1
   craftingOutputCount: 1
-  researchRequired: {fileID: 11400000, guid: dd41eb4baaec28949acd4a145032b6bf, type: 2}
+  researchRequired: {fileID: 11400000, guid: cc081b0dfa47dee41a48e6fb113a7ca0, type: 2}
   isUnlocked: 0
   usedToCraft:
   - {fileID: 11400000, guid: 92654f7a2cf19cc42bb053c3ed97f3d5, type: 2}

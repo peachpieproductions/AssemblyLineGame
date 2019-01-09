@@ -269,7 +269,7 @@ public class OverlayMenu : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
         else if (menuName == "Computer") {
             if (GameController.inst.marketplaceMenu.open) GameController.inst.marketplaceMenu.BuildMenu();
-            if (GameController.inst.contractsMenu.open) GameController.inst.contractsMenu.BuildMenu();
+            if (GameController.inst.contractsMenu.open) GameController.inst.CheckForCompletedContracts();
         }
 
         if (temp) temp.gameObject.SetActive(false);
@@ -285,9 +285,6 @@ public class OverlayMenu : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
             if (GameController.inst.recipeListMenu.gameObject.activeSelf) GameController.inst.recipeListMenu.ToggleOpenClose(false);
         }
 
-        else if (menuName == "RecipeListMenu") {
-            GameController.inst.selectingRecipe = false;
-        }
     }
 
     public void ToggleOpenClose(bool open) {
@@ -312,7 +309,7 @@ public class OverlayMenu : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     public void OnPointerEnter(PointerEventData ped) {
         GameController.inst.hoveringOverlay = true;
-        GameController.inst.hoveringList.Add(this);
+        if (!GameController.inst.hoveringList.Contains(this)) GameController.inst.hoveringList.Add(this);
     }
     public void OnPointerExit(PointerEventData ped) {
         GameController.inst.hoveringList.Remove(this);

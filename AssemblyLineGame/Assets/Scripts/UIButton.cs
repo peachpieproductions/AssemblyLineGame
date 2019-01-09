@@ -42,14 +42,16 @@ public class UIButton : MonoBehaviour, IPointerClickHandler {
         } 
 
         else if (function == "SelectRecipe") {
-            GameController.inst.selectedRecipe = itemData;
+            Assembler ass = GameController.inst.selectedEntity as Assembler;
+            if (ass) ass.assemblingItem = itemData;
+            GameController.inst.entityMenu.BuildMenu();
+            GameController.inst.recipeListMenu.ToggleOpenClose(false);
         } 
 
         else if (function == "OpenRecipeList") {
             if (rightClick) {
                 if (itemData) GameController.inst.OpenItemDataInfo(itemData);
             } else {
-                GameController.inst.selectingRecipe = true;
                 GameController.inst.recipeListMenu.ToggleOpenClose(true);
             }
         } 
