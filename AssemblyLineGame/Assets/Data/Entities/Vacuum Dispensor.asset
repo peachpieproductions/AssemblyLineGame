@@ -17,3 +17,5 @@ MonoBehaviour:
   cost: 25
   size: {x: 1, y: 1}
   cantBeRotated: 0
+  info: Vacuum Dispensors suck up items, and will dispense the items to adjacent entites
+    if they exist.

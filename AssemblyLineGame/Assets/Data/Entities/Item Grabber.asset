@@ -17,3 +17,5 @@ MonoBehaviour:
   cost: 15
   size: {x: 1, y: 1}
   cantBeRotated: 0
+  info: Item Grabbers will grab items off of Conveyor Belts and out of Storage Containers,
+    and place them on the other side. Good for filtering items.

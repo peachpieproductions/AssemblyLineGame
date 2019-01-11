@@ -31,7 +31,7 @@ public class ItemGrabber : BaseEntity {
         while (true) {
 
             if (transferingItem) {
-                armPivot.localEulerAngles = Vector3.Slerp(armPivot.localEulerAngles, new Vector3(0, 0, 0), Time.deltaTime * 3);
+                armPivot.localEulerAngles = Vector3.Slerp(armPivot.localEulerAngles, new Vector3(0, 0, 0), Time.deltaTime * 5);
                 if (armPivot.localEulerAngles.z < 5) {
                     transferingItem.parent = null;
                     transferingItem.GetComponent<Rigidbody2D>().simulated = true;
@@ -39,11 +39,11 @@ public class ItemGrabber : BaseEntity {
                 }
             }
             else {
-                armPivot.localEulerAngles = Vector3.Slerp(armPivot.localEulerAngles, new Vector3(0, 0, 180), Time.deltaTime * 3);
+                armPivot.localEulerAngles = Vector3.Slerp(armPivot.localEulerAngles, new Vector3(0, 0, 180), Time.deltaTime * 5);
                 if (armPivot.localEulerAngles.z > 175) {
                     if (nextToStorage) { //Grab items from storage slots
                         foreach(StorageSlot s in nextToStorage.storage) {
-                            if (s.itemCount > 0) {
+                            if (s.itemCount > 0 && (filter == null || filter == s.data)) {
                                 s.itemCount--;
                                 var newItem = GameController.inst.SpawnItem(s.data);
                                 transferingItem = newItem.transform;
@@ -53,7 +53,8 @@ public class ItemGrabber : BaseEntity {
                         if (GameController.inst.selectedEntity == nextToStorage) GameController.inst.entityMenu.BuildMenu();
                     } else {
                         foreach (Transform t in itemsInZone) { //Grab Items in Zone
-                            if (t.GetComponent<Rigidbody2D>()) {
+                            var item = t.GetComponent<Item>();
+                            if (t.GetComponent<Rigidbody2D>() && (filter == null || item && filter == item.data)) {
                                 transferingItem = t;
                                 break;
                             }

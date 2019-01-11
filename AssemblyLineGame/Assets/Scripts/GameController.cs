@@ -9,6 +9,7 @@ public class GameController : MonoBehaviour {
 
     #region Public Vars
 
+    public bool debugMode;
     public static GameController inst;
 	public int roomWidth;
 	public int roomHeight;
@@ -29,7 +30,9 @@ public class GameController : MonoBehaviour {
     public bool hoveringOverlay;
     public List<OverlayMenu> hoveringList = new List<OverlayMenu>();
     public ItemData selectedRecipe;
+    public bool selectingItemData;
     public ItemData selectedItemData;
+    public Log logPrefab;
 
     [Header("Player")]
     public int money = 250;
@@ -62,10 +65,10 @@ public class GameController : MonoBehaviour {
     public OverlayMenu researchMenu;
     public OverlayMenu PackageInfoPopup;
     public OverlayMenu ItemInfoPopup;
+    public OverlayMenu tooltipPopup;
     public OverlayMenu TopHud;
 
     #endregion
-
     
     Camera cam;
     Vector2 camMoveVelocity;
@@ -114,6 +117,12 @@ public class GameController : MonoBehaviour {
 
         UpdateMoney(0);
         //LoadClientNames();
+
+        //DEBUG MODE
+        GameObject.Find("DEBUGMODEACTIVETEXT").gameObject.SetActive(debugMode);
+        if (debugMode) {
+            
+        }
     }
 
     private void Update() {
@@ -136,6 +145,12 @@ public class GameController : MonoBehaviour {
                     PackageInfoPopup.ToggleOpenClose(false);
                 }
                 if (ItemInfoPopup.gameObject.activeSelf) ItemInfoPopup.ToggleOpenClose(false);
+            }
+        }
+
+        if (tooltipPopup.open) {
+            if (hoveringList.Count == 0) {
+                tooltipPopup.ToggleOpenClose(false);
             }
         }
 
@@ -162,9 +177,14 @@ public class GameController : MonoBehaviour {
         if (Input.GetKeyUp(KeyCode.F)) {
             Time.timeScale = 1;
         }
+
+        
     }
 
     public IEnumerator BuildMode() {
+        if (computer.open) computer.ToggleOpenClose(false);
+        if (entityMenu.open) entityMenu.ToggleOpenClose(false);
+        if (ItemInfoPopup.open) ItemInfoPopup.ToggleOpenClose(false);
         while (buildMode) {
             if (currentBuildObject == null) {
                 if (currentBuildEntity) {
@@ -206,6 +226,14 @@ public class GameController : MonoBehaviour {
             if (Input.GetMouseButtonDown(1)) { //Sell Entity
                 if (entityGrid[currentUnit.x, currentUnit.y] > 0) {
                     var toSell = entities[entityGrid[currentUnit.x, currentUnit.y] - 1];
+                    foreach(StorageSlot slot in toSell.storage) {
+                        if (!AddToInventory(slot.data, slot.itemCount, slot)) {
+                            for (var i = 0; i < slot.itemCount; i++) {
+                                var spawnedItem = SpawnItem(slot.data).transform;
+                                spawnedItem.transform.position = toSell.transform.position;
+                            }
+                        }
+                    }
                     UpdateMoney(toSell.data.cost / 2);
                     for (var x = 0; x < toSell.size.x; x++) { //Reset Grid Data
                         for (var y = 0; y < toSell.size.y; y++) {
@@ -262,7 +290,11 @@ public class GameController : MonoBehaviour {
 
     public void UpdateMoney(int differenceAmount) {
         money += differenceAmount;
-        TopHud.miscText1.text = "$" + money.ToString();
+        TopHud.miscText1.text = "$" + money.ToString("n0");
+        if (differenceAmount != 0) {
+            if (differenceAmount > 0) GenerateLog("+ $" + differenceAmount + ".", gameColors[4], 4f);
+            else GenerateLog("- $" + Mathf.Abs(differenceAmount) + ".", gameColors[3], 4f);
+        }
     }
 
     public void Delivery(ItemDelivery delivery) {
@@ -277,6 +309,7 @@ public class GameController : MonoBehaviour {
             newPackage.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f));
             itemCount -= 10;
         }
+        GenerateLog("You're shipment of " + delivery.data.name + " (" + delivery.itemCount + ") has arrived.", Color.white, 4f);
         incomingDeliveries.Remove(delivery);
     }
 
@@ -309,6 +342,8 @@ public class GameController : MonoBehaviour {
 
     public void ToggleBuildMode() {
         buildMode = !buildMode;
+        if (buildMode) GenerateLog("Build Mode Activated.", Color.white, 1f);
+        else GenerateLog("Build Mode Deactivated.", Color.white, 1f);
         blueprintFloor.SetActive(buildMode);
         BuildModeMenu.ToggleOpenClose(buildMode);
         if (buildMode) StartCoroutine(BuildMode());
@@ -378,6 +413,10 @@ public class GameController : MonoBehaviour {
     }
 
     public Item SpawnItem(ItemData data) {
+        if (itemPool.Count == 0) {
+            var go = Instantiate(itemPrefab);
+            itemPool.Add(go.GetComponent<Item>());
+        }
         var newItem = itemPool[0];
         itemPool.RemoveAt(0);
         newItem.gameObject.SetActive(true);
@@ -497,6 +536,7 @@ public class GameController : MonoBehaviour {
 
     public void CheckForCompletedContracts() {
         //Check if completed
+        int totalComplete = 0;
         foreach (ItemContract c in contractList) {
             bool contractComplete = true;
             foreach (StorageSlot req in c.itemsRequested) {
@@ -514,7 +554,9 @@ public class GameController : MonoBehaviour {
                 if (contractComplete) contractComplete = itemSetComplete;
             }
             c.completed = contractComplete;
+            if (contractComplete) totalComplete++;
         }
+        if (totalComplete >= 2 && Random.value < .25f) GenerateLog("2+ Contracts are ready to be fulfilled.", gameColors[4], 2f);
 
         if (contractsMenu.open) contractsMenu.BuildMenu();
     }
@@ -522,6 +564,7 @@ public class GameController : MonoBehaviour {
     public void StartResearch(ResearchData data) {
         if (!data.researched && researching == null && money >= data.cost) {
             UpdateMoney(-data.cost);
+            GenerateLog("You've started researching " + data.name + ".", gameColors[2], 5f);
             researching = data;
             researching.beingResearched = true;
             researchProgress = 0;
@@ -535,6 +578,7 @@ public class GameController : MonoBehaviour {
             if (researchMenu.gameObject.activeSelf) researchMenu.BuildMenu();
             if (researchProgress >= researching.cost) {
                 researching.UnlockResearch();
+                GenerateLog("You've finished researching " + researching.name + ".", gameColors[2], 8f);
                 researching = null;
                 if (researchMenu.gameObject.activeSelf) researchMenu.BuildMenu();
             }
@@ -546,6 +590,27 @@ public class GameController : MonoBehaviour {
         selectedItemData = itemData;
         ItemInfoPopup.ToggleOpenClose(true);
         ItemInfoPopup.BuildMenu();
+    }
+
+    public void GenerateLog(string log, Color col, float life) {
+        var newLog = Instantiate(logPrefab, logPrefab.transform.parent);
+        newLog.gameObject.SetActive(true);
+        newLog.text.text = log;
+        newLog.text.ForceMeshUpdate();
+        newLog.text.color = col;
+        newLog.life = life;
+        newLog.rt.sizeDelta = new Vector2(40 + newLog.text.textBounds.extents.x * 2, 50);
+    }
+
+    public void DebugCommand(string command) {
+        if (debugMode) {
+            if (command == "GiveMoney") {
+                UpdateMoney(1000);
+            }
+            if (command == "ResearchFaster") {
+                researchProgress += 50;
+            }
+        }
     }
 
 }

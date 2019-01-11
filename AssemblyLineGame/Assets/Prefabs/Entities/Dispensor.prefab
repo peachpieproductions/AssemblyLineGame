@@ -102,9 +102,14 @@ MonoBehaviour:
   currentCoord: {x: 0, y: 0}
   itemsInZone: []
   storesItems: 1
+  ignorePackages: 0
   dispense: 1
   ignoredByDispensors: 0
+  noEntityMenu: 0
+  canFilter: 1
+  filter: {fileID: 0}
   size: {x: 1, y: 1}
+  vacuum: 0
 --- !u!212 &212265893514975056
 SpriteRenderer:
   m_ObjectHideFlags: 1

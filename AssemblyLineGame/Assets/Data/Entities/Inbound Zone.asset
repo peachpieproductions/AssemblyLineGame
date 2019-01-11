@@ -17,3 +17,4 @@ MonoBehaviour:
   cost: 10
   size: {x: 3, y: 3}
   cantBeRotated: 1
+  info: The Inbound Zone is where you will receive incoming shipments.

@@ -13,4 +13,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 1574673790495662, guid: fd84a5984812b114ea3c75264ab53f15, type: 2}
   sprite: {fileID: 21300000, guid: 79e878a97e75ec64bbca0260b5d9e183, type: 3}
+  placementSprite: {fileID: 0}
   cost: 25
+  size: {x: 1, y: 1}
+  cantBeRotated: 0
+  info: Dispensors will place items from its storage, onto adjacent entities.

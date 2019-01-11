@@ -37,15 +37,17 @@ public class Assembler : BaseEntity {
 
                     if (canCraft) {
                         craftingSuccessful = true;
-                        foreach(StorageSlot s in storage) {
-                            s.itemCount += s.differenceToApply;
-                            s.differenceToApply = 0;
-                            if (s.itemCount == 0) s.data = null;
-                        }
-                        
-                        for (var i = 0; i < assemblingItem.craftingOutputCount; i++) {
-                            Dispense(assemblingItem);
-                            yield return new WaitForSeconds(.1f);
+                        if (assemblingItem) {
+                            foreach (StorageSlot s in storage) {
+                                s.itemCount += s.differenceToApply;
+                                s.differenceToApply = 0;
+                                if (s.itemCount == 0) s.data = null;
+                            }
+
+                            for (var i = 0; i < assemblingItem.craftingOutputCount; i++) {
+                                Dispense(assemblingItem);
+                                yield return new WaitForSeconds(.1f);
+                            }
                         }
                         if (GameController.inst.entityMenu.open) GameController.inst.entityMenu.BuildMenu();
                     } else {

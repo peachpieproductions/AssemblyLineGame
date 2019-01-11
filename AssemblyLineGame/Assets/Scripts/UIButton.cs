@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
 
-public class UIButton : MonoBehaviour, IPointerClickHandler {
+public class UIButton : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler {
 
     [HideInInspector] public OverlayMenu overlayMenu;
     public string function;
@@ -42,8 +42,14 @@ public class UIButton : MonoBehaviour, IPointerClickHandler {
         } 
 
         else if (function == "SelectRecipe") {
-            Assembler ass = GameController.inst.selectedEntity as Assembler;
-            if (ass) ass.assemblingItem = itemData;
+            if (!GameController.inst.selectingItemData) {
+                Assembler ass = GameController.inst.selectedEntity as Assembler;
+                if (ass) ass.assemblingItem = itemData;
+            } else {
+                if (GameController.inst.selectedEntity.canFilter) {
+                    GameController.inst.selectedEntity.filter = itemData;
+                }
+            }
             GameController.inst.entityMenu.BuildMenu();
             GameController.inst.recipeListMenu.ToggleOpenClose(false);
         } 
@@ -93,11 +99,24 @@ public class UIButton : MonoBehaviour, IPointerClickHandler {
             GameController.inst.OpenItemDataInfo(itemData);
         }
 
+        else if (function == "Filter") {
+            GameController.inst.selectingItemData = true;
+            GameController.inst.recipeListMenu.ToggleOpenClose(true);
+        }
+
     }
 
     public void OnPointerClick(PointerEventData eventData) {
         if (eventData.button == PointerEventData.InputButton.Right) {
             Clicked(true);
+        }
+    }
+
+    public void OnPointerEnter(PointerEventData eventData) {
+        if (entityData) {
+            GameController.inst.tooltipPopup.ToggleOpenClose(true);
+            GameController.inst.tooltipPopup.miscText1.text = entityData.info;
+            GameController.inst.tooltipPopup.rect.position = Input.mousePosition;
         }
     }
 

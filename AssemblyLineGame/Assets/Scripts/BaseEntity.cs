@@ -9,7 +9,7 @@ public class EntityNeighbor {
 }
 
 public class BaseEntity : MonoBehaviour {
-
+   
     public EntityData data;
     public EntityNeighbor[] neighbors = new EntityNeighbor[4];
     public int currentNeighbor;
@@ -21,15 +21,14 @@ public class BaseEntity : MonoBehaviour {
     public bool dispense;
     public bool ignoredByDispensors;
     public bool noEntityMenu;
+    public bool canFilter;
+    public ItemData filter;
     public Vector2Int size = new Vector2Int(1, 1);
 
     protected GameController gCon;
 
     private void OnMouseUp() {
-        if (!noEntityMenu && !GameController.inst.hoveringOverlay && !GameController.inst.buildMode) {
-            GameController.inst.selectedEntity = this;
-            GameController.inst.entityMenu.ToggleOpenClose(true);
-        }
+        Clicked();
     }
 
     private void Awake() {
@@ -41,6 +40,13 @@ public class BaseEntity : MonoBehaviour {
         UpdateEntity(true);
         if (dispense) StartCoroutine(DispenseCycle());
         if (storesItems) StartCoroutine(StoreItems());
+    }
+
+    public void Clicked() {
+        if (!noEntityMenu && !GameController.inst.hoveringOverlay && !GameController.inst.buildMode) {
+            GameController.inst.selectedEntity = this;
+            GameController.inst.entityMenu.ToggleOpenClose(true);
+        }
     }
 
 

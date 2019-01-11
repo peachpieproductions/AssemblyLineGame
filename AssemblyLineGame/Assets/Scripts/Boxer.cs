@@ -16,7 +16,16 @@ public class Boxer : BaseEntity {
 
         while (true) {
 
-            getNextNeighbor();
+            for (var i = 1; i < 5; i++) {
+                var index = currentNeighbor + i;
+                if (index > 3) index -= 4;
+                if (neighbors[index].entity) {
+                    if (!neighbors[index].entity.ignoredByDispensors || neighbors[index].entity is Zone) {
+                        currentNeighbor = index;
+                        break;
+                    }   
+                }
+            }
 
             if (neighbors[currentNeighbor].entity) {
                 foreach (StorageSlot s in storage) {
@@ -31,7 +40,7 @@ public class Boxer : BaseEntity {
                         s.itemCount -= 10;
                         if (s.itemCount == 0) s.data = null;
                         if (GameController.inst.selectedEntity == this) GameController.inst.entityMenu.BuildMenu();
-                        if (GameController.inst.contractsMenu.open) GameController.inst.CheckForCompletedContracts();
+                        //if (GameController.inst.contractsMenu.open) GameController.inst.CheckForCompletedContracts();
                     }
                 }
             }

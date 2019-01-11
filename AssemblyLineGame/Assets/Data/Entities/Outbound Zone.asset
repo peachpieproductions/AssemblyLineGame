@@ -17,3 +17,5 @@ MonoBehaviour:
   cost: 10
   size: {x: 3, y: 3}
   cantBeRotated: 1
+  info: Outbound Zone is where your packages, created with a Boxer, need to end up.
+    Once products are boxed and in the Outbound Zone, they are ready to be sold.

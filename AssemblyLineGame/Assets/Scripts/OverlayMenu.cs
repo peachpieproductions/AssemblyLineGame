@@ -21,12 +21,13 @@ public class OverlayMenu : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     public bool closesImmediately;
     public UIButton miscButton1;
     public UIButton miscButton2;
+    public UIButton miscButton3;
     public TextMeshProUGUI miscText1;
     public TextMeshProUGUI miscText2;
     public TextMeshProUGUI miscText3;
     public Image miscImage1;
 
-    RectTransform rect;
+    public RectTransform rect;
 
     private void Awake() {
         rect = GetComponent<RectTransform>();
@@ -48,6 +49,10 @@ public class OverlayMenu : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
         if (follow) {
             rect.position = Camera.main.WorldToScreenPoint(follow.position);
+        }
+
+        if (followMouse) {
+            rect.position = Input.mousePosition;
         }
 
     }
@@ -120,6 +125,17 @@ public class OverlayMenu : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
                         newButton.image.gameObject.SetActive(false);
                     }
                 }
+                if (selEntity.canFilter) {
+                    miscButton3.gameObject.SetActive(true);
+                    if (selEntity.filter) {
+                        miscButton3.image.gameObject.SetActive(true);
+                        miscButton3.image.sprite = selEntity.filter.sprite;
+                    } else {
+                        miscButton3.image.gameObject.SetActive(false);
+                    }
+                } else {
+                    miscButton3.gameObject.SetActive(false);
+                }
             }
         }
 
@@ -176,7 +192,9 @@ public class OverlayMenu : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
         else if (menuName == "RecipeListMenu") {
             GameController.inst.ItemInfoPopup.ToggleOpenClose(false);
-            foreach (ItemData item in GameController.inst.recipeList) {
+            var list = GameController.inst.recipeList;
+            if (GameController.inst.selectingItemData) list = GameController.inst.itemDatas;
+            foreach (ItemData item in list) {
                 var newButton = Instantiate(temp, temp.transform.parent);
                 buttons.Add(newButton);
                 newButton.text.text = item.name;
@@ -269,7 +287,7 @@ public class OverlayMenu : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
         else if (menuName == "Computer") {
             if (GameController.inst.marketplaceMenu.open) GameController.inst.marketplaceMenu.BuildMenu();
-            if (GameController.inst.contractsMenu.open) GameController.inst.CheckForCompletedContracts();
+            //if (GameController.inst.contractsMenu.open) GameController.inst.CheckForCompletedContracts();
         }
 
         if (temp) temp.gameObject.SetActive(false);
@@ -279,10 +297,16 @@ public class OverlayMenu : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     public void CloseMenu() {
 
         GameController.inst.hoveringList.Remove(this);
-        if (GameController.inst.hoveringList.Count == 0) GameController.inst.hoveringOverlay = false;
+        if (GameController.inst.hoveringList.Count == 0) {
+            GameController.inst.hoveringOverlay = false;
+        }
 
         if (menuName == "EntityMenu") {
             if (GameController.inst.recipeListMenu.gameObject.activeSelf) GameController.inst.recipeListMenu.ToggleOpenClose(false);
+        }
+
+        else if (menuName == "RecipeListMenu") {
+            GameController.inst.selectingItemData = false;
         }
 
     }
@@ -293,9 +317,9 @@ public class OverlayMenu : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
             if (open) {
                 if (!gameObject.activeSelf) gameObject.SetActive(true);
                 else BuildMenu();
-                rect.anchoredPosition = closedTargetPosition;
+                if (!followMouse) rect.anchoredPosition = closedTargetPosition;
             } else {
-                if (follow) gameObject.SetActive(false);
+                if (follow || followMouse) gameObject.SetActive(false);
                 CloseMenu();
             }
         }

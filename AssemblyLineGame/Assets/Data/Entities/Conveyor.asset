@@ -13,4 +13,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 1412667851385902, guid: b9a06b237d17e7a48ac27d545773d66e, type: 2}
   sprite: {fileID: 21300000, guid: 63390e2fcfe6015489d52fae70b741c6, type: 3}
+  placementSprite: {fileID: 0}
   cost: 5
+  size: {x: 1, y: 1}
+  cantBeRotated: 0
+  info: Conveyors are used to move materials and products around your factory. Place
+    them next to Dispensors.

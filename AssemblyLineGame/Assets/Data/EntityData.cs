@@ -12,4 +12,7 @@ public class EntityData : ScriptableObject {
     public Vector2Int size = new Vector2Int(1, 1);
     public bool cantBeRotated;
 
+    [TextArea(2,10)]
+    public string info;
+
 }

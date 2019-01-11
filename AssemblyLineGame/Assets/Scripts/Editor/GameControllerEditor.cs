@@ -81,8 +81,11 @@ public class GameControllerEditor : Editor {
 
         GUI.color = Color.white;
         if (GUILayout.Button("Save Data")) {
-            foreach (ItemData itemData in gCon.itemDatas) { //reset prices for crafted items
+            foreach (ItemData itemData in gCon.itemDatas) {
                 EditorUtility.SetDirty(itemData);
+            }
+            foreach (EntityData d in gCon.entityDatas) { 
+                EditorUtility.SetDirty(d);
             }
             AssetDatabase.SaveAssets();
         }

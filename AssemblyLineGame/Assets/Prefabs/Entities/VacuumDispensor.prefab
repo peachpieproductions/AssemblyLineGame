@@ -52,14 +52,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1432450092117072}
-  m_LocalRotation: {x: -0, y: -0, z: -0.7071072, w: 0.7071064}
-  m_LocalPosition: {x: 7.5, y: 5.5, z: 0.083984375}
+  m_LocalRotation: {x: -0, y: -0, z: 0.00000037252897, w: -1}
+  m_LocalPosition: {x: 8.5, y: 47.5, z: 0.083984375}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4589612057389154}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90.00001}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -360}
 --- !u!4 &4589612057389154
 Transform:
   m_ObjectHideFlags: 1
@@ -97,10 +97,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.28651983, y: 0.25591007}
-      - {x: -2.482648, y: 1.4741507}
-      - {x: -2.485827, y: -1.5043416}
-      - {x: -0.29129568, y: -0.26284492}
+    - - {x: -0.28652024, y: 0.3258436}
+      - {x: -3.48796, y: 1.500375}
+      - {x: -3.5173647, y: -1.5043437}
+      - {x: -0.28255343, y: -0.33277914}
 --- !u!61 &61680534463772352
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -173,9 +173,12 @@ MonoBehaviour:
   currentCoord: {x: 0, y: 0}
   itemsInZone: []
   storesItems: 1
+  ignorePackages: 0
   dispense: 1
   ignoredByDispensors: 0
   noEntityMenu: 0
+  canFilter: 1
+  filter: {fileID: 0}
   size: {x: 1, y: 1}
   vacuum: 1
 --- !u!212 &212068040007617678

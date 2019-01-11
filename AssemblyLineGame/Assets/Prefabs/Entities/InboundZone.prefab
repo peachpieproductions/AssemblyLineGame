@@ -93,8 +93,9 @@ MonoBehaviour:
   currentCoord: {x: 0, y: 0}
   itemsInZone: []
   storesItems: 0
+  ignorePackages: 0
   dispense: 0
-  ignoredByDispensors: 0
+  ignoredByDispensors: 1
   noEntityMenu: 1
   size: {x: 3, y: 3}
   inboundPackageZone: 1
