@@ -37,6 +37,9 @@ public class GameController : MonoBehaviour {
     [Header("Player")]
     public int money = 250;
     public List<StorageSlot> inventory = new List<StorageSlot>();
+    public int researchesCompleted;
+    public Vector2 timeOfDay;
+    public Vector3 date;
     public List<ItemData> recipeList = new List<ItemData>();
     public List<ItemContract> contractList = new List<ItemContract>();
     public List<Package> outboundPackages = new List<Package>();
@@ -67,6 +70,7 @@ public class GameController : MonoBehaviour {
     public OverlayMenu ItemInfoPopup;
     public OverlayMenu tooltipPopup;
     public OverlayMenu TopHud;
+    public TextMeshProUGUI MenuButtonsText;
 
     #endregion
     
@@ -92,6 +96,7 @@ public class GameController : MonoBehaviour {
         foreach (BaseEntity b in FindObjectsOfType<BaseEntity>()) b.SetNeighbors();
 
         StartCoroutine(EconomyCycle());
+        StartCoroutine(TimeCycle());
 
         BuildModeMenu.gameObject.SetActive(false);
         computer.gameObject.SetActive(false);
@@ -149,9 +154,13 @@ public class GameController : MonoBehaviour {
         }
 
         if (tooltipPopup.open) {
-            if (hoveringList.Count == 0) {
+            if (!hoveringOverlay) {
                 tooltipPopup.ToggleOpenClose(false);
             }
+        }
+
+        if (MenuButtonsText.gameObject.activeSelf) {
+            if (Input.mousePosition.y > 80) MenuButtonsText.gameObject.SetActive(false);
         }
 
         if (Input.GetKeyDown(KeyCode.Escape)) {
@@ -179,6 +188,36 @@ public class GameController : MonoBehaviour {
         }
 
         
+    }
+
+    public IEnumerator TimeCycle() {
+        TopHud.miscText3.text = date.x + "/" + date.y + "/" + date.z;
+        while (true) {
+            timeOfDay.y++; //next minute
+            if (timeOfDay.y == 60) {
+                timeOfDay.y = 1;
+                timeOfDay.x++; //next hour
+                if (timeOfDay.x == 24) {
+                    timeOfDay.x = 0;
+                    date.y++; //next day
+                    TopHud.miscText3.text = date.x + "/" + date.y + "/" + date.z;
+                    if (date.y == 32) {
+                        date.y = 1;
+                        date.x++; //next month
+                        TopHud.miscText3.text = date.x + "/" + date.y + "/" + date.z;
+                        if (date.x == 13) {
+                            date.x = 1;
+                            date.y++; //next year
+                            TopHud.miscText3.text = date.x + "/" + date.y + "/" + date.z;
+                        }
+                    }
+                }
+            }
+            if (timeOfDay.y < 10) TopHud.miscText2.text = timeOfDay.x + ":0" + timeOfDay.y;
+            else TopHud.miscText2.text = timeOfDay.x + ":" + timeOfDay.y;
+            
+            yield return new WaitForSeconds(.5f);
+        }
     }
 
     public IEnumerator BuildMode() {
@@ -482,13 +521,13 @@ public class GameController : MonoBehaviour {
     public void GenerateContracts() {
 
         for (int i = contractList.Count - 1; i >= 0; i--) {
-            contractList[i].hoursTimeRemaining -= .166f;
+            contractList[i].hoursTimeRemaining -= .166f * 2f;
             if (contractList[i].hoursTimeRemaining <= 0) {
                 contractList.Remove(contractList[i]);
             }
         }
 
-        if (contractList.Count < 8 && Random.value > .4f && recipeList.Count > 0) {
+        if (contractList.Count < 8 + researchesCompleted && Random.value > .4f && recipeList.Count > 0) {
             for (var j = 0; j < Random.Range(0, 3); j++) {
                 ItemContract newContract = new ItemContract();
                 newContract.clientName = GetClientName();
@@ -499,7 +538,7 @@ public class GameController : MonoBehaviour {
                     newContract.paymentAmount += itemRequirement.data.basePrice * itemRequirement.itemCount;
                     newContract.itemsRequested.Add(itemRequirement);
                 }
-                newContract.hoursTimeRemaining = Random.Range(2, 28);
+                newContract.hoursTimeRemaining = Random.Range(4, 45);
                 newContract.paymentAmount = Mathf.RoundToInt(newContract.paymentAmount * (1 + Random.Range(.1f, .3f)));
                 contractList.Add(newContract);
             }
@@ -600,6 +639,11 @@ public class GameController : MonoBehaviour {
         newLog.text.color = col;
         newLog.life = life;
         newLog.rt.sizeDelta = new Vector2(40 + newLog.text.textBounds.extents.x * 2, 50);
+    }
+
+    public void SetMenuButtonsText(string str) {
+        MenuButtonsText.gameObject.SetActive(true);
+        MenuButtonsText.text = str;
     }
 
     public void DebugCommand(string command) {

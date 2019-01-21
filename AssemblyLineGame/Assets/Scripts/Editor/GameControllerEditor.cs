@@ -42,7 +42,7 @@ public class GameControllerEditor : Editor {
                 foreach (ItemData i in r.items) {
                     if (i.researchRequired != null) Debug.Log(i.name + " belongs to " + i.researchRequired.name + " and " + r.name);
                     i.researchRequired = r;
-                    if (i.recipe.Length == 0) Debug.Log(i.name + " is a raw material, but is included in " + r.name);
+                    //if (i.recipe.Length == 0) Debug.Log(i.name + " is a raw material, but is included in " + r.name);
                 }
                 r.GenerateCost();
             }

@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f165e03a45f1a744788df808d23a33c7, type: 3}
+  m_Name: Bow
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 21300078, guid: 051ef8cf74c3c2d40a39457838ea8886, type: 3}
+  basePrice: 5
+  priceVariant: 0.9793082
+  popularity: 0.53143024
+  isProduct: 1
+  recipe:
+  - ingredient: {fileID: 11400000, guid: b59841efef30af34dafc86f0641628c8, type: 2}
+    ingredientCount: 2
+  - ingredient: {fileID: 11400000, guid: 049df6b7d180c3044ab0ef99e2d5ef34, type: 2}
+    ingredientCount: 2
+  - ingredient: {fileID: 11400000, guid: e8ccd25aa3a641c4687da4ecc6aec862, type: 2}
+    ingredientCount: 2
+  craftingOutputCount: 1
+  researchRequired: {fileID: 11400000, guid: 6369e73f1baf5d847913c1a0006c624c, type: 2}
+  isUnlocked: 0
+  usedToCraft: []

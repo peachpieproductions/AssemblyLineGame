@@ -13,6 +13,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 1412667851385902, guid: b9a06b237d17e7a48ac27d545773d66e, type: 2}
   sprite: {fileID: 21300000, guid: 63390e2fcfe6015489d52fae70b741c6, type: 3}
+  altSprites:
+  - {fileID: 21300000, guid: 2f674dfa3a95b094cb7208b468b48f14, type: 3}
+  - {fileID: 21300000, guid: 6cd8066a7b6199349b67aa3b1c2577fe, type: 3}
+  - {fileID: 21300000, guid: 6ca68b7b136ef114f8e610f3daeb490c, type: 3}
   placementSprite: {fileID: 0}
   cost: 5
   size: {x: 1, y: 1}

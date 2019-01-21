@@ -180,6 +180,7 @@ MonoBehaviour:
   canFilter: 1
   filter: {fileID: 0}
   size: {x: 1, y: 1}
+  spr: {fileID: 212068040007617678}
   vacuum: 1
 --- !u!212 &212068040007617678
 SpriteRenderer:

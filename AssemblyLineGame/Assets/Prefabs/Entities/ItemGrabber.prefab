@@ -215,6 +215,7 @@ MonoBehaviour:
   canFilter: 1
   filter: {fileID: 0}
   size: {x: 1, y: 1}
+  spr: {fileID: 212212006132293804}
   armPivot: {fileID: 4109441263515708}
   transferingItem: {fileID: 0}
   nextToStorage: {fileID: 0}

@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f165e03a45f1a744788df808d23a33c7, type: 3}
+  m_Name: Chocolate
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 21300000, guid: 6a6db0a88252f7f458b9be08b22333b1, type: 3}
+  basePrice: 8
+  priceVariant: 1.0278422
+  popularity: 0.49005088
+  isProduct: 1
+  recipe:
+  - ingredient: {fileID: 11400000, guid: f9702e57e62240447ac7c8f451ccf245, type: 2}
+    ingredientCount: 2
+  - ingredient: {fileID: 11400000, guid: 8280657359363154d8be83d2dd88331d, type: 2}
+    ingredientCount: 1
+  craftingOutputCount: 1
+  researchRequired: {fileID: 11400000, guid: 977ada2dfed968d48924262cd52136f5, type: 2}
+  isUnlocked: 1
+  usedToCraft: []

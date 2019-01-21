@@ -11,10 +11,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f165e03a45f1a744788df808d23a33c7, type: 3}
   m_Name: Metal Gear
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 1e04ffd807143f84e934829849cd1638, type: 3}
+  sprite: {fileID: 21300196, guid: c34e33d622fe1b240a715e50e9769a74, type: 3}
   basePrice: 6
-  priceVariant: 0.9443228
-  popularity: 0.45734656
+  priceVariant: 0.9630881
+  popularity: 0.48767677
   isProduct: 1
   recipe:
   - ingredient: {fileID: 11400000, guid: ff3c07a83c4d1184ab6f72b2546a3122, type: 2}

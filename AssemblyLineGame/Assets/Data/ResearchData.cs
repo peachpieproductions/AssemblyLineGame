@@ -16,18 +16,21 @@ public class ResearchData : ScriptableObject {
 
     public void GenerateCost() {
         cost = 0;
-        foreach(ItemData item in items) {
-            cost += item.basePrice * 10;
+        if (!researchedOnStart) {
+            for (int i = 0; i < 4; i++) {
+                cost += items[i].basePrice * 10;
+            }
         }
     }
 
     public void UnlockResearch() {
         foreach (ItemData i in items) {
             i.isUnlocked = true;
-            GameController.inst.recipeList.Add(i);
+            if (i.recipe.Length > 0) GameController.inst.recipeList.Add(i);
         }
         researched = true;
         beingResearched = false;
+        GameController.inst.researchesCompleted++;
     }
 	
 }

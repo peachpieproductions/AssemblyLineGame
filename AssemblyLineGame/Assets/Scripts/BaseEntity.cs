@@ -24,6 +24,7 @@ public class BaseEntity : MonoBehaviour {
     public bool canFilter;
     public ItemData filter;
     public Vector2Int size = new Vector2Int(1, 1);
+    public SpriteRenderer spr;
 
     protected GameController gCon;
 
@@ -71,6 +72,7 @@ public class BaseEntity : MonoBehaviour {
                         ignore = true; // if neighbor is conveyor feeding into this entity, ignore it.
                     }
                     if (gCon.entities[index - 1] is Dispensor && (this is Dispensor || this is Assembler)) ignore = true;
+                    if (gCon.entities[index - 1] is Assembler && this is Assembler) ignore = true;
                     if (!ignore) neighbors[i].entity = gCon.entities[index - 1];
                 } else neighbors[i].entity = null;
             }
@@ -169,33 +171,37 @@ public class BaseEntity : MonoBehaviour {
             for (var i = itemsInZone.Count - 1; i >= 0; i--) {
                 var item = itemsInZone[i].GetComponent<Item>();
                 if (item) {
-                    bool stored = false;
-                    for (var j = 0; j < storage.Count; j++) {
-                        if (storage[j].data == item.data) {
-                            storage[j].itemCount++;
-                            gCon.DespawnItem(item);
-                            stored = true;
-                            break;
-                        }
-                    }
-                    if (!stored) {
+                    if (filter == null || filter == item.data) {
+                        bool stored = false;
                         for (var j = 0; j < storage.Count; j++) {
-                            if (storage[j].itemCount == 0) {
-                                storage[j].data = item.data;
+                            if (storage[j].data == item.data) {
                                 storage[j].itemCount++;
                                 gCon.DespawnItem(item);
+                                stored = true;
                                 break;
                             }
                         }
-                    }
-                    if (GameController.inst.selectedEntity == this) {
-                        GameController.inst.entityMenu.BuildMenu();
+                        if (!stored) {
+                            for (var j = 0; j < storage.Count; j++) {
+                                if (storage[j].itemCount == 0) {
+                                    storage[j].data = item.data;
+                                    storage[j].itemCount++;
+                                    gCon.DespawnItem(item);
+                                    break;
+                                }
+                            }
+                        }
+                        if (GameController.inst.selectedEntity == this) {
+                            GameController.inst.entityMenu.BuildMenu();
+                        }
                     }
                 } else {
                     if (!ignorePackages) {
                         var package = itemsInZone[i].GetComponent<Package>();
                         if (package) {
-                            package.UnpackageIntoStorage(this);
+                            if (filter == null || filter == package.storage.data) {
+                                package.UnpackageIntoStorage(this);
+                            }
                         }
                     }
                 }

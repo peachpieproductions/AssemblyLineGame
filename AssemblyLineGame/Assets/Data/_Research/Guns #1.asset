@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e98bf2474402fb45813a4ba579fd457, type: 3}
+  m_Name: 'Guns #1'
+  m_EditorClassIdentifier: 
+  beingResearched: 0
+  researched: 0
+  researchedOnStart: 0
+  cost: 150
+  items:
+  - {fileID: 11400000, guid: 9f2d37116ff678a40bc98271239bdd6d, type: 2}
+  - {fileID: 11400000, guid: 2a4f0b11a445ab74d88e10bfb282f5b7, type: 2}
+  - {fileID: 11400000, guid: 2a4f0b11a445ab74d88e10bfb282f5b7, type: 2}
+  - {fileID: 11400000, guid: 2a4f0b11a445ab74d88e10bfb282f5b7, type: 2}
+  entities: []

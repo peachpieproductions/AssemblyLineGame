@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f165e03a45f1a744788df808d23a33c7, type: 3}
+  m_Name: Medicine
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 21300036, guid: 94bcf6847881fca42a68abe19b62bf61, type: 3}
+  basePrice: 3
+  priceVariant: 1.0004627
+  popularity: 0.53201807
+  isProduct: 1
+  recipe: []
+  craftingOutputCount: 1
+  researchRequired: {fileID: 11400000, guid: d9f30c2b84064b7498e0dabafd8dedee, type: 2}
+  isUnlocked: 0
+  usedToCraft:
+  - {fileID: 11400000, guid: 99c8999a0ab6b4446b2741a58f9b2a5f, type: 2}

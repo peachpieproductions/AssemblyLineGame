@@ -97,7 +97,10 @@ MonoBehaviour:
   dispense: 0
   ignoredByDispensors: 1
   noEntityMenu: 1
+  canFilter: 0
+  filter: {fileID: 0}
   size: {x: 3, y: 3}
+  spr: {fileID: 212261964946539912}
   inboundPackageZone: 1
 --- !u!212 &212261964946539912
 SpriteRenderer:

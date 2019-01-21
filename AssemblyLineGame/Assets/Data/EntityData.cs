@@ -7,6 +7,7 @@ public class EntityData : ScriptableObject {
 
     public GameObject prefab;
     public Sprite sprite;
+    public Sprite[] altSprites;
     public Sprite placementSprite;
     public int cost;
     public Vector2Int size = new Vector2Int(1, 1);

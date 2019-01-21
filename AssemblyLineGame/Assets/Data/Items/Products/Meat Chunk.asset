@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f165e03a45f1a744788df808d23a33c7, type: 3}
+  m_Name: Meat Chunk
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 21300098, guid: d38ae5820779926499d7233b1415d93c, type: 3}
+  basePrice: 1
+  priceVariant: 1.0381505
+  popularity: 0.47060192
+  isProduct: 0
+  recipe:
+  - ingredient: {fileID: 11400000, guid: 2800761ca860a924797ed7098d819446, type: 2}
+    ingredientCount: 1
+  craftingOutputCount: 3
+  researchRequired: {fileID: 11400000, guid: 977ada2dfed968d48924262cd52136f5, type: 2}
+  isUnlocked: 0
+  usedToCraft: []

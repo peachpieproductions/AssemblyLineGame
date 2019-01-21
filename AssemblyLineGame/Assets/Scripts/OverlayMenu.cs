@@ -61,10 +61,20 @@ public class OverlayMenu : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
         if (!open) return;
 
-        for (var i = buttons.Count - 1; i >= 0; i--) {
-            var b = buttons[i];
-            buttons.Remove(buttons[i]);
-            Destroy(b.gameObject);
+        bool completeRefresh = true; //Used to determine whether or not some menus destroy/rebuild all buttons, or just use existing ones.
+
+        if (menuName == "EntityMenu") {
+            if (buttons.Count == GameController.inst.selectedEntity.storage.Count) {
+                completeRefresh = false;
+            }
+        }
+
+        if (completeRefresh) {
+            for (var i = buttons.Count - 1; i >= 0; i--) {
+                var b = buttons[i];
+                buttons.Remove(buttons[i]);
+                Destroy(b.gameObject);
+            }
         }
 
         var temp = templateButton;
@@ -112,8 +122,13 @@ public class OverlayMenu : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
                     }
                 }
                 for (var i = 0; i < selEntity.storage.Count; i++) {
-                    var newButton = Instantiate(temp, temp.transform.parent);
-                    buttons.Add(newButton);
+                    UIButton newButton;
+                    if (completeRefresh) {
+                        newButton = Instantiate(temp, temp.transform.parent);
+                        buttons.Add(newButton);
+                    } else {
+                        newButton = buttons[i];
+                    }
                     newButton.storageSlot = selEntity.storage[i];
                     if (selEntity.storage[i].itemCount > 0) {
                         newButton.text.gameObject.SetActive(true);
@@ -193,13 +208,19 @@ public class OverlayMenu : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         else if (menuName == "RecipeListMenu") {
             GameController.inst.ItemInfoPopup.ToggleOpenClose(false);
             var list = GameController.inst.recipeList;
-            if (GameController.inst.selectingItemData) list = GameController.inst.itemDatas;
+            miscText1.text = "RECIPES";
+            if (GameController.inst.selectingItemData) {
+                list = GameController.inst.itemDatas;
+                miscText1.text = "FILTER";
+            }
             foreach (ItemData item in list) {
-                var newButton = Instantiate(temp, temp.transform.parent);
-                buttons.Add(newButton);
-                newButton.text.text = item.name;
-                newButton.image.sprite = item.sprite;
-                newButton.itemData = item;
+                if (item.isUnlocked) {
+                    var newButton = Instantiate(temp, temp.transform.parent);
+                    buttons.Add(newButton);
+                    newButton.text.text = item.name;
+                    newButton.image.sprite = item.sprite;
+                    newButton.itemData = item;
+                }
             }
         }
 
@@ -208,6 +229,7 @@ public class OverlayMenu : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
                 var newButton = Instantiate(temp, temp.transform.parent);
                 buttons.Add(newButton);
                 newButton.text.text = ent.name;
+                newButton.miscText1.text = "$" + ent.cost;
                 newButton.image.sprite = ent.sprite;
                 newButton.entityData = ent;
             }
@@ -215,7 +237,7 @@ public class OverlayMenu : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
         else if (menuName == "Marketplace") {
             foreach (ItemData item in GameController.inst.itemDatas) {
-                if (item.recipe.Length == 0) {
+                if (item.recipe.Length == 0 && item.isUnlocked) {
                     var newButton = Instantiate(temp, temp.transform.parent);
                     buttons.Add(newButton);
                     newButton.text.text = item.name;

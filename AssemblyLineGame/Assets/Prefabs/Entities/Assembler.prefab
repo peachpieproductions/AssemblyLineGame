@@ -109,6 +109,7 @@ MonoBehaviour:
   canFilter: 1
   filter: {fileID: 0}
   size: {x: 1, y: 1}
+  spr: {fileID: 212205405092812752}
   assemblingItem: {fileID: 0}
 --- !u!212 &212205405092812752
 SpriteRenderer:

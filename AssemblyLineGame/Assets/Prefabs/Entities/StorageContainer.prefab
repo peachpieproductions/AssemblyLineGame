@@ -112,6 +112,7 @@ MonoBehaviour:
   canFilter: 1
   filter: {fileID: 0}
   size: {x: 1, y: 1}
+  spr: {fileID: 212724664644395004}
 --- !u!212 &212724664644395004
 SpriteRenderer:
   m_ObjectHideFlags: 1

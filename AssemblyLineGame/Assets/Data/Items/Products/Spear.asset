@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f165e03a45f1a744788df808d23a33c7, type: 3}
+  m_Name: Spear
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 21300096, guid: 1f71ebd458536c648b1eb76720016d56, type: 3}
+  basePrice: 48
+  priceVariant: 1.030551
+  popularity: 0.4687864
+  isProduct: 1
+  recipe:
+  - ingredient: {fileID: 11400000, guid: e8ccd25aa3a641c4687da4ecc6aec862, type: 2}
+    ingredientCount: 1
+  - ingredient: {fileID: 11400000, guid: b59841efef30af34dafc86f0641628c8, type: 2}
+    ingredientCount: 2
+  - ingredient: {fileID: 11400000, guid: d1ee3b06e976432459b0993ec8516f94, type: 2}
+    ingredientCount: 1
+  craftingOutputCount: 1
+  researchRequired: {fileID: 11400000, guid: 5cab217797b734a46a8daf9116814a5e, type: 2}
+  isUnlocked: 0
+  usedToCraft: []

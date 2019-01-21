@@ -32,6 +32,20 @@ public class Conveyor : BaseEntity {
             }
         }
         pushDir = transform.position + transform.right;
+
+        //set alternate sprite
+        int sides = 0;
+        if (gCon.entityGrid[currentCoord.x + (int)transform.up.x ,currentCoord.y + (int)transform.up.y] > 0) { //Left
+            spr.sprite = data.altSprites[1];
+            sides++;
+        }
+        if (gCon.entityGrid[currentCoord.x + -(int)transform.up.x, currentCoord.y + -(int)transform.up.y] > 0) { //Right
+            spr.sprite = data.altSprites[0];
+            sides++;
+        }
+        if (sides == 0) spr.sprite = data.sprite;
+        else if (sides == 2) spr.sprite = data.altSprites[2];
+
     }
 
 }

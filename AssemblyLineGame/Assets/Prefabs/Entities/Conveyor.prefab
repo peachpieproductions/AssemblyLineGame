@@ -93,10 +93,14 @@ MonoBehaviour:
   currentCoord: {x: 0, y: 0}
   itemsInZone: []
   storesItems: 0
+  ignorePackages: 0
   dispense: 0
   ignoredByDispensors: 0
   noEntityMenu: 1
+  canFilter: 0
+  filter: {fileID: 0}
   size: {x: 1, y: 1}
+  spr: {fileID: 212623021069280204}
   pushDir: {x: 0, y: 0, z: 0}
   facingEntity: {fileID: 0}
 --- !u!212 &212623021069280204

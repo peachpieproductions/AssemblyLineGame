@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e98bf2474402fb45813a4ba579fd457, type: 3}
+  m_Name: Basic Cloth Items
+  m_EditorClassIdentifier: 
+  beingResearched: 0
+  researched: 0
+  researchedOnStart: 0
+  cost: 60
+  items:
+  - {fileID: 11400000, guid: 86dc9fbb72a67ec49bf91e6a43b31a35, type: 2}
+  - {fileID: 11400000, guid: ab170a3c82a20ca489b25782dd739ba7, type: 2}
+  - {fileID: 11400000, guid: 13abc18f06cc8b24b92a9398b9916e0e, type: 2}
+  - {fileID: 11400000, guid: 997f9bf0e34e6524689c19a17c9ba014, type: 2}
+  entities: []
