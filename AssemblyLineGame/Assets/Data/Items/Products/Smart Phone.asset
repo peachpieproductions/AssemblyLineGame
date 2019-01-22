@@ -12,14 +12,16 @@ MonoBehaviour:
   m_Name: Smart Phone
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: e9366d2454f10844cb46117e17c9f1a7, type: 3}
-  basePrice: 3
-  priceVariant: 1.0183017
-  popularity: 0.5019685
+  basePrice: 38
+  priceVariant: 1.0233388
+  popularity: 0.52143294
   isProduct: 1
   recipe:
   - ingredient: {fileID: 11400000, guid: f93792af4fa2a20418fc967915e95ac4, type: 2}
     ingredientCount: 1
   - ingredient: {fileID: 11400000, guid: e527a2a6c810a2443941cbde70188ea7, type: 2}
+    ingredientCount: 1
+  - ingredient: {fileID: 11400000, guid: 66a1c19308a5e634994cf4116f6176de, type: 2}
     ingredientCount: 1
   craftingOutputCount: 1
   researchRequired: {fileID: 11400000, guid: ea866bdf083f0cc41936eab8551584d4, type: 2}

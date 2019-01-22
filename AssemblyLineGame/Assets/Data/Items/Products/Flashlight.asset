@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Name: Flashlight
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300224, guid: 07776979e69aeef4eb014bebbf876481, type: 3}
-  basePrice: 60
-  priceVariant: 0.99698734
-  popularity: 0.536682
+  basePrice: 25
+  priceVariant: 0.9953533
+  popularity: 0.46738085
   isProduct: 1
   recipe:
   - ingredient: {fileID: 11400000, guid: f93792af4fa2a20418fc967915e95ac4, type: 2}
-    ingredientCount: 3
+    ingredientCount: 2
   - ingredient: {fileID: 11400000, guid: f940fd0c4e955d241aebd8428e48a95f, type: 2}
     ingredientCount: 1
   craftingOutputCount: 1

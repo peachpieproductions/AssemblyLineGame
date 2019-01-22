@@ -11,6 +11,8 @@ public class EntityNeighbor {
 public class BaseEntity : MonoBehaviour {
    
     public EntityData data;
+    public bool active = true;
+    public bool canBeToggledActive = true;
     public EntityNeighbor[] neighbors = new EntityNeighbor[4];
     public int currentNeighbor;
     public List<StorageSlot> storage = new List<StorageSlot>();
@@ -28,8 +30,17 @@ public class BaseEntity : MonoBehaviour {
 
     protected GameController gCon;
 
-    private void OnMouseUp() {
+    /*private void OnMouseUp() {
         Clicked();
+    }*/
+
+    private void OnMouseOver() {
+        if (Input.GetMouseButtonUp(0)) {
+            Clicked();
+        }
+        if (Input.GetMouseButtonUp(1)) {
+            ToggleActive();
+        }
     }
 
     private void Awake() {
@@ -50,6 +61,13 @@ public class BaseEntity : MonoBehaviour {
         }
     }
 
+    public virtual void ToggleActive() {
+        if (canBeToggledActive) {
+            active = !active;
+            if (active) spr.color = Color.white;
+            else spr.color = Color.grey;
+        }
+    }
 
     public void SetNeighbors() {
         neighbors[0].dir = new Vector2Int(1, 0);
@@ -145,16 +163,18 @@ public class BaseEntity : MonoBehaviour {
         }
         while (true) {
 
-            foreach (StorageSlot slot in storage) {
-                if (slot.data && slot.itemCount > 0) {
-                    if (Dispense(slot.data)) {
-                        slot.itemCount--;
-                        if (slot.itemCount == 0) slot.data = null;
+            if (active) {
+                foreach (StorageSlot slot in storage) {
+                    if (slot.data && slot.itemCount > 0) {
+                        if (Dispense(slot.data)) {
+                            slot.itemCount--;
+                            if (slot.itemCount == 0) slot.data = null;
 
-                        if (GameController.inst.selectedEntity == this) {
-                            GameController.inst.entityMenu.BuildMenu();
+                            if (GameController.inst.selectedEntity == this) {
+                                GameController.inst.entityMenu.BuildMenu();
+                            }
+                            break;
                         }
-                        break;
                     }
                 }
             }

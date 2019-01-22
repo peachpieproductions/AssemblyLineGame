@@ -13,8 +13,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 04aeb3b184d4a69458103ba035d8e067, type: 3}
   basePrice: 1
-  priceVariant: 0.9938894
-  popularity: 0.5250914
+  priceVariant: 1.0135144
+  popularity: 0.46905288
   isProduct: 0
   recipe:
   - ingredient: {fileID: 11400000, guid: 6685ccae27511184f804b6f80ff91eba, type: 2}
@@ -24,13 +24,19 @@ MonoBehaviour:
   isUnlocked: 1
   usedToCraft:
   - {fileID: 11400000, guid: cf3fe8cbd7c50b8449093e4fcabf2329, type: 2}
+  - {fileID: 11400000, guid: 178d8ff655a29ac478cafdc2177363ca, type: 2}
   - {fileID: 11400000, guid: ea6f3f6240b1cec4392a45d3ea43e3e0, type: 2}
   - {fileID: 11400000, guid: 658de979ad4f9134094fbf5ea83d0498, type: 2}
   - {fileID: 11400000, guid: 99e6c3e6da9a3624bb02df8f6303b554, type: 2}
+  - {fileID: 11400000, guid: 1d842c4f735b3a549ac52b087c4ca2bc, type: 2}
+  - {fileID: 11400000, guid: cc8675d5a31fca441ac57d5e33e79883, type: 2}
   - {fileID: 11400000, guid: 0a53fd91fbdd28142bbed57ef4706962, type: 2}
   - {fileID: 11400000, guid: bddc5b359f8165143972e2dbbd983bc7, type: 2}
   - {fileID: 11400000, guid: e5590ed591283dc4e900425bd2ab8860, type: 2}
   - {fileID: 11400000, guid: 8c844bf80950ad84c84493fa0add7161, type: 2}
   - {fileID: 11400000, guid: b5427ce3257ecf345b2c76bca031c50d, type: 2}
+  - {fileID: 11400000, guid: 90943a48d2658fe48a2aa07b8c42869f, type: 2}
   - {fileID: 11400000, guid: 3c65540f49138cf45a6272202afc5f75, type: 2}
   - {fileID: 11400000, guid: b9462c5c90e1ff141b09e4923b8dbae2, type: 2}
+  - {fileID: 11400000, guid: b35f1dfc08b9baa4194a80eedef245ea, type: 2}
+  - {fileID: 11400000, guid: e4eb77af84fe8ba48b65c52ab05ba92d, type: 2}

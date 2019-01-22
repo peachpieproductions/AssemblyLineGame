@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Name: Spear
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300096, guid: 1f71ebd458536c648b1eb76720016d56, type: 3}
-  basePrice: 48
-  priceVariant: 1.030551
-  popularity: 0.4687864
+  basePrice: 33
+  priceVariant: 0.96611905
+  popularity: 0.45344585
   isProduct: 1
   recipe:
   - ingredient: {fileID: 11400000, guid: e8ccd25aa3a641c4687da4ecc6aec862, type: 2}

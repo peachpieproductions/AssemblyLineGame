@@ -9,17 +9,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f165e03a45f1a744788df808d23a33c7, type: 3}
-  m_Name: Anvil
+  m_Name: Window
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 07776979e69aeef4eb014bebbf876481, type: 3}
-  basePrice: 62
-  priceVariant: 1.003294
-  popularity: 0.49450618
+  sprite: {fileID: 21300040, guid: b174d22563d4ab2428c3238d8d4c126e, type: 3}
+  basePrice: 7
+  priceVariant: 0.9946538
+  popularity: 0.45803943
   isProduct: 1
   recipe:
-  - ingredient: {fileID: 11400000, guid: e8ccd25aa3a641c4687da4ecc6aec862, type: 2}
+  - ingredient: {fileID: 11400000, guid: e527a2a6c810a2443941cbde70188ea7, type: 2}
+    ingredientCount: 3
+  - ingredient: {fileID: 11400000, guid: b59841efef30af34dafc86f0641628c8, type: 2}
     ingredientCount: 3
   craftingOutputCount: 1
-  researchRequired: {fileID: 11400000, guid: 2fe486d7a66fca740a2e8583963cc03b, type: 2}
+  researchRequired: {fileID: 11400000, guid: 4042fc63c29504b48b799554130c4b3a, type: 2}
   isUnlocked: 0
   usedToCraft: []

@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f165e03a45f1a744788df808d23a33c7, type: 3}
+  m_Name: Transistor
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 21300114, guid: 051ef8cf74c3c2d40a39457838ea8886, type: 3}
+  basePrice: 12
+  priceVariant: 0.9602752
+  popularity: 0.48205972
+  isProduct: 0
+  recipe:
+  - ingredient: {fileID: 11400000, guid: 3f5a7ab8a4037b14fa315b65d22ef93f, type: 2}
+    ingredientCount: 1
+  - ingredient: {fileID: 11400000, guid: 63678d7c5644bca46838cbb467361631, type: 2}
+    ingredientCount: 1
+  - ingredient: {fileID: 11400000, guid: f93792af4fa2a20418fc967915e95ac4, type: 2}
+    ingredientCount: 1
+  craftingOutputCount: 1
+  researchRequired: {fileID: 11400000, guid: dd41eb4baaec28949acd4a145032b6bf, type: 2}
+  isUnlocked: 0
+  usedToCraft:
+  - {fileID: 11400000, guid: f987265aaade328418b2f830c02a2422, type: 2}
+  - {fileID: 11400000, guid: 0e635564d61728c4d96f21f5914d8838, type: 2}
+  - {fileID: 11400000, guid: b35f1dfc08b9baa4194a80eedef245ea, type: 2}

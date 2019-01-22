@@ -13,8 +13,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   beingResearched: 0
   researched: 0
-  cost: 150
+  researchedOnStart: 0
+  cost: 660
   items:
   - {fileID: 11400000, guid: a5ad881fbb6f3604492fbd792ecbee27, type: 2}
   - {fileID: 11400000, guid: 99e6c3e6da9a3624bb02df8f6303b554, type: 2}
+  - {fileID: 11400000, guid: a7ba9ceac64157045954db1cb320c9e5, type: 2}
+  - {fileID: 11400000, guid: 970725f22c6d5c54182d0079913e46f9, type: 2}
   entities: []

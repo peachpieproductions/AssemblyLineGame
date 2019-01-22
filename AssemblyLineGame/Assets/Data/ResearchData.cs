@@ -17,8 +17,8 @@ public class ResearchData : ScriptableObject {
     public void GenerateCost() {
         cost = 0;
         if (!researchedOnStart) {
-            for (int i = 0; i < 4; i++) {
-                cost += items[i].basePrice * 10;
+            for (int i = 0; i < items.Length; i++) {
+                if (i < 4 || items[i].isProduct) cost += items[i].basePrice * 10;
             }
         }
     }

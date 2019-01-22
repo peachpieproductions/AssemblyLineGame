@@ -11,10 +11,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f165e03a45f1a744788df808d23a33c7, type: 3}
   m_Name: Wire
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300020, guid: 07776979e69aeef4eb014bebbf876481, type: 3}
+  sprite: {fileID: 21300100, guid: 051ef8cf74c3c2d40a39457838ea8886, type: 3}
   basePrice: 5
-  priceVariant: 0.9721168
-  popularity: 0.4631975
+  priceVariant: 1.0387769
+  popularity: 0.579051
   isProduct: 0
   recipe:
   - ingredient: {fileID: 11400000, guid: 6077bac4685ecc2429c73d6e4ff55484, type: 2}
@@ -23,4 +23,10 @@ MonoBehaviour:
   researchRequired: {fileID: 11400000, guid: dd41eb4baaec28949acd4a145032b6bf, type: 2}
   isUnlocked: 0
   usedToCraft:
+  - {fileID: 11400000, guid: 4b3e312319886784499abe1ff6b80bb0, type: 2}
+  - {fileID: 11400000, guid: 66a1c19308a5e634994cf4116f6176de, type: 2}
+  - {fileID: 11400000, guid: cc8675d5a31fca441ac57d5e33e79883, type: 2}
   - {fileID: 11400000, guid: 0a53fd91fbdd28142bbed57ef4706962, type: 2}
+  - {fileID: 11400000, guid: 815d598caae827c40822d34cc3cafcb2, type: 2}
+  - {fileID: 11400000, guid: 02c371a0e430a9748a89883adf97d1c5, type: 2}
+  - {fileID: 11400000, guid: 523193a1e4c387041acdac6ea8ec3eb5, type: 2}

@@ -12,14 +12,16 @@ MonoBehaviour:
   m_Name: Walkie Talkie
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300040, guid: 07776979e69aeef4eb014bebbf876481, type: 3}
-  basePrice: 15
-  priceVariant: 1.0440139
-  popularity: 0.53149045
+  basePrice: 26
+  priceVariant: 0.9650223
+  popularity: 0.5088076
   isProduct: 1
   recipe:
   - ingredient: {fileID: 11400000, guid: f93792af4fa2a20418fc967915e95ac4, type: 2}
     ingredientCount: 3
   - ingredient: {fileID: 11400000, guid: 09e6c94ef21575847b400b1d7ca68ec8, type: 2}
+    ingredientCount: 1
+  - ingredient: {fileID: 11400000, guid: 02c371a0e430a9748a89883adf97d1c5, type: 2}
     ingredientCount: 1
   craftingOutputCount: 1
   researchRequired: {fileID: 11400000, guid: dd91ce839badd9d49b17cf1f7a010a43, type: 2}

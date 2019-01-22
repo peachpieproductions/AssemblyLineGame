@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f165e03a45f1a744788df808d23a33c7, type: 3}
+  m_Name: Uzi
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 21300252, guid: 01fded4fe97c81a48bce15dc68abb25d, type: 3}
+  basePrice: 71
+  priceVariant: 0.9988614
+  popularity: 0.54485166
+  isProduct: 1
+  recipe:
+  - ingredient: {fileID: 11400000, guid: 700224f1ca174b349b2b4bf8e0afa07a, type: 2}
+    ingredientCount: 1
+  - ingredient: {fileID: 11400000, guid: e8ccd25aa3a641c4687da4ecc6aec862, type: 2}
+    ingredientCount: 3
+  craftingOutputCount: 1
+  researchRequired: {fileID: 11400000, guid: ee599169ef388e54386bef03dd8a6c34, type: 2}
+  isUnlocked: 0
+  usedToCraft: []

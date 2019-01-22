@@ -14,9 +14,10 @@ MonoBehaviour:
   beingResearched: 0
   researched: 0
   researchedOnStart: 0
-  cost: 630
+  cost: 380
   items:
   - {fileID: 11400000, guid: 095f1bd5b692f734887ec03a2d338ff2, type: 2}
   - {fileID: 11400000, guid: 22121d60e54851147b65801bc5010ccb, type: 2}
   - {fileID: 11400000, guid: 67521c6ac48681b4989cd9c0271c5cab, type: 2}
+  - {fileID: 11400000, guid: f39170ce6f45a0d41826e349c6dd35c4, type: 2}
   entities: []

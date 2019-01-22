@@ -11,10 +11,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f165e03a45f1a744788df808d23a33c7, type: 3}
   m_Name: Metal Sheet
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 9d8c6f21d89b8b644b881ff146d5de8f, type: 3}
+  sprite: {fileID: 21300052, guid: c34e33d622fe1b240a715e50e9769a74, type: 3}
   basePrice: 5
-  priceVariant: 0.9951821
-  popularity: 0.4808723
+  priceVariant: 0.9597143
+  popularity: 0.46380648
   isProduct: 0
   recipe:
   - ingredient: {fileID: 11400000, guid: 6077bac4685ecc2429c73d6e4ff55484, type: 2}

@@ -11,10 +11,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f165e03a45f1a744788df808d23a33c7, type: 3}
   m_Name: Grenade
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 16f9575fd1af36b4db44f04196b8d718, type: 3}
+  sprite: {fileID: 21300012, guid: 290713e1b92287a4a974ed63220719ed, type: 3}
   basePrice: 15
-  priceVariant: 0.9975456
-  popularity: 0.52701175
+  priceVariant: 0.9959435
+  popularity: 0.49433216
   isProduct: 1
   recipe:
   - ingredient: {fileID: 11400000, guid: 700224f1ca174b349b2b4bf8e0afa07a, type: 2}

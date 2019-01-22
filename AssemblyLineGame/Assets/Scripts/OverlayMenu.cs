@@ -151,6 +151,15 @@ public class OverlayMenu : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
                 } else {
                     miscButton3.gameObject.SetActive(false);
                 }
+
+                //on/off
+                if (selEntity.active) {
+                    miscImage1.GetComponent<RectTransform>().anchoredPosition = new Vector2(-12, 0);
+                    miscImage1.color = new Color(.6f, 1, .6f);
+                } else {
+                    miscImage1.GetComponent<RectTransform>().anchoredPosition = new Vector2(-112, 0);
+                    miscImage1.color = new Color(1, .6f, .6f);
+                }
             }
         }
 

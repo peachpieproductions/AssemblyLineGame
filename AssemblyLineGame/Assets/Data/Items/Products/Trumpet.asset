@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f165e03a45f1a744788df808d23a33c7, type: 3}
+  m_Name: Trumpet
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 21300010, guid: 290713e1b92287a4a974ed63220719ed, type: 3}
+  basePrice: 48
+  priceVariant: 0.9491442
+  popularity: 0.50740606
+  isProduct: 1
+  recipe:
+  - ingredient: {fileID: 11400000, guid: 3b432bfd23c53aa4f978ae0c2b394279, type: 2}
+    ingredientCount: 3
+  - ingredient: {fileID: 11400000, guid: 6077bac4685ecc2429c73d6e4ff55484, type: 2}
+    ingredientCount: 1
+  - ingredient: {fileID: 11400000, guid: f93792af4fa2a20418fc967915e95ac4, type: 2}
+    ingredientCount: 2
+  craftingOutputCount: 1
+  researchRequired: {fileID: 11400000, guid: d6992406a583f27439b0e597e4f56426, type: 2}
+  isUnlocked: 0
+  usedToCraft: []

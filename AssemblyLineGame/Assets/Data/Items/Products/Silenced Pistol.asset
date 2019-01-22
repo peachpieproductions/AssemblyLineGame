@@ -9,12 +9,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f165e03a45f1a744788df808d23a33c7, type: 3}
-  m_Name: Magnum
+  m_Name: Silenced Pistol
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300146, guid: 07776979e69aeef4eb014bebbf876481, type: 3}
+  sprite: {fileID: 21300056, guid: 01fded4fe97c81a48bce15dc68abb25d, type: 3}
   basePrice: 71
-  priceVariant: 0.98721313
-  popularity: 0.49274492
+  priceVariant: 1.0224406
+  popularity: 0.5198511
   isProduct: 1
   recipe:
   - ingredient: {fileID: 11400000, guid: 700224f1ca174b349b2b4bf8e0afa07a, type: 2}
@@ -22,6 +22,6 @@ MonoBehaviour:
   - ingredient: {fileID: 11400000, guid: e8ccd25aa3a641c4687da4ecc6aec862, type: 2}
     ingredientCount: 3
   craftingOutputCount: 1
-  researchRequired: {fileID: 11400000, guid: 5cab217797b734a46a8daf9116814a5e, type: 2}
+  researchRequired: {fileID: 11400000, guid: ee599169ef388e54386bef03dd8a6c34, type: 2}
   isUnlocked: 0
   usedToCraft: []

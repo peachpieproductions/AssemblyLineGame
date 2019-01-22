@@ -12,13 +12,21 @@ MonoBehaviour:
   m_Name: Computer Chip
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300198, guid: c34e33d622fe1b240a715e50e9769a74, type: 3}
-  basePrice: 6
-  priceVariant: 0.9630881
-  popularity: 0.48767677
+  basePrice: 30
+  priceVariant: 1.0214112
+  popularity: 0.54232866
   isProduct: 1
-  recipe: []
+  recipe:
+  - ingredient: {fileID: 11400000, guid: 3f5a7ab8a4037b14fa315b65d22ef93f, type: 2}
+    ingredientCount: 2
+  - ingredient: {fileID: 11400000, guid: 3b432bfd23c53aa4f978ae0c2b394279, type: 2}
+    ingredientCount: 1
+  - ingredient: {fileID: 11400000, guid: 63678d7c5644bca46838cbb467361631, type: 2}
+    ingredientCount: 2
   craftingOutputCount: 1
-  researchRequired: {fileID: 11400000, guid: dd41eb4baaec28949acd4a145032b6bf, type: 2}
+  researchRequired: {fileID: 11400000, guid: dd91ce839badd9d49b17cf1f7a010a43, type: 2}
   isUnlocked: 0
   usedToCraft:
-  - {fileID: 11400000, guid: 8207cd929de59a947af214eb063aff79, type: 2}
+  - {fileID: 11400000, guid: 6ed2e4155d4c3494c906ddb59c4d43fb, type: 2}
+  - {fileID: 11400000, guid: cc8675d5a31fca441ac57d5e33e79883, type: 2}
+  - {fileID: 11400000, guid: 1a2a96cd79278e14a850005d505a5fd6, type: 2}

@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f165e03a45f1a744788df808d23a33c7, type: 3}
+  m_Name: Electric Guitar
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 21300002, guid: 290713e1b92287a4a974ed63220719ed, type: 3}
+  basePrice: 54
+  priceVariant: 0.9746496
+  popularity: 0.46336582
+  isProduct: 1
+  recipe:
+  - ingredient: {fileID: 11400000, guid: b59841efef30af34dafc86f0641628c8, type: 2}
+    ingredientCount: 2
+  - ingredient: {fileID: 11400000, guid: 66a1c19308a5e634994cf4116f6176de, type: 2}
+    ingredientCount: 1
+  - ingredient: {fileID: 11400000, guid: 63678d7c5644bca46838cbb467361631, type: 2}
+    ingredientCount: 2
+  craftingOutputCount: 1
+  researchRequired: {fileID: 11400000, guid: d6992406a583f27439b0e597e4f56426, type: 2}
+  isUnlocked: 0
+  usedToCraft: []

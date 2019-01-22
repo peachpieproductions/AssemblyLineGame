@@ -11,10 +11,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f165e03a45f1a744788df808d23a33c7, type: 3}
   m_Name: Paper
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 1540d19340f352d4cac834da7f47ec49, type: 3}
+  sprite: {fileID: 21300086, guid: c006901635b8ff2409db19ddb9a0e928, type: 3}
   basePrice: 1
-  priceVariant: 1.0049093
-  popularity: 0.50060743
+  priceVariant: 1.0121149
+  popularity: 0.43023038
   isProduct: 0
   recipe:
   - ingredient: {fileID: 11400000, guid: b59841efef30af34dafc86f0641628c8, type: 2}

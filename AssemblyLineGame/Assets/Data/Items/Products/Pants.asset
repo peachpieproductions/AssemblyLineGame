@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Name: Pants
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300012, guid: 658813dff9a601b429a0faca5c182735, type: 3}
-  basePrice: 6
-  priceVariant: 0.9961056
-  popularity: 0.5092903
+  basePrice: 10
+  priceVariant: 1.0178212
+  popularity: 0.5023332
   isProduct: 1
   recipe:
   - ingredient: {fileID: 11400000, guid: d1ee3b06e976432459b0993ec8516f94, type: 2}

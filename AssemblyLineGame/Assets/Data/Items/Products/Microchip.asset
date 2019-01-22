@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f165e03a45f1a744788df808d23a33c7, type: 3}
+  m_Name: Microchip
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 21300006, guid: 290713e1b92287a4a974ed63220719ed, type: 3}
+  basePrice: 8
+  priceVariant: 1.0190002
+  popularity: 0.579502
+  isProduct: 0
+  recipe:
+  - ingredient: {fileID: 11400000, guid: 3f5a7ab8a4037b14fa315b65d22ef93f, type: 2}
+    ingredientCount: 1
+  - ingredient: {fileID: 11400000, guid: 63678d7c5644bca46838cbb467361631, type: 2}
+    ingredientCount: 1
+  craftingOutputCount: 1
+  researchRequired: {fileID: 11400000, guid: dd41eb4baaec28949acd4a145032b6bf, type: 2}
+  isUnlocked: 0
+  usedToCraft:
+  - {fileID: 11400000, guid: 4b3e312319886784499abe1ff6b80bb0, type: 2}
+  - {fileID: 11400000, guid: 970725f22c6d5c54182d0079913e46f9, type: 2}
+  - {fileID: 11400000, guid: c375b33fbf4943e43bbdf4cfea6eb3a3, type: 2}
+  - {fileID: 11400000, guid: 8207cd929de59a947af214eb063aff79, type: 2}

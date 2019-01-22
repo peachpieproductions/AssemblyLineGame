@@ -11,10 +11,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f165e03a45f1a744788df808d23a33c7, type: 3}
   m_Name: Coal
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300056, guid: 07776979e69aeef4eb014bebbf876481, type: 3}
+  sprite: {fileID: 21300116, guid: 8df4023869e656d418474bbfbe866650, type: 3}
   basePrice: 1
-  priceVariant: 1.0093569
-  popularity: 0.4734853
+  priceVariant: 1.0280788
+  popularity: 0.47088355
   isProduct: 0
   recipe: []
   craftingOutputCount: 1

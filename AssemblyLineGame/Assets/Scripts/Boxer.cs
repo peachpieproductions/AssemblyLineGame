@@ -16,31 +16,33 @@ public class Boxer : BaseEntity {
 
         while (true) {
 
-            for (var i = 1; i < 5; i++) {
-                var index = currentNeighbor + i;
-                if (index > 3) index -= 4;
-                if (neighbors[index].entity) {
-                    if (!neighbors[index].entity.ignoredByDispensors || neighbors[index].entity is Zone) {
-                        currentNeighbor = index;
-                        break;
-                    }   
-                }
-            }
-
-            if (neighbors[currentNeighbor].entity) {
-                foreach (StorageSlot s in storage) {
-                    if (s.itemCount >= 10) {
-                        var inst = Instantiate(box,(Vector2)transform.position + neighbors[currentNeighbor].dir,Quaternion.identity).GetComponent<Package>();
-                        inst.storage.data = s.data;
-                        inst.spriteRenderer.sprite = s.data.sprite;
-                        inst.storage.itemCount = 10;
-                        if (neighbors[currentNeighbor].entity is Zone) {
-                            inst.GetComponent<Rigidbody2D>().velocity = neighbors[currentNeighbor].dir * 4 + new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f));
+            if (active) {
+                for (var i = 1; i < 5; i++) {
+                    var index = currentNeighbor + i;
+                    if (index > 3) index -= 4;
+                    if (neighbors[index].entity) {
+                        if (!neighbors[index].entity.ignoredByDispensors || neighbors[index].entity is Zone) {
+                            currentNeighbor = index;
+                            break;
                         }
-                        s.itemCount -= 10;
-                        if (s.itemCount == 0) s.data = null;
-                        if (GameController.inst.selectedEntity == this) GameController.inst.entityMenu.BuildMenu();
-                        //if (GameController.inst.contractsMenu.open) GameController.inst.CheckForCompletedContracts();
+                    }
+                }
+
+                if (neighbors[currentNeighbor].entity) {
+                    foreach (StorageSlot s in storage) {
+                        if (s.itemCount >= 10) {
+                            var inst = Instantiate(box, (Vector2)transform.position + neighbors[currentNeighbor].dir, Quaternion.identity).GetComponent<Package>();
+                            inst.storage.data = s.data;
+                            inst.spriteRenderer.sprite = s.data.sprite;
+                            inst.storage.itemCount = 10;
+                            if (neighbors[currentNeighbor].entity is Zone) {
+                                inst.GetComponent<Rigidbody2D>().velocity = neighbors[currentNeighbor].dir * 4 + new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f));
+                            }
+                            s.itemCount -= 10;
+                            if (s.itemCount == 0) s.data = null;
+                            if (GameController.inst.selectedEntity == this) GameController.inst.entityMenu.BuildMenu();
+                            //if (GameController.inst.contractsMenu.open) GameController.inst.CheckForCompletedContracts();
+                        }
                     }
                 }
             }

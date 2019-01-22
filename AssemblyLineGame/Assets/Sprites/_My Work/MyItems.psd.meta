@@ -7,6 +7,8 @@ TextureImporter:
     21300004: MyItems_2
     21300006: MyItems_3
     21300008: MyItems_4
+    21300010: MyItems_5
+    21300012: MyItems_6
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -125,7 +127,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 15ca75c6555da924381397e18403f4f0
+      spriteID: fd138ed2c857b264789751cc024a50ef
       vertices: []
       indices: 
       edges: []
@@ -145,7 +147,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3d704ecfb8ab3ed45a5c60c14ecc82ee
+      spriteID: f441d5494d5b5c946af01fdf385b12f5
       vertices: []
       indices: 
       edges: []
@@ -165,7 +167,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1a4c947f4812c5c4a8164be9cc8b3d7e
+      spriteID: c4ceb7d47e0518d418dc10ef56c237a0
       vertices: []
       indices: 
       edges: []
@@ -185,7 +187,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bed01e95123945145922a46f815163ea
+      spriteID: 9491d56735a6b614a8b73090ece736d9
       vertices: []
       indices: 
       edges: []
@@ -205,7 +207,47 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b4fd7a45c027ed848995f89561b985d0
+      spriteID: a3978a07ae92cfa4085e33053246f63e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyItems_5
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 288
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7dd43f1e0dc06824cb441a88484609fd
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyItems_6
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 288
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d583a6fdd627af1419be89cd3274926d
       vertices: []
       indices: 
       edges: []

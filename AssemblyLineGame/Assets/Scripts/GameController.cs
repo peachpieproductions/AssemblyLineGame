@@ -71,6 +71,7 @@ public class GameController : MonoBehaviour {
     public OverlayMenu tooltipPopup;
     public OverlayMenu TopHud;
     public TextMeshProUGUI MenuButtonsText;
+    public QuickReferences hudResearchBar;
 
     #endregion
     
@@ -414,6 +415,9 @@ public class GameController : MonoBehaviour {
         }
         cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, camZoomAmount, Time.deltaTime * 10f);
 
+        //Drag Camera
+        if (Input.GetMouseButton(1)) camMoveVelocity -= new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y")) * Time.unscaledDeltaTime * (cam.orthographicSize - 1.5f);
+
         //Camera Movement and Bounds
         camMoveVelocity += new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")) * Time.unscaledDeltaTime;
         camMoveVelocity *= .9f;
@@ -471,7 +475,7 @@ public class GameController : MonoBehaviour {
 
     public void AddToMarketplaceCart(UIButton listing) {
         if (listing.itemData) {
-            if (Input.GetKey(KeyCode.LeftShift)) listing.storageSlot.itemCount += 10;
+            if (Input.GetKey(KeyCode.LeftShift) || Input.GetMouseButton(1)) listing.storageSlot.itemCount += 10;
             else listing.storageSlot.itemCount++;
         }
         UpdateMarketplace();
@@ -479,7 +483,7 @@ public class GameController : MonoBehaviour {
 
     public void RemoveFromMarketplaceCart(UIButton listing) {
         if (listing.itemData) {
-            if (Input.GetKey(KeyCode.LeftShift)) listing.storageSlot.itemCount -= 10;
+            if (Input.GetKey(KeyCode.LeftShift) || Input.GetMouseButton(1)) listing.storageSlot.itemCount -= 10;
             else listing.storageSlot.itemCount--;
             if (listing.storageSlot.itemCount < 0) listing.storageSlot.itemCount = 0;
         }
@@ -492,6 +496,10 @@ public class GameController : MonoBehaviour {
             listing.miscText2.text = listing.storageSlot.itemCount.ToString();
             listing.miscText1.text = "$" + listing.itemData.getCurrentPrice().ToString();
             cartTotal += listing.storageSlot.itemCount * listing.itemData.getCurrentPrice();
+            if (listing.itemData.getCurrentPrice() > listing.itemData.basePrice) listing.miscImages[0].gameObject.SetActive(true); 
+            else listing.miscImages[0].gameObject.SetActive(false);
+            if (listing.itemData.getCurrentPrice() < listing.itemData.basePrice) listing.miscImages[1].gameObject.SetActive(true);
+            else listing.miscImages[1].gameObject.SetActive(false);
         }
         marketplaceMenu.miscText1.GetComponent<TextMeshProUGUI>().text = "$" + cartTotal;
     }
@@ -607,6 +615,8 @@ public class GameController : MonoBehaviour {
             researching = data;
             researching.beingResearched = true;
             researchProgress = 0;
+            hudResearchBar.gameObject.SetActive(true);
+            hudResearchBar.texts[0].text = "Researching " + data.name;
             StartCoroutine(Research());
         }
     }
@@ -614,9 +624,11 @@ public class GameController : MonoBehaviour {
     public IEnumerator Research() {
         while(researching) {
             researchProgress += 1f;
+            hudResearchBar.rects[0].localScale = new Vector3(researchProgress / researching.cost, 1, 1);
             if (researchMenu.gameObject.activeSelf) researchMenu.BuildMenu();
             if (researchProgress >= researching.cost) {
                 researching.UnlockResearch();
+                hudResearchBar.gameObject.SetActive(false);
                 GenerateLog("You've finished researching " + researching.name + ".", gameColors[2], 8f);
                 researching = null;
                 if (researchMenu.gameObject.activeSelf) researchMenu.BuildMenu();

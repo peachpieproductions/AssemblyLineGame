@@ -26,13 +26,62 @@ public class DataVisualizationEditor : Editor {
             found = AssetDatabase.FindAssets("t:ItemData");
             foreach (string s in found) v.itemDatas.Add((ItemData)AssetDatabase.LoadAssetAtPath(AssetDatabase.GUIDToAssetPath(s), typeof(ItemData)));
 
+            //Price Items
+            foreach (ItemData itemData in v.itemDatas) { //reset prices for crafted items
+                if (itemData.recipe.Length > 0) {
+                    itemData.basePrice = 0;
+                }
+            }
+            foreach (ItemData itemData in v.itemDatas) {
+                if (itemData.recipe.Length > 0 && itemData.basePrice == 0) {
+                    itemData.SetBasePrice();
+                }
+            }
+
             //Load Research Datas
             found = AssetDatabase.FindAssets("t:ResearchData");
             foreach (string s in found) v.researchDatas.Add((ResearchData)AssetDatabase.LoadAssetAtPath(AssetDatabase.GUIDToAssetPath(s), typeof(ResearchData)));
 
+            //Reserach Stuff & Price
+            foreach (ItemData i in v.itemDatas) {
+                i.researchRequired = null;
+                i.usedToCraft.Clear();
+            }
+            foreach (ResearchData r in v.researchDatas) {
+                foreach (ItemData i in r.items) {
+                    if (i.researchRequired != null) Debug.Log(i.name + " belongs to " + i.researchRequired.name + " and " + r.name);
+                    i.researchRequired = r;
+                    //if (i.recipe.Length == 0) Debug.Log(i.name + " is a raw material, but is included in " + r.name);
+                }
+                r.GenerateCost();
+            }
+            foreach (ItemData i in v.itemDatas) {
+                if (i.recipe.Length > 0 && i.researchRequired == null) Debug.Log(i.name + " is a product, but requires no research");
+            }
+
             //Sort Research Listings
             v.researchDatas.Sort((d1, d2) => d1.cost.CompareTo(d2.cost));
 
+            //Set Item Datas 'used to craft' list
+            foreach (ItemData i in v.itemDatas) {
+                foreach (ItemData.CraftingIngredient ing in i.recipe) {
+                    if (!ing.ingredient.usedToCraft.Contains(i)) {
+                        ing.ingredient.usedToCraft.Add(i);
+                    }
+                }
+            }
+
+        }
+
+        GUI.color = Color.white;
+        if (GUILayout.Button("Save Data")) {
+            foreach (ItemData itemData in v.itemDatas) {
+                EditorUtility.SetDirty(itemData);
+            }
+            foreach (EntityData d in v.entityDatas) {
+                EditorUtility.SetDirty(d);
+            }
+            AssetDatabase.SaveAssets();
         }
 
         DrawDefaultInspector();
@@ -95,6 +144,8 @@ public class DataVisualizationEditor : Editor {
                         newNode.GetComponentInChildren<TextMeshPro>().text = v.researchDatas[i].items[j].name + " (" + v.researchDatas[i].items[j].basePrice + ")";
                         newNode.transform.Find("New Sprite").GetComponent<SpriteRenderer>().enabled = true;
                         newNode.transform.Find("New Sprite").GetComponent<SpriteRenderer>().sprite = v.researchDatas[i].items[j].sprite;
+                        if (v.researchDatas[i].items.Length >= 4) newNode.transform.GetComponent<SpriteRenderer>().color = new Color(.8f, 1, .8f);
+                        else newNode.transform.GetComponent<SpriteRenderer>().color = new Color(1f, .8f, .8f);
                     }
                 }
             }

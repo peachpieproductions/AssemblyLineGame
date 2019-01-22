@@ -104,6 +104,11 @@ public class UIButton : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
             GameController.inst.recipeListMenu.ToggleOpenClose(true);
         }
 
+        else if (function == "ToggleEntityActive") {
+            GameController.inst.selectedEntity.ToggleActive();
+            GameController.inst.entityMenu.BuildMenu();
+        }
+
     }
 
     public void OnPointerClick(PointerEventData eventData) {

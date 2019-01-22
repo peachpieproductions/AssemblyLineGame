@@ -11,10 +11,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f165e03a45f1a744788df808d23a33c7, type: 3}
   m_Name: Dynamite
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300102, guid: 07776979e69aeef4eb014bebbf876481, type: 3}
+  sprite: {fileID: 21300230, guid: d6032bf2a7aa21b4abf799ffb67244e4, type: 3}
   basePrice: 21
-  priceVariant: 0.99334466
-  popularity: 0.5271025
+  priceVariant: 0.9745601
+  popularity: 0.5281973
   isProduct: 1
   recipe:
   - ingredient: {fileID: 11400000, guid: 700224f1ca174b349b2b4bf8e0afa07a, type: 2}

@@ -15,6 +15,7 @@ public class DataVisualization : MonoBehaviour {
         for (var i = nodes.Count - 1; i >= 0; i--) {
             DestroyImmediate(nodes[i]);
         }
+        nodes.Clear();
     }
 
 

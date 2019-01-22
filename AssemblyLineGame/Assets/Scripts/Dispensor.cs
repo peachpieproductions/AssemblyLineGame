@@ -11,6 +11,13 @@ public class Dispensor : BaseEntity {
         
     }
 
+    public override void ToggleActive() {
+        base.ToggleActive();
+        if (vacuum) {
+            GetComponentInChildren<VacuumForce>().enabled = active;
+        }
+    }
+
     public override void UpdateEntity(bool updateNeighbors = false) {
         base.UpdateEntity(updateNeighbors);
 

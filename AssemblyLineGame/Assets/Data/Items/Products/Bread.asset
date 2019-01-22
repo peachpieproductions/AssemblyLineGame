@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Name: Bread
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: df0f38a658ad3e14fb7df3cf8ff7b4e9, type: 3}
-  basePrice: 22
-  priceVariant: 1.0278422
-  popularity: 0.49005088
+  basePrice: 14
+  priceVariant: 1.012921
+  popularity: 0.5313198
   isProduct: 1
   recipe:
   - ingredient: {fileID: 11400000, guid: 9bc5e7017be5daa478a8a8a0396af540, type: 2}
@@ -22,4 +22,5 @@ MonoBehaviour:
   craftingOutputCount: 1
   researchRequired: {fileID: 11400000, guid: be53cf01695c11746ac2e1afd871092c, type: 2}
   isUnlocked: 0
-  usedToCraft: []
+  usedToCraft:
+  - {fileID: 11400000, guid: ceb2b9ef84a406442ac34de58c345784, type: 2}

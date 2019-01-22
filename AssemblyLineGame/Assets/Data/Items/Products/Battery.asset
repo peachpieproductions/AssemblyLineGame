@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Name: Battery
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300014, guid: 07776979e69aeef4eb014bebbf876481, type: 3}
-  basePrice: 45
-  priceVariant: 1.0277056
-  popularity: 0.5055018
-  isProduct: 1
+  basePrice: 17
+  priceVariant: 1.0157073
+  popularity: 0.5440262
+  isProduct: 0
   recipe:
-  - ingredient: {fileID: 11400000, guid: db208c5d3203dd0488bdb464dc16844d, type: 2}
-    ingredientCount: 1
-  - ingredient: {fileID: 11400000, guid: 3b432bfd23c53aa4f978ae0c2b394279, type: 2}
-    ingredientCount: 1
+  - ingredient: {fileID: 11400000, guid: 6077bac4685ecc2429c73d6e4ff55484, type: 2}
+    ingredientCount: 3
+  - ingredient: {fileID: 11400000, guid: 99f407e9b6d76554aa26cdd656877f69, type: 2}
+    ingredientCount: 2
   craftingOutputCount: 1
   researchRequired: {fileID: 11400000, guid: cc081b0dfa47dee41a48e6fb113a7ca0, type: 2}
   isUnlocked: 0

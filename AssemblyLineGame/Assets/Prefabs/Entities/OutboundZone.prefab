@@ -79,6 +79,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: bde6c3be2ae914e42863d40c698997bb, type: 2}
+  active: 1
+  canBeToggledActive: 0
   neighbors:
   - entity: {fileID: 0}
     dir: {x: 0, y: 0}

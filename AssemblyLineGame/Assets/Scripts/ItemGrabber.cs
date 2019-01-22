@@ -30,41 +30,42 @@ public class ItemGrabber : BaseEntity {
 
         while (true) {
 
-            if (transferingItem) {
-                armPivot.localEulerAngles = Vector3.Slerp(armPivot.localEulerAngles, new Vector3(0, 0, 0), Time.deltaTime * 5);
-                if (armPivot.localEulerAngles.z < 5) {
-                    transferingItem.parent = null;
-                    transferingItem.GetComponent<Rigidbody2D>().simulated = true;
-                    transferingItem = null;
-                }
-            }
-            else {
-                armPivot.localEulerAngles = Vector3.Slerp(armPivot.localEulerAngles, new Vector3(0, 0, 180), Time.deltaTime * 5);
-                if (armPivot.localEulerAngles.z > 175) {
-                    if (nextToStorage) { //Grab items from storage slots
-                        foreach(StorageSlot s in nextToStorage.storage) {
-                            if (s.itemCount > 0 && (filter == null || filter == s.data)) {
-                                s.itemCount--;
-                                var newItem = GameController.inst.SpawnItem(s.data);
-                                transferingItem = newItem.transform;
-                                break;
-                            }
-                        }
-                        if (GameController.inst.selectedEntity == nextToStorage) GameController.inst.entityMenu.BuildMenu();
-                    } else {
-                        foreach (Transform t in itemsInZone) { //Grab Items in Zone
-                            var item = t.GetComponent<Item>();
-                            if (t.GetComponent<Rigidbody2D>() && (filter == null || item && filter == item.data)) {
-                                transferingItem = t;
-                                break;
-                            }
-                        }
+            if (active) {
+                if (transferingItem) {
+                    armPivot.localEulerAngles = Vector3.Slerp(armPivot.localEulerAngles, new Vector3(0, 0, 0), Time.deltaTime * 5);
+                    if (armPivot.localEulerAngles.z < 5) {
+                        transferingItem.parent = null;
+                        transferingItem.GetComponent<Rigidbody2D>().simulated = true;
+                        transferingItem = null;
                     }
-                    if (transferingItem) {
-                        transferingItem.parent = armPivot;
-                        transferingItem.localPosition = new Vector3(1, 0);
-                        transferingItem.GetComponent<Rigidbody2D>().simulated = false;
-                    } else yield return new WaitForSeconds(.1f);
+                } else {
+                    armPivot.localEulerAngles = Vector3.Slerp(armPivot.localEulerAngles, new Vector3(0, 0, 180), Time.deltaTime * 5);
+                    if (armPivot.localEulerAngles.z > 175) {
+                        if (nextToStorage) { //Grab items from storage slots
+                            foreach (StorageSlot s in nextToStorage.storage) {
+                                if (s.itemCount > 0 && (filter == null || filter == s.data)) {
+                                    s.itemCount--;
+                                    var newItem = GameController.inst.SpawnItem(s.data);
+                                    transferingItem = newItem.transform;
+                                    break;
+                                }
+                            }
+                            if (GameController.inst.selectedEntity == nextToStorage) GameController.inst.entityMenu.BuildMenu();
+                        } else {
+                            foreach (Transform t in itemsInZone) { //Grab Items in Zone
+                                var item = t.GetComponent<Item>();
+                                if (t.GetComponent<Rigidbody2D>() && (filter == null || item && filter == item.data)) {
+                                    transferingItem = t;
+                                    break;
+                                }
+                            }
+                        }
+                        if (transferingItem) {
+                            transferingItem.parent = armPivot;
+                            transferingItem.localPosition = new Vector3(1, 0);
+                            transferingItem.GetComponent<Rigidbody2D>().simulated = false;
+                        } else yield return new WaitForSeconds(.1f);
+                    }
                 }
             }
             yield return null;
