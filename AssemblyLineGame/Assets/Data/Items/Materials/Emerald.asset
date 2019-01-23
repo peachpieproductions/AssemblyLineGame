@@ -13,8 +13,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 8cfad6b7bbab2ec45b7628a755db3cc9, type: 3}
   basePrice: 2
-  priceVariant: 0.9586234
-  popularity: 0.46992975
+  priceVariant: 1.0819868
+  popularity: 0.42873278
   isProduct: 0
   recipe: []
   craftingOutputCount: 1

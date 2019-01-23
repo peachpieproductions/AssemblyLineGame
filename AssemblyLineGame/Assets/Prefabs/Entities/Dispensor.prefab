@@ -79,6 +79,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 6a1f4604a8d33bd48a3c74c039423290, type: 2}
+  active: 1
+  canBeToggledActive: 1
   neighbors:
   - entity: {fileID: 0}
     dir: {x: 0, y: 0}
@@ -146,8 +148,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 79e878a97e75ec64bbca0260b5d9e183, type: 3}
-  m_Color: {r: 1, g: 0.504717, b: 0.504717, a: 1}
+  m_Sprite: {fileID: 21300000, guid: f2f75aef357e12c44a7f21dc6c23d980, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

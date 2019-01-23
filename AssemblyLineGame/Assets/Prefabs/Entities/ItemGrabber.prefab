@@ -98,7 +98,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1263381481450132}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 0, z: -0.1}
+  m_LocalPosition: {x: 0.34, y: 0, z: -0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4109441263515708}
@@ -194,6 +194,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 76135412d8d60cd40bf440d6503e1aa9, type: 2}
+  active: 1
+  canBeToggledActive: 1
   neighbors:
   - entity: {fileID: 0}
     dir: {x: 0, y: 0}
@@ -266,8 +268,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e9d572fa1edbfb844805b0b8201df97d, type: 3}
-  m_Color: {r: 0.8389437, g: 0.5896226, b: 1, a: 1}
+  m_Sprite: {fileID: 21300006, guid: f2f75aef357e12c44a7f21dc6c23d980, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -312,8 +314,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 79e878a97e75ec64bbca0260b5d9e183, type: 3}
-  m_Color: {r: 0.5330188, g: 0.55967426, b: 1, a: 1}
+  m_Sprite: {fileID: 21300004, guid: f2f75aef357e12c44a7f21dc6c23d980, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

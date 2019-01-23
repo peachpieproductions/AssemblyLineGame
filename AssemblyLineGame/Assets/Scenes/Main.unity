@@ -2303,7 +2303,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.6037736, g: 0.6037736, b: 0.6037736, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -6221,6 +6221,57 @@ Prefab:
       propertyPath: m_fontStyle
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114868568480186124, guid: c3ccacb8f83459b479ba8afbca23e155,
+        type: 2}
+      propertyPath: m_Colors.m_NormalColor.r
+      value: 0.8235294
+      objectReference: {fileID: 0}
+    - target: {fileID: 114868568480186124, guid: c3ccacb8f83459b479ba8afbca23e155,
+        type: 2}
+      propertyPath: m_Colors.m_NormalColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114868568480186124, guid: c3ccacb8f83459b479ba8afbca23e155,
+        type: 2}
+      propertyPath: m_Colors.m_NormalColor.b
+      value: 0.92713195
+      objectReference: {fileID: 0}
+    - target: {fileID: 224262704586559586, guid: c3ccacb8f83459b479ba8afbca23e155,
+        type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224450310901876120, guid: c3ccacb8f83459b479ba8afbca23e155,
+        type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114868568480186124, guid: c3ccacb8f83459b479ba8afbca23e155,
+        type: 2}
+      propertyPath: m_Colors.m_HighlightedColor.r
+      value: 0.4764151
+      objectReference: {fileID: 0}
+    - target: {fileID: 114868568480186124, guid: c3ccacb8f83459b479ba8afbca23e155,
+        type: 2}
+      propertyPath: m_Colors.m_HighlightedColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114868568480186124, guid: c3ccacb8f83459b479ba8afbca23e155,
+        type: 2}
+      propertyPath: m_Colors.m_HighlightedColor.b
+      value: 0.99437004
+      objectReference: {fileID: 0}
+    - target: {fileID: 114483030893860398, guid: c3ccacb8f83459b479ba8afbca23e155,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ea0db26e6f63e1f4a824d29185cb0a2c,
+        type: 3}
+    - target: {fileID: 114483030893860398, guid: c3ccacb8f83459b479ba8afbca23e155,
+        type: 2}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3ccacb8f83459b479ba8afbca23e155, type: 2}
   m_IsPrefabAsset: 0
@@ -6587,9 +6638,7 @@ MonoBehaviour:
   - Dan Saul
   - Darren Deeds
   - Daryl Rhea
-  - Dick Swett
   - Dick Tator
-  - Dick Wood
   - Dilbert Pickles
   - Dinah Soares
   - Don Key
@@ -11996,7 +12045,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.6037736, g: 0.6037736, b: 0.6037736, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -21015,7 +21064,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []

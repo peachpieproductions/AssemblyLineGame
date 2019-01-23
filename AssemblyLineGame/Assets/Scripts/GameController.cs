@@ -416,7 +416,7 @@ public class GameController : MonoBehaviour {
         cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, camZoomAmount, Time.deltaTime * 10f);
 
         //Drag Camera
-        if (Input.GetMouseButton(1)) camMoveVelocity -= new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y")) * Time.unscaledDeltaTime * (cam.orthographicSize - 1.5f);
+        if (Input.GetMouseButton(1)) camMoveVelocity -= new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y")) * Time.unscaledDeltaTime * (cam.orthographicSize);
 
         //Camera Movement and Bounds
         camMoveVelocity += new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")) * Time.unscaledDeltaTime;

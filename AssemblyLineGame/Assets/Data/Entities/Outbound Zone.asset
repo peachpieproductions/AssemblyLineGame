@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: Outbound Zone
   m_EditorClassIdentifier: 
   prefab: {fileID: 1167805783240368, guid: f1fc80d066d44d6428f6ac0718bda24f, type: 2}
-  sprite: {fileID: 21300000, guid: 0c92d7be9929f0a4bb288cd5939b7dbc, type: 3}
+  sprite: {fileID: 21300000, guid: d8bbbbe797cd3b948adace4769d40621, type: 3}
   altSprites: []
   placementSprite: {fileID: 0}
   cost: 10

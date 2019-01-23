@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: Vacuum Dispensor
   m_EditorClassIdentifier: 
   prefab: {fileID: 1432450092117072, guid: 6fb26d1e21aa3a34790567df5154e087, type: 2}
-  sprite: {fileID: 21300000, guid: 79e878a97e75ec64bbca0260b5d9e183, type: 3}
+  sprite: {fileID: 21300010, guid: f2f75aef357e12c44a7f21dc6c23d980, type: 3}
   altSprites: []
   placementSprite: {fileID: 21300000, guid: d2c26c39c47a5fc4f99c59e1a33e6498, type: 3}
   cost: 25
