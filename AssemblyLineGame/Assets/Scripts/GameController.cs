@@ -11,6 +11,7 @@ public class GameController : MonoBehaviour {
 
     public bool debugMode;
     public static GameController inst;
+    public Player player;
 	public int roomWidth;
 	public int roomHeight;
     public Vector2 mouseWorldPos;
@@ -404,6 +405,7 @@ public class GameController : MonoBehaviour {
 
     public void CameraMovement() {
 
+        /*
         //Camera Zoom
         float camMoveZoomMult = 0;
         if (Input.mouseScrollDelta.y != 0) {
@@ -422,6 +424,8 @@ public class GameController : MonoBehaviour {
         camMoveVelocity += new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")) * Time.unscaledDeltaTime;
         camMoveVelocity *= .9f;
         camMoveVelocity += (mouseWorldPos - (Vector2)cam.transform.position) * camMoveZoomMult * .1f; //zoom towards mouse cursor
+        */
+        camMoveVelocity = (player.transform.position - cam.transform.position) * .1f;
         cam.transform.position += (Vector3)camMoveVelocity;
         cam.transform.position = new Vector3(Mathf.Clamp(cam.transform.position.x, cam.orthographicSize * cam.aspect, 50 - cam.orthographicSize * cam.aspect),
             Mathf.Clamp(cam.transform.position.y, cam.orthographicSize, 50 - cam.orthographicSize), cam.transform.position.z);
