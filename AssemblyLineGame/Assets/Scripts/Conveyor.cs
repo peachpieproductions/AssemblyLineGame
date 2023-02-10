@@ -6,17 +6,33 @@ public class Conveyor : BaseEntity {
 
     public Vector3 pushDir;
     public BaseEntity facingEntity;
+    public float conveyorLength;
+    public bool tunnel;
+    public BoxCollider2D tunnelTriggerZone;
+    public float tunnelDistance;
 
     public override void Start() {
         base.Start();
-        
     }
 
     public void FixedUpdate() {
 
-        for (var i = itemsInZone.Count-1; i >= 0; i--) {
-            itemsInZone[i].position += (pushDir - itemsInZone[i].position) * Time.deltaTime;
+        if (tunnel) {
+            for (var i = itemsInZone.Count - 1; i >= 0; i--) {
+                itemsInZone[i].position += (pushDir - itemsInZone[i].position).normalized * Time.deltaTime;
+            }
+            var coll = Physics2D.OverlapBox(tunnelTriggerZone.transform.position, tunnelTriggerZone.size, transform.eulerAngles.z);
+            if (coll) {
+                if (itemsInZone.Contains(coll.transform)) {
+                    coll.transform.position += transform.right * tunnelDistance;
+                }
+            }
+        } else {
+            for (var i = itemsInZone.Count - 1; i >= 0; i--) {
+                itemsInZone[i].position += (pushDir - itemsInZone[i].position) * Time.deltaTime;
+            }
         }
+        
 
     }
 
@@ -31,21 +47,24 @@ public class Conveyor : BaseEntity {
                 if (n.entity == this) n.entity = null;
             }
         }
-        pushDir = transform.position + transform.right;
+        pushDir = transform.position + transform.right * conveyorLength + new Vector3(0,0,-.1f);
 
         //set alternate sprite
-        int sides = 0;
-        if (gCon.entityGrid[currentCoord.x + (int)transform.up.x ,currentCoord.y + (int)transform.up.y] > 0) { //Left
-            spr.sprite = data.altSprites[1];
-            sides++;
+        if (data.altSprites.Length > 0) {
+            int sides = 0;
+            if (gCon.entityGrid[currentCoord.x + (int)transform.up.x, currentCoord.y + (int)transform.up.y] > 0) { //Left
+                spr.sprite = data.altSprites[1];
+                sides++;
+            }
+            if (gCon.entityGrid[currentCoord.x + -(int)transform.up.x, currentCoord.y + -(int)transform.up.y] > 0) { //Right
+                spr.sprite = data.altSprites[0];
+                sides++;
+            }
+            if (sides == 0) spr.sprite = data.sprite;
+            else if (sides == 2) spr.sprite = data.altSprites[2];
         }
-        if (gCon.entityGrid[currentCoord.x + -(int)transform.up.x, currentCoord.y + -(int)transform.up.y] > 0) { //Right
-            spr.sprite = data.altSprites[0];
-            sides++;
-        }
-        if (sides == 0) spr.sprite = data.sprite;
-        else if (sides == 2) spr.sprite = data.altSprites[2];
 
     }
+
 
 }

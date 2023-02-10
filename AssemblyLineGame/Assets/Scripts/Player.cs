@@ -21,6 +21,9 @@ public class Player : MonoBehaviour {
         if (rb.velocity.x != 0) spr.flipX = rb.velocity.x < 0;
 
         animator.SetBool("Walking", rb.velocity.magnitude > .1f);
+
+        //set z value
+        transform.position = new Vector3(transform.position.x, transform.position.y, 0);
         
 
     }

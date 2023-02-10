@@ -5,25 +5,57 @@ using UnityEngine;
 public class VacuumForce : MonoBehaviour {
 
 
-    public List<Transform> itemsInZone = new List<Transform>();
+    public BaseEntity entity;
+    public List<Item> itemsInZone = new List<Item>();
+    public List<Package> packagesInZone = new List<Package>();
+
+    private void Start() {
+        entity = GetComponentInParent<BaseEntity>();
+    }
 
     private void FixedUpdate() {
         for (var i = itemsInZone.Count - 1; i >= 0; i--) {
             if (itemsInZone[i].gameObject.activeSelf) {
-                var diff = (transform.position - itemsInZone[i].position);
-                itemsInZone[i].position += diff.normalized * Time.deltaTime * (3.5f - diff.magnitude);
+                if (entity && entity.filter) {
+                    if (itemsInZone[i].data != entity.filter) continue;
+                }
+                var diff = (transform.position - itemsInZone[i].transform.position);
+                itemsInZone[i].transform.position += diff.normalized * Time.deltaTime * (3.5f - diff.magnitude);
             } else {
                 itemsInZone.Remove(itemsInZone[i]);
+            }
+        }
+        for (var i = packagesInZone.Count - 1; i >= 0; i--) {
+            if (packagesInZone[i]) {
+                if (entity && entity.filter) {
+                    if (packagesInZone[i].storage.data != entity.filter) continue;
+                }
+                var diff = (transform.position - packagesInZone[i].transform.position);
+                packagesInZone[i].transform.position += diff.normalized * Time.deltaTime * (3.5f - diff.magnitude);
+            }
+            else {
+                packagesInZone.Remove(packagesInZone[i]);
             }
         }
     }
 
     public virtual void OnTriggerEnter2D(Collider2D collision) {
-        itemsInZone.Add(collision.transform);
+        var item = collision.transform.GetComponent<Item>();
+        if (item) itemsInZone.Add(item);
+        else {
+            var package = collision.transform.GetComponent<Package>();
+            if (package) packagesInZone.Add(package);
+        }
+
     }
 
     public virtual void OnTriggerExit2D(Collider2D collision) {
-        itemsInZone.Remove(collision.transform);
+        var item = collision.transform.GetComponent<Item>();
+        if (item) itemsInZone.Remove(item);
+        else {
+            var package = collision.transform.GetComponent<Package>();
+            if (package) packagesInZone.Remove(package);
+        }
     }
 
 

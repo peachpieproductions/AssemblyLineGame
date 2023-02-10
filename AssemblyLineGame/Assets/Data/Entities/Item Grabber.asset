@@ -4,19 +4,21 @@
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 21cdbe759897da94abe0552fc9c2e354, type: 3}
   m_Name: Item Grabber
   m_EditorClassIdentifier: 
-  prefab: {fileID: 1257336178270582, guid: 6cdb06c38b74557498a7de5d8e62581f, type: 2}
+  prefab: {fileID: 1257336178270582, guid: 6cdb06c38b74557498a7de5d8e62581f, type: 3}
   sprite: {fileID: 21300004, guid: f2f75aef357e12c44a7f21dc6c23d980, type: 3}
   altSprites: []
   placementSprite: {fileID: 21300000, guid: 5df279ede42b8aa4a8a63e0be4b1e38e, type: 3}
   cost: 15
   size: {x: 1, y: 1}
   cantBeRotated: 0
+  zPosValue: 0.5
   info: Item Grabbers will grab items off of Conveyor Belts and out of Storage Containers,
     and place them on the other side. Good for filtering items.

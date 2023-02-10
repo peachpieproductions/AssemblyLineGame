@@ -1,14 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Zone : BaseEntity {
 
     public bool inboundPackageZone;
+    public int inboundPackageZoneID;
 
     public override void Start() {
         base.Start();
-        if (inboundPackageZone) GameController.inst.inboundZones.Add(this);
+        if (inboundPackageZone) {
+            GameController.inst.inboundZones.Add(this);
+            inboundPackageZoneID = GameController.inst.inboundZones.Count;
+            GetComponentInChildren<TextMeshPro>().text = "#" + inboundPackageZoneID;
+            GameController.inst.UpdateInboundZonesSelector();
+        }
     }
 
     public override void OnTriggerEnter2D(Collider2D collision) {
@@ -20,7 +27,10 @@ public class Zone : BaseEntity {
     }
 
     private void OnDestroy() {
-        if (inboundPackageZone) GameController.inst.inboundZones.Remove(this);
+        if (inboundPackageZone) {
+            GameController.inst.inboundZones.Remove(this);
+            GameController.inst.UpdateInboundZonesSelector();
+        }
     }
 
 

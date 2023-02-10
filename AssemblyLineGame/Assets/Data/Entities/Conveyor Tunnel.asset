@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21cdbe759897da94abe0552fc9c2e354, type: 3}
+  m_Name: Conveyor Tunnel
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 1810208080548504169, guid: 49874c37464440d42851f52f7b5c4e25, type: 3}
+  sprite: {fileID: 21300000, guid: ffdfad696da4fb44c81341e2abbc0682, type: 3}
+  altSprites: []
+  placementSprite: {fileID: 0}
+  cost: 25
+  size: {x: 3, y: 1}
+  emptyTiles:
+  - {x: 1, y: 0}
+  cantBeRotated: 0
+  zPosValue: 0.5
+  info: Conveyor Tunnels will route your items under other conveyors.

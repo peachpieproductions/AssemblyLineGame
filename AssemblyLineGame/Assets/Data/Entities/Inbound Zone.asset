@@ -4,18 +4,20 @@
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 21cdbe759897da94abe0552fc9c2e354, type: 3}
   m_Name: Inbound Zone
   m_EditorClassIdentifier: 
-  prefab: {fileID: 1167805783240368, guid: f1fc80d066d44d6428f6ac0718bda24f, type: 2}
+  prefab: {fileID: 1964882131287872, guid: c6d4670509c96f245ab3883e83ab20a0, type: 3}
   sprite: {fileID: 21300000, guid: 0c92d7be9929f0a4bb288cd5939b7dbc, type: 3}
   altSprites: []
   placementSprite: {fileID: 0}
   cost: 10
   size: {x: 3, y: 3}
   cantBeRotated: 1
+  zPosValue: 0.5
   info: The Inbound Zone is where you will receive incoming shipments.

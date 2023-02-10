@@ -4,19 +4,21 @@
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 21cdbe759897da94abe0552fc9c2e354, type: 3}
   m_Name: Boxer
   m_EditorClassIdentifier: 
-  prefab: {fileID: 1815247281769616, guid: 17e4ba3282daf9f47829db7ede6d34b1, type: 2}
+  prefab: {fileID: 1815247281769616, guid: 17e4ba3282daf9f47829db7ede6d34b1, type: 3}
   sprite: {fileID: 21300008, guid: f2f75aef357e12c44a7f21dc6c23d980, type: 3}
   altSprites: []
   placementSprite: {fileID: 0}
   cost: 25
   size: {x: 1, y: 1}
   cantBeRotated: 0
+  zPosValue: 0.5
   info: The Boxer will package your items into boxes. Make sure they end up in your
     Outbound Zone. It takes 10 products to fill 1 box.

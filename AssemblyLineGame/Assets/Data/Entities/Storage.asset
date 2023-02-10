@@ -4,18 +4,20 @@
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 21cdbe759897da94abe0552fc9c2e354, type: 3}
   m_Name: Storage
   m_EditorClassIdentifier: 
-  prefab: {fileID: 1570848219668366, guid: 806eb07ccac444444918c7e80122ac61, type: 2}
+  prefab: {fileID: 1570848219668366, guid: 806eb07ccac444444918c7e80122ac61, type: 3}
   sprite: {fileID: 21300012, guid: f2f75aef357e12c44a7f21dc6c23d980, type: 3}
   altSprites: []
   placementSprite: {fileID: 0}
   cost: 20
   size: {x: 1, y: 1}
   cantBeRotated: 0
+  zPosValue: 0.5
   info: Storage is used to store items and products.

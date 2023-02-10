@@ -15,6 +15,7 @@ public class BaseEntity : MonoBehaviour {
     public bool canBeToggledActive = true;
     public EntityNeighbor[] neighbors = new EntityNeighbor[4];
     public int currentNeighbor;
+    public int currentDispensingSlot;
     public List<StorageSlot> storage = new List<StorageSlot>();
     public Vector2Int currentCoord;
     public List<Transform> itemsInZone = new List<Transform>();
@@ -25,8 +26,8 @@ public class BaseEntity : MonoBehaviour {
     public bool noEntityMenu;
     public bool canFilter;
     public ItemData filter;
-    public Vector2Int size = new Vector2Int(1, 1);
     public SpriteRenderer spr;
+    public SpriteRenderer relevantItemSprite;
 
     protected GameController gCon;
 
@@ -52,6 +53,7 @@ public class BaseEntity : MonoBehaviour {
         UpdateEntity(true);
         if (dispense) StartCoroutine(DispenseCycle());
         if (storesItems) StartCoroutine(StoreItems());
+        SetUpRelevantItemSprite();
     }
 
     public void Clicked() {
@@ -164,23 +166,52 @@ public class BaseEntity : MonoBehaviour {
         while (true) {
 
             if (active) {
-                foreach (StorageSlot slot in storage) {
-                    if (slot.data && slot.itemCount > 0) {
-                        if (Dispense(slot.data)) {
-                            slot.itemCount--;
-                            if (slot.itemCount == 0) slot.data = null;
+                if (storage[currentDispensingSlot].data && storage[currentDispensingSlot].itemCount > 0) {
+                    var lastActiveNeighbor = currentNeighbor;
+                    if (Dispense(storage[currentDispensingSlot].data)) {
+                        storage[currentDispensingSlot].itemCount--;
+                        if (storage[currentDispensingSlot].itemCount == 0) storage[currentDispensingSlot].data = null;
+                        if (currentNeighbor < lastActiveNeighbor) GetNextDispensingSlot();
 
-                            if (GameController.inst.selectedEntity == this) {
-                                GameController.inst.entityMenu.BuildMenu();
-                            }
-                            break;
+                        if (GameController.inst.selectedEntity == this) {
+                            GameController.inst.entityMenu.BuildMenu();
                         }
                     }
                 }
+                else GetNextDispensingSlot();
             }
 
             yield return new WaitForSeconds(.5f);
         }
+
+    }
+
+    public void getNextNeighbor() {
+        for (var i = 1; i < 5; i++) {
+            var index = currentNeighbor + i;
+            if (index > 3) { index -= 4; }
+            if (neighbors[index].entity && !neighbors[index].entity.ignoredByDispensors) { currentNeighbor = index; break; }
+        }
+    }
+
+    public void GetNextDispensingSlot() {
+        for (int i = 1; i < storage.Count + 1; i++) {
+            var index = currentDispensingSlot + i;
+            if (index >= storage.Count) index -= storage.Count;
+            if (storage[index].data && storage[index].itemCount > 0) { currentDispensingSlot = index; break; }
+        }
+    }
+
+    public bool Dispense(ItemData data) {
+
+        getNextNeighbor();
+
+        if (neighbors[currentNeighbor].entity) {
+            var newItem = gCon.SpawnItem(data);
+            newItem.transform.position = (Vector2)transform.position + (Vector2)neighbors[currentNeighbor].dir * .65f;
+            return true;
+        }
+        return false;
 
     }
 
@@ -232,25 +263,13 @@ public class BaseEntity : MonoBehaviour {
 
     }
 
-    public void getNextNeighbor() {
-        for (var i = 1; i < 5; i++) {
-            var index = currentNeighbor + i;
-            if (index > 3) index -= 4;
-            if (neighbors[index].entity && !neighbors[index].entity.ignoredByDispensors) { currentNeighbor = index; break; }
-        }
-    }
-
-    public bool Dispense(ItemData data) {
-
-        getNextNeighbor();
-
-        if (neighbors[currentNeighbor].entity) {
-            var newItem = gCon.SpawnItem(data);
-            newItem.transform.position = (Vector2)transform.position + (Vector2)neighbors[currentNeighbor].dir * .65f;
-            return true;
-        }
-        return false;
-
+    public void SetUpRelevantItemSprite() {
+        var newSpriteGO = new GameObject("relevantSprite");
+        newSpriteGO.transform.parent = transform;
+        newSpriteGO.transform.localPosition = new Vector3(0, 0, -.01f);
+        relevantItemSprite = newSpriteGO.AddComponent<SpriteRenderer>();
+        relevantItemSprite.color = new Color(1f, 1f, 1f, .8f);
+        newSpriteGO.SetActive(false);
     }
 
 }

@@ -11,7 +11,9 @@ public class EntityData : ScriptableObject {
     public Sprite placementSprite;
     public int cost;
     public Vector2Int size = new Vector2Int(1, 1);
+    public List<Vector2Int> emptyTiles = new List<Vector2Int>();
     public bool cantBeRotated;
+    public float zPosValue;
 
     [TextArea(2,10)]
     public string info;

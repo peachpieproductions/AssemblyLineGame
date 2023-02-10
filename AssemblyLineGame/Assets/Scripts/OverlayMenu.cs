@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
 
-public class OverlayMenu : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
+public class OverlayMenu : MonoBehaviour/*, IPointerEnterHandler, IPointerExitHandler*/ {
 
     public string menuName;
     public UIButton templateButton;
@@ -362,14 +362,15 @@ public class OverlayMenu : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         }
     }
 
-    public void OnPointerEnter(PointerEventData ped) {
+    /*public void OnPointerEnter(PointerEventData ped) {
         GameController.inst.hoveringOverlay = true;
         if (!GameController.inst.hoveringList.Contains(this)) GameController.inst.hoveringList.Add(this);
     }
     public void OnPointerExit(PointerEventData ped) {
+        if (!ped.fullyExited) return;
         GameController.inst.hoveringList.Remove(this);
         if (GameController.inst.hoveringList.Count == 0) GameController.inst.hoveringOverlay = false;
-    }
+    }*/
 
     public void SetAsLastSibling() {
         transform.SetAsLastSibling();

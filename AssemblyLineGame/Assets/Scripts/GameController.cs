@@ -73,6 +73,7 @@ public class GameController : MonoBehaviour {
     public OverlayMenu TopHud;
     public TextMeshProUGUI MenuButtonsText;
     public QuickReferences hudResearchBar;
+    public TMP_Dropdown inboundZoneSelector;
 
     #endregion
     
@@ -135,6 +136,7 @@ public class GameController : MonoBehaviour {
     private void Update() {
         mouseWorldPos = cam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1));
         currentUnit = new Vector2Int (Mathf.Clamp(Mathf.FloorToInt(mouseWorldPos.x),0,50), Mathf.Clamp(Mathf.FloorToInt(mouseWorldPos.y),0,50));
+        if (Input.GetKeyDown(KeyCode.H)) Debug.Log(entityGrid[currentUnit.x, currentUnit.y]);
 
         CameraMovement();
 
@@ -189,6 +191,15 @@ public class GameController : MonoBehaviour {
             Time.timeScale = 1;
         }
 
+        //Get UI under mouse
+        var uiList = GetUiUnderMouse();
+        hoveringOverlay = false; 
+        foreach (var ui in uiList) {
+            if (ui.gameObject.GetComponentInParent<OverlayMenu>()) {
+                hoveringOverlay = true;
+                break;
+            }
+        }
         
     }
 
@@ -237,34 +248,44 @@ public class GameController : MonoBehaviour {
                     }
                 }
             } else {
+
+                //Check if can place
                 currentBuildObject.position = new Vector2(currentUnit.x + .5f, currentUnit.y + .5f); //Position Blueprint
                 if (Input.GetKeyDown(KeyCode.R) && !currentBuildEntity.cantBeRotated) currentBuildObject.Rotate(0, 0, 90); //Rotate Blueprint
                 var canPlace = true;
                 for(var x = 0; x < currentBuildEntity.size.x; x++) { //Check if can be placed
                     for (var y = 0; y < currentBuildEntity.size.y; y++) {
-                        if (entityGrid[Mathf.Min(currentUnit.x + x, 49), Mathf.Min(currentUnit.y + y, 49)] != 0 || currentUnit.x + x == 0 || currentUnit.x + x == 49 || currentUnit.y + y == 0 || currentUnit.y + y == 49) {
+                        var check = GetRotatedTileCoord(currentUnit.x, currentUnit.y, x, y, currentBuildObject.transform, currentBuildEntity);
+                        if (check == new Vector2Int(-1, -1)) continue;
+                        if (entityGrid[Mathf.Min(check.x, 49), Mathf.Min(check.y, 49)] != 0 || check.x == 0 || check.x == 49 || check.y == 0 || check.y == 49) {
                             if (canPlace) currentBuildObject.GetComponent<SpriteRenderer>().color = gameColors[1];
                             canPlace = false;
                         }
                     }
                 }
                 if (canPlace) currentBuildObject.GetComponent<SpriteRenderer>().color = gameColors[0];
-                if (Input.GetMouseButtonDown(0) && Input.mousePosition.x < Screen.width * .875f) { //Place Entity
+
+                //Place Entity
+                if (Input.GetMouseButtonDown(0) && Input.mousePosition.x < Screen.width * .875f) { 
                     if (canPlace && money >= currentBuildEntity.cost) { //Check if entity already exists at position
                         UpdateMoney(-currentBuildEntity.cost);
-                        var newEntity = Instantiate(currentBuildEntity.prefab, new Vector2(currentUnit.x + .5f, currentUnit.y + .5f), currentBuildObject.rotation);
+                        var newEntity = Instantiate(currentBuildEntity.prefab, new Vector3(currentUnit.x + .5f, currentUnit.y + .5f, currentBuildEntity.zPosValue), currentBuildObject.rotation);
                         entities.Add(newEntity.GetComponent<BaseEntity>());
                         var entityID = entities.Count;
                         for (var x = 0; x < currentBuildEntity.size.x; x++) { //Set Grid Data
                             for (var y = 0; y < currentBuildEntity.size.y; y++) {
-                                entityGrid[currentUnit.x + x, currentUnit.y + y] = entityID;
+                                var check = GetRotatedTileCoord(currentUnit.x, currentUnit.y, x, y, currentBuildObject.transform, currentBuildEntity);
+                                if (check == new Vector2Int(-1, -1)) continue;
+                                entityGrid[check.x, check.y] = entityID;
                             }
                         }
                         
                     }
                 }
             }
-            if (Input.GetMouseButtonDown(1)) { //Sell Entity
+
+            //Sell Entity
+            if (Input.GetMouseButtonDown(1)) { 
                 if (entityGrid[currentUnit.x, currentUnit.y] > 0) {
                     var toSell = entities[entityGrid[currentUnit.x, currentUnit.y] - 1];
                     foreach(StorageSlot slot in toSell.storage) {
@@ -276,9 +297,11 @@ public class GameController : MonoBehaviour {
                         }
                     }
                     UpdateMoney(toSell.data.cost / 2);
-                    for (var x = 0; x < toSell.size.x; x++) { //Reset Grid Data
-                        for (var y = 0; y < toSell.size.y; y++) {
-                            entityGrid[toSell.currentCoord.x + x, toSell.currentCoord.y + y] = 0;
+                    for (var x = 0; x < toSell.data.size.x; x++) { //Reset Grid Data
+                        for (var y = 0; y < toSell.data.size.y; y++) {
+                            var check = GetRotatedTileCoord(toSell.currentCoord.x, toSell.currentCoord.y, x, y, toSell.transform, toSell.data);
+                            if (check == new Vector2Int(-1, -1)) { continue; }
+                            entityGrid[check.x, check.y] = 0;
                         }
                     }
                     toSell.UpdateNeighbors();
@@ -299,6 +322,12 @@ public class GameController : MonoBehaviour {
         currentBuildObject = null;
     }
 
+    public Vector2Int GetRotatedTileCoord(int startX, int startY, int offsetX, int offsetY, Transform entityTrans, EntityData entityData) {
+        foreach (var emptyTile in entityData.emptyTiles) { if (emptyTile.x == offsetX && emptyTile.y == offsetY) return new Vector2Int(-1, -1); }
+        var checkV3 = new Vector3(startX, startY) + entityTrans.right * offsetX + entityTrans.up * offsetY;
+        return new Vector2Int((int)checkV3.x, (int)checkV3.y);
+    }
+
     public IEnumerator EconomyCycle() {
 
         foreach(ItemData item in itemDatas) {
@@ -312,7 +341,7 @@ public class GameController : MonoBehaviour {
                 var d = incomingDeliveries[i];
                 d.timeRemaining -= 10f;
                 if (d.timeRemaining <= 0) {
-                    Delivery(d);
+                    StartCoroutine(Delivery(d));
                 }
             }
 
@@ -338,17 +367,30 @@ public class GameController : MonoBehaviour {
         }
     }
 
-    public void Delivery(ItemDelivery delivery) {
-        var zone = inboundZones[Random.Range(0, inboundZones.Count)];
-        Vector2 placement = new Vector2(Random.Range(0f, 2f), Random.Range(0f, 2f));
+    public IEnumerator Delivery(ItemDelivery delivery) {
+        if (inboundZones.Count == 0) { GenerateLog("Cannot deliver goods. Please build an inbound zone!", Color.white, 4f); yield break; }
+        var zoneIndex = delivery.inboundZoneID;
+        if (zoneIndex > inboundZones.Count) zoneIndex = 0;
+        //attempt to filter
+        if (zoneIndex == -1) {
+            for (int i = 0; i < inboundZones.Count; i++) {
+                if (delivery.data == inboundZones[i].filter) {
+                    zoneIndex = i;
+                    break;
+                }
+            }
+        }
+        var zone = inboundZones[zoneIndex];
+        Vector2 placement = zone.transform.position + new Vector3(1,1) + new Vector3(Random.Range(-.5f, .5f), Random.Range(-.5f, .5f));
         var itemCount = delivery.itemCount;
         while (itemCount > 0) {
-            var newPackage = Instantiate(packagePrefab, (Vector2)zone.transform.position + placement,Quaternion.identity).GetComponent<Package>();
+            var newPackage = Instantiate(packagePrefab, (Vector2)placement,Quaternion.identity).GetComponent<Package>();
             newPackage.storage.data = delivery.data;
             newPackage.spriteRenderer.sprite = delivery.data.sprite;
             newPackage.storage.itemCount = Mathf.Min(10, itemCount);
             newPackage.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f));
             itemCount -= 10;
+            yield return new WaitForSeconds(.2f);
         }
         GenerateLog("You're shipment of " + delivery.data.name + " (" + delivery.itemCount + ") has arrived.", Color.white, 4f);
         incomingDeliveries.Remove(delivery);
@@ -394,9 +436,11 @@ public class GameController : MonoBehaviour {
     public void UpdateEntityGrid() {
         int i = 1;
         foreach(BaseEntity e in entities) {
-            for (var x = 0; x < e.size.x; x++) { //Set Grid Data
-                for (var y = 0; y < e.size.y; y++) {
-                    entityGrid[e.currentCoord.x + x, e.currentCoord.y + y] = i;
+            for (var x = 0; x < e.data.size.x; x++) { //Set Grid Data
+                for (var y = 0; y < e.data.size.y; y++) {
+                    var check = GetRotatedTileCoord(e.currentCoord.x, e.currentCoord.y, x, y, e.transform, e.data);
+                    if (check == new Vector2Int(-1, -1)) { continue; }
+                    entityGrid[check.x, check.y] = i;
                 }
             }
             i++;
@@ -509,6 +553,7 @@ public class GameController : MonoBehaviour {
     }
 
     public void MarketplaceCheckout() {
+        if (inboundZones.Count == 0) { GenerateLog("No Inbound Delivery Zones Available", Color.white, 4f); return; }
         int cartTotal = 0;
         foreach (UIButton listing in marketplaceMenu.buttons) {
             cartTotal += listing.storageSlot.itemCount * listing.itemData.getCurrentPrice();
@@ -520,6 +565,7 @@ public class GameController : MonoBehaviour {
                     ItemDelivery del = new ItemDelivery();
                     del.data = listing.itemData;
                     del.itemCount = listing.storageSlot.itemCount;
+                    del.inboundZoneID = inboundZoneSelector.value - 1;
                     incomingDeliveries.Add(del);
                     listing.storageSlot.itemCount = 0;
                 }
@@ -660,6 +706,24 @@ public class GameController : MonoBehaviour {
     public void SetMenuButtonsText(string str) {
         MenuButtonsText.gameObject.SetActive(true);
         MenuButtonsText.text = str;
+    }
+
+    public void UpdateInboundZonesSelector() {
+        inboundZoneSelector.ClearOptions();
+        List<string> options = new List<string>();
+        options.Add("Use Zone Filters");
+        foreach(var inboundZone in inboundZones) {
+            options.Add("Inbound Zone #" + inboundZone.inboundPackageZoneID);
+        }
+        inboundZoneSelector.AddOptions(options);
+    }
+
+    public List<RaycastResult> GetUiUnderMouse() {
+        PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
+        eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+        List<RaycastResult> results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
+        return results;
     }
 
     public void DebugCommand(string command) {

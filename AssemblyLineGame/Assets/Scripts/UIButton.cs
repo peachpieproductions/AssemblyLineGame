@@ -50,6 +50,8 @@ public class UIButton : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
                     GameController.inst.selectedEntity.filter = itemData;
                 }
             }
+            GameController.inst.selectedEntity.relevantItemSprite.gameObject.SetActive(itemData != null);
+            if (itemData != null) GameController.inst.selectedEntity.relevantItemSprite.sprite = itemData.sprite;
             GameController.inst.entityMenu.BuildMenu();
             GameController.inst.recipeListMenu.ToggleOpenClose(false);
         } 

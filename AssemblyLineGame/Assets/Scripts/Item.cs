@@ -13,7 +13,8 @@ public class StorageSlot {
 public class ItemDelivery {
     public ItemData data;
     public int itemCount;
-    public float timeRemaining = 60f;
+    public int inboundZoneID;
+    public float timeRemaining = 40f;
 }
 
 [System.Serializable]

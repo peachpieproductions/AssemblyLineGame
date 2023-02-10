@@ -4,19 +4,21 @@
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 21cdbe759897da94abe0552fc9c2e354, type: 3}
   m_Name: Assembler
   m_EditorClassIdentifier: 
-  prefab: {fileID: 1184532304122064, guid: d998ca96588d5684d93a9d08df10b9c7, type: 2}
+  prefab: {fileID: 1184532304122064, guid: d998ca96588d5684d93a9d08df10b9c7, type: 3}
   sprite: {fileID: 21300002, guid: f2f75aef357e12c44a7f21dc6c23d980, type: 3}
   altSprites: []
   placementSprite: {fileID: 0}
   cost: 50
   size: {x: 1, y: 1}
   cantBeRotated: 0
-  info: The Assembler is used to craft Items. Feed it resources and tell it what to
-    craft.
+  zPosValue: 0.5
+  info: The Assembler is used to craft Items. Feed it resources and tell it what
+    to craft.
