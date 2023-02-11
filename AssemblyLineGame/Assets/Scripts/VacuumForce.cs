@@ -16,8 +16,8 @@ public class VacuumForce : MonoBehaviour {
     private void FixedUpdate() {
         for (var i = itemsInZone.Count - 1; i >= 0; i--) {
             if (itemsInZone[i].gameObject.activeSelf) {
-                if (entity && entity.filter) {
-                    if (itemsInZone[i].data != entity.filter) continue;
+                if (entity && entity.filters.Count > 0) {
+                    if (!entity.filters.Contains(itemsInZone[i].data)) continue;
                 }
                 var diff = (transform.position - itemsInZone[i].transform.position);
                 itemsInZone[i].transform.position += diff.normalized * Time.deltaTime * (3.5f - diff.magnitude);
@@ -27,8 +27,8 @@ public class VacuumForce : MonoBehaviour {
         }
         for (var i = packagesInZone.Count - 1; i >= 0; i--) {
             if (packagesInZone[i]) {
-                if (entity && entity.filter) {
-                    if (packagesInZone[i].storage.data != entity.filter) continue;
+                if (entity && entity.filters.Count > 0) {
+                    if (!entity.filters.Contains(packagesInZone[i].storage.data)) continue;
                 }
                 var diff = (transform.position - packagesInZone[i].transform.position);
                 packagesInZone[i].transform.position += diff.normalized * Time.deltaTime * (3.5f - diff.magnitude);

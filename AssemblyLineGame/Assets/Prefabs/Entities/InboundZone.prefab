@@ -232,6 +232,7 @@ MonoBehaviour:
   - entity: {fileID: 0}
     dir: {x: 0, y: 0}
   currentNeighbor: 0
+  currentDispensingSlot: 0
   storage: []
   currentCoord: {x: 0, y: 0}
   itemsInZone: []
@@ -241,10 +242,10 @@ MonoBehaviour:
   ignoredByDispensors: 1
   noEntityMenu: 0
   canFilter: 1
-  filter: {fileID: 0}
-  size: {x: 3, y: 3}
+  filters: []
   spr: {fileID: 212261964946539912}
-  relevantItemSprite: {fileID: 0}
+  relevantItemSpriteCount: 3
+  relevantItemSprites: []
   inboundPackageZone: 1
   inboundPackageZoneID: 1
 --- !u!212 &212261964946539912

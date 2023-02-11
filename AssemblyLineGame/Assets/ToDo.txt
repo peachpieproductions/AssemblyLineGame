@@ -4,25 +4,32 @@
 
 
 
-- can click item picture in contracts to see recipe info
-- in recipe info it shows the output count of the item when crafted
+- contracts flicker (make them only rebuild if something has changed)
+- Add upgrades to research, like ability to have multiple filters on an entity
+- make bottled water recipe -> (glass bottle + water)
+- outbound stock screen -> shows count totals of each item packages and ready to ship -> maybe show in bottom right hud (column) can hide
+- can name inbound zones (name shows up in checkout screen)
 - when the date (4/11/1997) gets into double digits it collides with the time text
+- Can zoom camera out with scroll wheel
+
+- Create BuildingManager
+- Create UIManager and pull UI stuff out of GameManager
+- get more total contracts each time you research something
+- press C to open contracts
+- can choose player model at beginning
+- can build a wall (eg to enclose the outbound zone and contain boxes)
+- can build fence (like wall but very skinny and only on edge, doesnt consume coordinate - can still build stuff on it)
 
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
+__Sound Effects__
+- cha ching when completing contract
+- assembler create item
+- vacuum dispensor sucking (sounds like vacuum cleaner)
+- package spawn on deliveries (pop) or (cardboard box being set down)
 
 
 

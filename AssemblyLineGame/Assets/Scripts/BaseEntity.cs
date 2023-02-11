@@ -25,9 +25,10 @@ public class BaseEntity : MonoBehaviour {
     public bool ignoredByDispensors;
     public bool noEntityMenu;
     public bool canFilter;
-    public ItemData filter;
+    public List<ItemData> filters;
     public SpriteRenderer spr;
-    public SpriteRenderer relevantItemSprite;
+    public int relevantItemSpriteCount;
+    public List<SpriteRenderer> relevantItemSprites;
 
     protected GameController gCon;
 
@@ -171,7 +172,7 @@ public class BaseEntity : MonoBehaviour {
                     if (Dispense(storage[currentDispensingSlot].data)) {
                         storage[currentDispensingSlot].itemCount--;
                         if (storage[currentDispensingSlot].itemCount == 0) storage[currentDispensingSlot].data = null;
-                        if (currentNeighbor < lastActiveNeighbor) GetNextDispensingSlot();
+                        if (currentNeighbor <= lastActiveNeighbor) GetNextDispensingSlot();
 
                         if (GameController.inst.selectedEntity == this) {
                             GameController.inst.entityMenu.BuildMenu();
@@ -222,7 +223,7 @@ public class BaseEntity : MonoBehaviour {
             for (var i = itemsInZone.Count - 1; i >= 0; i--) {
                 var item = itemsInZone[i].GetComponent<Item>();
                 if (item) {
-                    if (filter == null || filter == item.data) {
+                    if (filters.Count == 0 || filters.Contains(item.data)) {
                         bool stored = false;
                         for (var j = 0; j < storage.Count; j++) {
                             if (storage[j].data == item.data) {
@@ -250,7 +251,7 @@ public class BaseEntity : MonoBehaviour {
                     if (!ignorePackages) {
                         var package = itemsInZone[i].GetComponent<Package>();
                         if (package) {
-                            if (filter == null || filter == package.storage.data) {
+                            if (filters.Count == 0 || filters.Contains(package.storage.data)) {
                                 package.UnpackageIntoStorage(this);
                             }
                         }
@@ -263,13 +264,32 @@ public class BaseEntity : MonoBehaviour {
 
     }
 
+    public void UpdateRelevantItemSprites() {
+        for (int i = 0; i < relevantItemSprites.Count; i++) {
+            if (this is Assembler) {
+                var assembler = (Assembler)this;
+                relevantItemSprites[0].gameObject.SetActive(assembler.assemblingItem != null);
+                if (assembler.assemblingItem != null) relevantItemSprites[0].sprite = assembler.assemblingItem.sprite;
+            } else {
+                if (filters.Count > i) {
+                    relevantItemSprites[i].gameObject.SetActive(true);
+                    relevantItemSprites[i].sprite = filters[i].sprite;
+                } else {
+                    relevantItemSprites[i].gameObject.SetActive(false);
+                }
+            }
+        }
+    }
+
     public void SetUpRelevantItemSprite() {
-        var newSpriteGO = new GameObject("relevantSprite");
-        newSpriteGO.transform.parent = transform;
-        newSpriteGO.transform.localPosition = new Vector3(0, 0, -.01f);
-        relevantItemSprite = newSpriteGO.AddComponent<SpriteRenderer>();
-        relevantItemSprite.color = new Color(1f, 1f, 1f, .8f);
-        newSpriteGO.SetActive(false);
+        for (int i = 0; i < relevantItemSpriteCount; i++) {
+            var newSpriteGO = new GameObject("relevantSprite");
+            newSpriteGO.transform.parent = transform;
+            newSpriteGO.transform.localPosition = new Vector3(0, 1 * i, -.01f);
+            relevantItemSprites.Add(newSpriteGO.AddComponent<SpriteRenderer>());
+            relevantItemSprites[i].color = new Color(1f, 1f, 1f, .8f);
+            newSpriteGO.SetActive(false);
+        }
     }
 
 }

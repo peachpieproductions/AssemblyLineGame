@@ -22,7 +22,7 @@ public class Zone : BaseEntity {
         base.OnTriggerEnter2D(collision);
         var p = collision.transform.GetComponent<Package>();
         if (p && !inboundPackageZone) {
-            GameController.inst.outboundPackages.Add(p);
+            if (!GameController.inst.outboundPackages.Contains(p)) GameController.inst.outboundPackages.Add(p);
         }
     }
 

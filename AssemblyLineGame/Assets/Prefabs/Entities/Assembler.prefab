@@ -59,6 +59,7 @@ MonoBehaviour:
   - entity: {fileID: 0}
     dir: {x: 0, y: 0}
   currentNeighbor: 0
+  currentDispensingSlot: 0
   storage:
   - data: {fileID: 0}
     itemCount: 0
@@ -77,10 +78,10 @@ MonoBehaviour:
   ignoredByDispensors: 0
   noEntityMenu: 0
   canFilter: 0
-  filter: {fileID: 0}
-  size: {x: 1, y: 1}
+  filters: []
   spr: {fileID: 212205405092812752}
-  relevantItemSprite: {fileID: 0}
+  relevantItemSpriteCount: 1
+  relevantItemSprites: []
   assemblingItem: {fileID: 0}
 --- !u!212 &212205405092812752
 SpriteRenderer:

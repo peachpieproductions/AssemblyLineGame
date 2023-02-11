@@ -64,7 +64,7 @@ public class AudioManager : MonoBehaviour {
             currentSong = musicPlayer.clip;
             musicPlayer.Play();
             
-            yield return new WaitForSecondsRealtime(musicPlayer.clip.length + 20);
+            yield return new WaitForSecondsRealtime(musicPlayer.clip.length + Random.Range(20,40));
 
             currentSongIndex++;
             if (currentSongIndex == songs.Count) currentSongIndex = 0;

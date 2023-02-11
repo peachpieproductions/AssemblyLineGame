@@ -10,6 +10,7 @@ public class OverlayMenu : MonoBehaviour/*, IPointerEnterHandler, IPointerExitHa
     public string menuName;
     public UIButton templateButton;
     public List<UIButton> buttons = new List<UIButton>();
+    public List<UIButton> filterButtons = new List<UIButton>();
     public Color buttonSelectedColor = Color.white;
     public Vector2 openTargetPosition;
     public Vector2 closedTargetPosition;
@@ -77,6 +78,10 @@ public class OverlayMenu : MonoBehaviour/*, IPointerEnterHandler, IPointerExitHa
             }
         }
 
+        if (GameController.inst.contractsMenu.open) {
+            GameController.inst.CheckForCompletedContracts();
+        }
+
         var temp = templateButton;
         if (temp) temp.gameObject.SetActive(true);
 
@@ -141,15 +146,24 @@ public class OverlayMenu : MonoBehaviour/*, IPointerEnterHandler, IPointerExitHa
                     }
                 }
                 if (selEntity.canFilter) {
-                    miscButton3.gameObject.SetActive(true);
-                    if (selEntity.filter) {
-                        miscButton3.image.gameObject.SetActive(true);
-                        miscButton3.image.sprite = selEntity.filter.sprite;
-                    } else {
-                        miscButton3.image.gameObject.SetActive(false);
+                    for (int i = 0; i < 3; i++) {
+                        if (i > 0 && filterButtons.Count < 3) {
+                            var newFilter = Instantiate(filterButtons[0].gameObject, filterButtons[0].transform.parent);
+                            filterButtons.Add(newFilter.GetComponent<UIButton>());
+                        }
+                        filterButtons[i].gameObject.SetActive(true);
+                        if (selEntity.filters.Count > i) {
+                            filterButtons[i].image.gameObject.SetActive(true);
+                            filterButtons[i].image.sprite = selEntity.filters[i].sprite;
+                        }
+                        else {
+                            filterButtons[i].image.gameObject.SetActive(false);
+                        }
                     }
                 } else {
-                    miscButton3.gameObject.SetActive(false);
+                    foreach(var filterButton in filterButtons) {
+                        filterButton.gameObject.SetActive(false);
+                    }
                 }
 
                 //on/off
@@ -177,7 +191,7 @@ public class OverlayMenu : MonoBehaviour/*, IPointerEnterHandler, IPointerExitHa
             var selItemData = GameController.inst.selectedItemData;
             if (selItemData) {
                 miscText1.text = selItemData.name;
-                //miscText2.text = ITEM DATA INFO
+                miscText2.text = "Output Count: " + selItemData.craftingOutputCount; // + ADD ITEM DATA INFO
                 if (selItemData.researchRequired) miscText3.text = "Research Required: " + selItemData.researchRequired.name;
                 else miscText3.text = "Research Required: None";
                 miscImage1.sprite = selItemData.sprite;
@@ -251,6 +265,7 @@ public class OverlayMenu : MonoBehaviour/*, IPointerEnterHandler, IPointerExitHa
                     buttons.Add(newButton);
                     newButton.text.text = item.name;
                     newButton.image.sprite = item.sprite;
+                    newButton.image.GetComponent<UIButton>().itemData = item;
                     newButton.itemData = item;
                 }
             }
@@ -267,6 +282,7 @@ public class OverlayMenu : MonoBehaviour/*, IPointerEnterHandler, IPointerExitHa
                 newButton.miscText3.text = Mathf.CeilToInt(cont.hoursTimeRemaining).ToString() + " hrs";
                 newButton.image.sprite = cont.itemsRequested[0].data.sprite;
                 newButton.image.GetComponentInChildren<TextMeshProUGUI>().text = cont.itemsRequested[0].itemCount.ToString();
+                newButton.image.GetComponent<UIButton>().itemData = cont.itemsRequested[0].data;
                 if (cont.itemsRequested.Count > 1) {
                     newButton.miscImages[0].sprite = cont.itemsRequested[1].data.sprite;
                     newButton.miscImages[0].gameObject.SetActive(true);
@@ -318,7 +334,6 @@ public class OverlayMenu : MonoBehaviour/*, IPointerEnterHandler, IPointerExitHa
 
         else if (menuName == "Computer") {
             if (GameController.inst.marketplaceMenu.open) GameController.inst.marketplaceMenu.BuildMenu();
-            //if (GameController.inst.contractsMenu.open) GameController.inst.CheckForCompletedContracts();
         }
 
         if (temp) temp.gameObject.SetActive(false);

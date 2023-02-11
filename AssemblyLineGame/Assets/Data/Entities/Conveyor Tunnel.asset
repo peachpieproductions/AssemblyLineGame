@@ -22,4 +22,4 @@ MonoBehaviour:
   - {x: 1, y: 0}
   cantBeRotated: 0
   zPosValue: 0.5
-  info: Conveyor Tunnels will route your items under other conveyors.
+  info: Conveyor Tunnels will route your items under other conveyors or machines.

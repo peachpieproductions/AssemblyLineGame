@@ -30,6 +30,7 @@ public class UIButton : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
     }
 
     public void Clicked(bool rightClick = false) {
+
         if (selectedOnClick) {
             selected = true;
             overlayMenu.ResetButtons();
@@ -47,11 +48,13 @@ public class UIButton : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
                 if (ass) ass.assemblingItem = itemData;
             } else {
                 if (GameController.inst.selectedEntity.canFilter) {
-                    GameController.inst.selectedEntity.filter = itemData;
+                    if (itemData == null && GameController.inst.selectedEntity.filters.Count > GameController.inst.pickingFilterIndex) 
+                        GameController.inst.selectedEntity.filters.RemoveAt(GameController.inst.pickingFilterIndex);
+                    else if (GameController.inst.selectedEntity.filters.Count <= GameController.inst.pickingFilterIndex) GameController.inst.selectedEntity.filters.Add(itemData);
+                    else GameController.inst.selectedEntity.filters[GameController.inst.pickingFilterIndex] = itemData;
                 }
             }
-            GameController.inst.selectedEntity.relevantItemSprite.gameObject.SetActive(itemData != null);
-            if (itemData != null) GameController.inst.selectedEntity.relevantItemSprite.sprite = itemData.sprite;
+            GameController.inst.selectedEntity.UpdateRelevantItemSprites();
             GameController.inst.entityMenu.BuildMenu();
             GameController.inst.recipeListMenu.ToggleOpenClose(false);
         } 
@@ -104,6 +107,7 @@ public class UIButton : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
         else if (function == "Filter") {
             GameController.inst.selectingItemData = true;
             GameController.inst.recipeListMenu.ToggleOpenClose(true);
+            GameController.inst.pickingFilterIndex = transform.GetSiblingIndex();
         }
 
         else if (function == "ToggleEntityActive") {

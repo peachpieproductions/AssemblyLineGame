@@ -43,7 +43,7 @@ public class ItemGrabber : BaseEntity {
                     if (armPivot.localEulerAngles.z > 175) {
                         if (nextToStorage) { //Grab items from storage slots
                             foreach (StorageSlot s in nextToStorage.storage) {
-                                if (s.itemCount > 0 && (filter == null || filter == s.data)) {
+                                if (s.itemCount > 0 && (filters.Count == 0 || filters.Contains(s.data))) {
                                     s.itemCount--;
                                     var newItem = GameController.inst.SpawnItem(s.data);
                                     transferingItem = newItem.transform;
@@ -54,7 +54,7 @@ public class ItemGrabber : BaseEntity {
                         } else {
                             foreach (Transform t in itemsInZone) { //Grab Items in Zone
                                 var item = t.GetComponent<Item>();
-                                if (t.GetComponent<Rigidbody2D>() && (filter == null || item && filter == item.data)) {
+                                if (t.GetComponent<Rigidbody2D>() && (filters.Count == 0 || filters.Contains(item.data))) {
                                     transferingItem = t;
                                     break;
                                 }

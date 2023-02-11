@@ -34,6 +34,7 @@ public class GameController : MonoBehaviour {
     public bool selectingItemData;
     public ItemData selectedItemData;
     public Log logPrefab;
+    public int pickingFilterIndex = -1;
 
     [Header("Player")]
     public int money = 250;
@@ -99,13 +100,15 @@ public class GameController : MonoBehaviour {
         foreach (BaseEntity b in FindObjectsOfType<BaseEntity>()) b.SetNeighbors();
 
         StartCoroutine(EconomyCycle());
+        StartCoroutine(CheckForCompletedContractsRoutine());
         StartCoroutine(TimeCycle());
 
         BuildModeMenu.gameObject.SetActive(false);
         computer.gameObject.SetActive(false);
+        pickingFilterIndex = -1;
 
         //Init Research
-        foreach(ResearchData r in researchDatas) {
+        foreach (ResearchData r in researchDatas) {
             foreach(ItemData i in r.items) {
                 i.isUnlocked = false;
             }
@@ -328,6 +331,15 @@ public class GameController : MonoBehaviour {
         return new Vector2Int((int)checkV3.x, (int)checkV3.y);
     }
 
+    public void UpdateMoney(int differenceAmount) {
+        money += differenceAmount;
+        TopHud.miscText1.text = "$" + money.ToString("n0");
+        if (differenceAmount != 0) {
+            if (differenceAmount > 0) GenerateLog("+ $" + differenceAmount + ".", gameColors[4], 4f);
+            else GenerateLog("- $" + Mathf.Abs(differenceAmount) + ".", gameColors[3], 4f);
+        }
+    }
+
     public IEnumerator EconomyCycle() {
 
         foreach(ItemData item in itemDatas) {
@@ -338,12 +350,9 @@ public class GameController : MonoBehaviour {
         while (true) {
 
             for (var i = incomingDeliveries.Count - 1; i >= 0; i--) {
-                var d = incomingDeliveries[i];
-                d.timeRemaining -= 10f;
-                if (d.timeRemaining <= 0) {
-                    StartCoroutine(Delivery(d));
-                }
+                incomingDeliveries[i].timeRemaining -= 10f;
             }
+            StartCoroutine(DeliveriesRoutine());
 
             foreach(ItemData data in itemDatas) {
                 data.priceVariant = Mathf.Clamp(data.priceVariant + Random.Range(-.1f, .1f) * .25f, .5f, 2);
@@ -358,31 +367,32 @@ public class GameController : MonoBehaviour {
 
     }
 
-    public void UpdateMoney(int differenceAmount) {
-        money += differenceAmount;
-        TopHud.miscText1.text = "$" + money.ToString("n0");
-        if (differenceAmount != 0) {
-            if (differenceAmount > 0) GenerateLog("+ $" + differenceAmount + ".", gameColors[4], 4f);
-            else GenerateLog("- $" + Mathf.Abs(differenceAmount) + ".", gameColors[3], 4f);
+    public IEnumerator DeliveriesRoutine() {
+        for (var i = incomingDeliveries.Count - 1; i >= 0; i--) {
+            if (incomingDeliveries[i].timeRemaining <= 0) {
+                yield return StartCoroutine(Delivery(incomingDeliveries[i]));
+            }
         }
     }
 
     public IEnumerator Delivery(ItemDelivery delivery) {
         if (inboundZones.Count == 0) { GenerateLog("Cannot deliver goods. Please build an inbound zone!", Color.white, 4f); yield break; }
         var zoneIndex = delivery.inboundZoneID;
-        if (zoneIndex > inboundZones.Count) zoneIndex = 0;
+        if (zoneIndex >= inboundZones.Count) zoneIndex = 0;
         //attempt to filter
         if (zoneIndex == -1) {
             for (int i = 0; i < inboundZones.Count; i++) {
-                if (delivery.data == inboundZones[i].filter) {
+                if (inboundZones[i].filters.Contains(delivery.data)) {
                     zoneIndex = i;
                     break;
                 }
             }
         }
+        if (zoneIndex == -1) zoneIndex = 0;
         var zone = inboundZones[zoneIndex];
         Vector2 placement = zone.transform.position + new Vector3(1,1) + new Vector3(Random.Range(-.5f, .5f), Random.Range(-.5f, .5f));
         var itemCount = delivery.itemCount;
+        GenerateLog("You're shipment of " + delivery.data.name + " (" + delivery.itemCount + ") has arrived.", Color.white, 4f);
         while (itemCount > 0) {
             var newPackage = Instantiate(packagePrefab, (Vector2)placement,Quaternion.identity).GetComponent<Package>();
             newPackage.storage.data = delivery.data;
@@ -392,7 +402,6 @@ public class GameController : MonoBehaviour {
             itemCount -= 10;
             yield return new WaitForSeconds(.2f);
         }
-        GenerateLog("You're shipment of " + delivery.data.name + " (" + delivery.itemCount + ") has arrived.", Color.white, 4f);
         incomingDeliveries.Remove(delivery);
     }
 
@@ -602,8 +611,8 @@ public class GameController : MonoBehaviour {
             }
         }
 
-        CheckForCompletedContracts();
-
+        CheckForCompletedContracts(true);
+        if (computer.open) contractsMenu.BuildMenu();
     }
 
     public void CompleteContract(UIButton contractListing) {
@@ -624,6 +633,7 @@ public class GameController : MonoBehaviour {
         contractsMenu.buttons.Remove(contractListing);
         Destroy(contractListing.gameObject);
         CheckForCompletedContracts();
+        contractsMenu.BuildMenu();
         inventoryMenu.BuildMenu();
     }
 
@@ -631,7 +641,17 @@ public class GameController : MonoBehaviour {
         return clientNames[Random.Range(0, clientNames.Count)];
     }
 
-    public void CheckForCompletedContracts() {
+    public IEnumerator CheckForCompletedContractsRoutine() {
+        while (true) {
+            if (contractsMenu.open) {
+                CheckForCompletedContracts();
+                contractsMenu.BuildMenu();
+            }
+            yield return new WaitForSeconds(2f);
+        }
+    }
+
+    public void CheckForCompletedContracts(bool showLogForReady = false) {
         //Check if completed
         int totalComplete = 0;
         foreach (ItemContract c in contractList) {
@@ -653,9 +673,9 @@ public class GameController : MonoBehaviour {
             c.completed = contractComplete;
             if (contractComplete) totalComplete++;
         }
-        if (totalComplete >= 2 && Random.value < .25f) GenerateLog("2+ Contracts are ready to be fulfilled.", gameColors[4], 2f);
+        if (showLogForReady && totalComplete >= 2 && Random.value < .25f) GenerateLog("2+ Contracts are ready to be fulfilled.", gameColors[4], 2f);
 
-        if (contractsMenu.open) contractsMenu.BuildMenu();
+        //if (contractsMenu.open) contractsMenu.BuildMenu();
     }
 
     public void StartResearch(ResearchData data) {
