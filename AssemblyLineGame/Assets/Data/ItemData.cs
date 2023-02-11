@@ -16,6 +16,7 @@ public class ItemData : ScriptableObject {
     public float priceVariant = 1;
     public float popularity = .5f;
     public bool isProduct;
+    public int stepsToMake;
     public CraftingIngredient[] recipe;
     public int craftingOutputCount = 1;
     public ResearchData researchRequired;
@@ -28,14 +29,21 @@ public class ItemData : ScriptableObject {
 
     public void SetBasePrice() {
         if (recipe.Length > 0) {
+            stepsToMake = 1;
             foreach(CraftingIngredient ing in recipe) {
+                if (ing.ingredient.recipe.Length > 0) {
+                    stepsToMake++;
+                    foreach (var ingrIng in ing.ingredient.recipe) {
+                        if (ingrIng.ingredient.recipe.Length > 0) stepsToMake++;
+                    }
+                }
                 if (ing.ingredient.basePrice == 0) {
                     ing.ingredient.SetBasePrice();
                 }
             }  
             foreach (CraftingIngredient ing in recipe) {
                 basePrice += Mathf.Max(1,Mathf.RoundToInt((ing.ingredient.basePrice * ing.ingredientCount) / craftingOutputCount));
-                basePrice = Mathf.RoundToInt(basePrice * 1.15f); //rarity multiplier
+                basePrice = Mathf.RoundToInt(basePrice * 1.1f + (.1f * stepsToMake)); //steps to make multiplier
             }
             
         }

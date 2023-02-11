@@ -48,7 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: c6f98326ddcb67b4393349ecbbb65550, type: 2}
   active: 1
-  canBeToggledActive: 0
+  canBeToggledActive: 1
   neighbors:
   - entity: {fileID: 0}
     dir: {x: 0, y: 0}
@@ -69,14 +69,15 @@ MonoBehaviour:
   ignoredByDispensors: 0
   noEntityMenu: 1
   canFilter: 0
-  filter: {fileID: 0}
-  size: {x: 1, y: 1}
+  filters: []
   spr: {fileID: 212623021069280204}
-  relevantItemSprite: {fileID: 0}
+  relevantItemSpriteCount: 0
+  relevantItemSprites: []
   pushDir: {x: 0, y: 0, z: 0}
   facingEntity: {fileID: 0}
   conveyorLength: 1
   tunnel: 0
+  tunnelTriggerZone: {fileID: 0}
   tunnelDistance: 0
 --- !u!212 &212623021069280204
 SpriteRenderer:

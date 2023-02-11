@@ -46,16 +46,11 @@ public class Package : MonoBehaviour {
     }
 
     public IEnumerator UpdatePackage() {
-
         while (!rb.IsSleeping()) {
-
             transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.y * .01f);
-
             yield return null;
-
         }
         updating = false;
-
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {

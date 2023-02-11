@@ -20,6 +20,7 @@ public class OverlayMenu : MonoBehaviour/*, IPointerEnterHandler, IPointerExitHa
     public bool followMouse;
     public bool blockScrolling;
     public bool closesImmediately;
+    public bool dontTurnOffWhenClosed;
     public UIButton miscButton1;
     public UIButton miscButton2;
     public UIButton miscButton3;
@@ -45,7 +46,7 @@ public class OverlayMenu : MonoBehaviour/*, IPointerEnterHandler, IPointerExitHa
             rect.anchoredPosition = Vector2.Lerp(rect.anchoredPosition, openTargetPosition, Time.deltaTime * 5 * lerpSpeed);
         } else {
             rect.anchoredPosition = Vector2.Lerp(rect.anchoredPosition, closedTargetPosition, Time.deltaTime * 5 * lerpSpeed);
-            if (Vector2.Distance(rect.anchoredPosition, closedTargetPosition) < 10 || closesImmediately) gameObject.SetActive(false);
+            if (!dontTurnOffWhenClosed && (Vector2.Distance(rect.anchoredPosition, closedTargetPosition) < 10 || closesImmediately)) gameObject.SetActive(false);
         }
 
         if (follow) {
@@ -68,6 +69,9 @@ public class OverlayMenu : MonoBehaviour/*, IPointerEnterHandler, IPointerExitHa
             if (buttons.Count == GameController.inst.selectedEntity.storage.Count) {
                 completeRefresh = false;
             }
+        }
+        if (menuName == "Contracts") {
+            completeRefresh = false;
         }
 
         if (completeRefresh) {
@@ -274,9 +278,15 @@ public class OverlayMenu : MonoBehaviour/*, IPointerEnterHandler, IPointerExitHa
 
         else if (menuName == "Contracts") {
 
-            foreach (ItemContract cont in GameController.inst.contractList) {
-                var newButton = Instantiate(temp, temp.transform.parent);
-                buttons.Add(newButton);
+            for (int i = 0; i < GameController.inst.contractList.Count; i++) {
+                var cont = GameController.inst.contractList[i];
+                UIButton newButton;
+                if (buttons.Count <= i) {
+                    newButton = Instantiate(temp, temp.transform.parent);
+                    buttons.Add(newButton);
+                } else {
+                    newButton = buttons[i];
+                }
                 newButton.text.text = cont.clientName;
                 newButton.miscText2.text = "$" + cont.paymentAmount.ToString();
                 newButton.miscText3.text = Mathf.CeilToInt(cont.hoursTimeRemaining).ToString() + " hrs";
@@ -291,7 +301,7 @@ public class OverlayMenu : MonoBehaviour/*, IPointerEnterHandler, IPointerExitHa
                 if (cont.itemsRequested.Count > 2) {
                     newButton.miscImages[1].sprite = cont.itemsRequested[2].data.sprite;
                     newButton.miscImages[1].gameObject.SetActive(true);
-                } 
+                }
                 else newButton.miscImages[1].gameObject.SetActive(false);
                 newButton.miscImages[2].transform.GetChild(0).gameObject.SetActive(cont.completed);
                 if (cont.completed) newButton.SetButtonColor(new Color(.8f, 1, .8f));
@@ -332,6 +342,21 @@ public class OverlayMenu : MonoBehaviour/*, IPointerEnterHandler, IPointerExitHa
             
         }
 
+        else if (menuName == "OutboundStockOverlay") {
+            Dictionary<ItemData, int> stock = new Dictionary<ItemData, int>();
+            foreach (var package in GameController.inst.outboundPackages) {
+                if (stock.ContainsKey(package.storage.data)) stock[package.storage.data] += package.storage.itemCount;
+                else stock.Add(package.storage.data, package.storage.itemCount);
+            }
+            foreach(var stockEntry in stock) {
+                var newButton = Instantiate(temp, temp.transform.parent);
+                newButton.gameObject.SetActive(true);
+                buttons.Add(newButton);
+                newButton.image.sprite = stockEntry.Key.sprite;
+                newButton.text.text = stockEntry.Value.ToString();
+            }
+        }
+
         else if (menuName == "Computer") {
             if (GameController.inst.marketplaceMenu.open) GameController.inst.marketplaceMenu.BuildMenu();
         }
@@ -355,6 +380,10 @@ public class OverlayMenu : MonoBehaviour/*, IPointerEnterHandler, IPointerExitHa
             GameController.inst.selectingItemData = false;
         }
 
+    }
+
+    public void ToggleOpenCloseGUI() {
+        ToggleOpenClose(!open);
     }
 
     public void ToggleOpenClose(bool open) {

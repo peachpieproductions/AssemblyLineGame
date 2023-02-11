@@ -14,16 +14,14 @@ public class AudioManager : MonoBehaviour {
     public AudioSource musicPlayer;
 
 
-    int currentSongIndex;
+    public int currentSongIndex;
     bool playingMusic;
+    float songWaitTimer;
 
 
     private void Start() {
-        
         StartCoroutine(Music());
-
         StartCoroutine(SlowUpdate());
-
     }
 
     IEnumerator SlowUpdate() {
@@ -62,15 +60,26 @@ public class AudioManager : MonoBehaviour {
 
             musicPlayer.clip = songs[currentSongIndex];
             currentSong = musicPlayer.clip;
-            musicPlayer.Play();
-            
-            yield return new WaitForSecondsRealtime(musicPlayer.clip.length + Random.Range(20,40));
+
+            yield return StartCoroutine(PlaySong());
 
             currentSongIndex++;
             if (currentSongIndex == songs.Count) currentSongIndex = 0;
-
         }
+    }
 
+    IEnumerator PlaySong() {
+        musicPlayer.Play();
+        songWaitTimer = musicPlayer.clip.length + Random.Range(20, 40);
+        while (songWaitTimer > 0) {
+            songWaitTimer -= Time.deltaTime;
+            yield return null;
+        }
+        musicPlayer.Stop();
+    }
+
+    public void SkipSong() {
+        songWaitTimer = 0;
     }
 
 

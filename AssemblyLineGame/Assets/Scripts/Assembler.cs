@@ -19,7 +19,7 @@ public class Assembler : BaseEntity {
 
             if (active) {
                 foreach (EntityNeighbor n in neighbors) {
-                    if (assemblingItem && n.entity) {
+                    if (assemblingItem && n.entity && n.entity.active) {
                         bool canCraft = true;
 
                         if (assemblingItem.recipe.Length == 0) canCraft = false;
@@ -50,6 +50,7 @@ public class Assembler : BaseEntity {
                                     Dispense(assemblingItem);
                                     yield return new WaitForSeconds(.1f);
                                 }
+                                GetNextNeighbor();
                             }
                             if (GameController.inst.entityMenu.open) GameController.inst.entityMenu.BuildMenu();
                         } else {
@@ -57,11 +58,13 @@ public class Assembler : BaseEntity {
                                 s.differenceToApply = 0;
                             }
                         }
+                        if (craftingSuccessful) yield return new WaitForSeconds(1f);
                     }
                 }
             }
-            if (craftingSuccessful) yield return new WaitForSeconds(1f);
-            else yield return new WaitForSeconds(.2f); //Switch to "Wait Until" condition 
+
+            if (!craftingSuccessful) yield return new WaitForSeconds(.2f);
+
         }
 
     }

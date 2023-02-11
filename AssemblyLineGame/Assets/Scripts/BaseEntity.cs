@@ -187,11 +187,11 @@ public class BaseEntity : MonoBehaviour {
 
     }
 
-    public void getNextNeighbor() {
+    public void GetNextNeighbor() {
         for (var i = 1; i < 5; i++) {
             var index = currentNeighbor + i;
             if (index > 3) { index -= 4; }
-            if (neighbors[index].entity && !neighbors[index].entity.ignoredByDispensors) { currentNeighbor = index; break; }
+            if (neighbors[index].entity && !neighbors[index].entity.ignoredByDispensors && neighbors[index].entity.active) { currentNeighbor = index; break; }
         }
     }
 
@@ -205,9 +205,9 @@ public class BaseEntity : MonoBehaviour {
 
     public bool Dispense(ItemData data) {
 
-        getNextNeighbor();
+        if (this is Assembler == false) GetNextNeighbor();
 
-        if (neighbors[currentNeighbor].entity) {
+        if (neighbors[currentNeighbor].entity && neighbors[currentNeighbor].entity.active) {
             var newItem = gCon.SpawnItem(data);
             newItem.transform.position = (Vector2)transform.position + (Vector2)neighbors[currentNeighbor].dir * .65f;
             return true;

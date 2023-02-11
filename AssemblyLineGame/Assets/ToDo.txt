@@ -1,27 +1,22 @@
 
 
 
-
-
-
-- contracts flicker (make them only rebuild if something has changed)
-- Add upgrades to research, like ability to have multiple filters on an entity
-- make bottled water recipe -> (glass bottle + water)
-- outbound stock screen -> shows count totals of each item packages and ready to ship -> maybe show in bottom right hud (column) can hide
+- research should cost more
+- Vaccine and Antidote require molecule or DNA or something
 - can name inbound zones (name shows up in checkout screen)
-- when the date (4/11/1997) gets into double digits it collides with the time text
 - Can zoom camera out with scroll wheel
 
 - Create BuildingManager
 - Create UIManager and pull UI stuff out of GameManager
-- get more total contracts each time you research something
 - press C to open contracts
 - can choose player model at beginning
 - can build a wall (eg to enclose the outbound zone and contain boxes)
 - can build fence (like wall but very skinny and only on edge, doesnt consume coordinate - can still build stuff on it)
 
 
-
+__Research Upgrades__
+- Multiple Filters I and II (give you the option to filter more than 1 item at an entity)
+- Catalog - allow you to pick what items you offer and get offers for
 
 
 

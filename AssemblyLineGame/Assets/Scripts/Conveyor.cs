@@ -17,6 +17,8 @@ public class Conveyor : BaseEntity {
 
     public void FixedUpdate() {
 
+        if (!active) return;
+
         if (tunnel) {
             for (var i = itemsInZone.Count - 1; i >= 0; i--) {
                 itemsInZone[i].position += (pushDir - itemsInZone[i].position).normalized * Time.deltaTime;

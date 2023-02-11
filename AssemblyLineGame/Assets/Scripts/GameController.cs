@@ -72,6 +72,7 @@ public class GameController : MonoBehaviour {
     public OverlayMenu ItemInfoPopup;
     public OverlayMenu tooltipPopup;
     public OverlayMenu TopHud;
+    public OverlayMenu outboundStockOverlay;
     public TextMeshProUGUI MenuButtonsText;
     public QuickReferences hudResearchBar;
     public TMP_Dropdown inboundZoneSelector;
@@ -371,6 +372,7 @@ public class GameController : MonoBehaviour {
         for (var i = incomingDeliveries.Count - 1; i >= 0; i--) {
             if (incomingDeliveries[i].timeRemaining <= 0) {
                 yield return StartCoroutine(Delivery(incomingDeliveries[i]));
+                yield return new WaitForSeconds(1f);
             }
         }
     }
@@ -628,6 +630,7 @@ public class GameController : MonoBehaviour {
                 }
             }
         }
+        outboundStockOverlay.BuildMenu();
         UpdateMoney(contract.paymentAmount);
         contractList.RemoveAt(contractListing.transform.GetSiblingIndex()-1);
         contractsMenu.buttons.Remove(contractListing);

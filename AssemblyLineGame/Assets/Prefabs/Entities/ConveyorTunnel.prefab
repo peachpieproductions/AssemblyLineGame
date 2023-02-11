@@ -110,7 +110,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 60e95f11f078db444b20fc64f6cf5fb3, type: 2}
   active: 1
-  canBeToggledActive: 0
+  canBeToggledActive: 1
   neighbors:
   - entity: {fileID: 0}
     dir: {x: 0, y: 0}
@@ -131,9 +131,10 @@ MonoBehaviour:
   ignoredByDispensors: 0
   noEntityMenu: 1
   canFilter: 0
-  filter: {fileID: 0}
+  filters: []
   spr: {fileID: 2011211250833468811}
-  relevantItemSprite: {fileID: 0}
+  relevantItemSpriteCount: 0
+  relevantItemSprites: []
   pushDir: {x: 0, y: 0, z: 0}
   facingEntity: {fileID: 0}
   conveyorLength: 3
