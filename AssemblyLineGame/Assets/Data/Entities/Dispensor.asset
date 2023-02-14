@@ -18,7 +18,10 @@ MonoBehaviour:
   placementSprite: {fileID: 0}
   cost: 25
   size: {x: 1, y: 1}
+  emptyTiles: []
   cantBeRotated: 0
   zPosValue: 0.5
   info: Dispensors will place items from its storage, onto adjacent entities. Can
     be used as a splitter.
+  sounds:
+  - {fileID: 8300000, guid: 137ee7d2149d0c34aad11dcf83a4859f, type: 3}

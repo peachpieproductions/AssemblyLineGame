@@ -18,4 +18,7 @@ public class EntityData : ScriptableObject {
     [TextArea(2,10)]
     public string info;
 
+    [Header("Sounds")]
+    public List<AudioClip> sounds;
+
 }

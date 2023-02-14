@@ -22,6 +22,7 @@ public class GameController : MonoBehaviour {
     public ResearchData researching;
     public float researchProgress;
     public bool buildMode;
+    public int zoomCamLevel = 5;
 
     [Header("UI")]
     public EntityData currentBuildEntity;
@@ -35,6 +36,7 @@ public class GameController : MonoBehaviour {
     public ItemData selectedItemData;
     public Log logPrefab;
     public int pickingFilterIndex = -1;
+    public bool enteringText;
 
     [Header("Player")]
     public int money = 250;
@@ -58,6 +60,9 @@ public class GameController : MonoBehaviour {
     public GameObject dummyPlacementEntity;
     public Color[] gameColors;
     public List<string> clientNames = new List<string> ();
+    public List<Sprite> playerModels;
+    public List<string> playerCharacterNames;
+    public int playerModelSelected;
 
     [Header("UI Refs")]
     public OverlayMenu BuildModeMenu;
@@ -73,6 +78,7 @@ public class GameController : MonoBehaviour {
     public OverlayMenu tooltipPopup;
     public OverlayMenu TopHud;
     public OverlayMenu outboundStockOverlay;
+    public OverlayMenu playerModelSelectOverlay;
     public TextMeshProUGUI MenuButtonsText;
     public QuickReferences hudResearchBar;
     public TMP_Dropdown inboundZoneSelector;
@@ -81,7 +87,6 @@ public class GameController : MonoBehaviour {
     
     Camera cam;
     Vector2 camMoveVelocity;
-    float camZoomAmount = 5;
 
     private void Awake() {
         inst = this;
@@ -89,6 +94,15 @@ public class GameController : MonoBehaviour {
         for (var i = 0; i < 50; i++) {
             var go = Instantiate(itemPrefab);
             itemPool.Add(go.GetComponent<Item>());
+        }
+
+        //Character Names
+        if (!Application.isEditor) playerModelSelectOverlay.gameObject.SetActive(true);
+        var randomNameList = new List<string>(clientNames);
+        for (int i = 0; i < playerModels.Count; i++) {
+            var newNameIndex = Random.Range(0, randomNameList.Count);
+            playerCharacterNames.Add(randomNameList[newNameIndex]);
+            randomNameList.RemoveAt(newNameIndex);
         }
     }
 
@@ -131,6 +145,7 @@ public class GameController : MonoBehaviour {
         //LoadClientNames();
 
         //DEBUG MODE
+        if (!Application.isEditor) debugMode = false;
         GameObject.Find("DEBUGMODEACTIVETEXT").gameObject.SetActive(debugMode);
         if (debugMode) {
             
@@ -140,7 +155,14 @@ public class GameController : MonoBehaviour {
     private void Update() {
         mouseWorldPos = cam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1));
         currentUnit = new Vector2Int (Mathf.Clamp(Mathf.FloorToInt(mouseWorldPos.x),0,50), Mathf.Clamp(Mathf.FloorToInt(mouseWorldPos.y),0,50));
-        if (Input.GetKeyDown(KeyCode.H)) Debug.Log(entityGrid[currentUnit.x, currentUnit.y]);
+        //if (Input.GetKeyDown(KeyCode.H)) Debug.Log(entityGrid[currentUnit.x, currentUnit.y]);
+
+        //Zoom Camera
+        if (Input.mouseScrollDelta.y != 0) {
+            zoomCamLevel -= (int)Input.mouseScrollDelta.y;
+            zoomCamLevel = Mathf.Clamp(zoomCamLevel, 2, 10);
+        }
+        cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, zoomCamLevel, Time.deltaTime * 8f);
 
         CameraMovement();
 
@@ -171,6 +193,18 @@ public class GameController : MonoBehaviour {
             if (Input.mousePosition.y > 80) MenuButtonsText.gameObject.SetActive(false);
         }
 
+        //Get UI under mouse
+        var uiList = GetUiUnderMouse();
+        hoveringOverlay = false;
+        foreach (var ui in uiList) {
+            if (ui.gameObject.GetComponentInParent<OverlayMenu>()) {
+                hoveringOverlay = true;
+                break;
+            }
+        }
+
+        if (enteringText) return;
+
         if (Input.GetKeyDown(KeyCode.Escape)) {
             if (computer.open) computer.ToggleOpenClose(false);
             else if (ItemInfoPopup.open) ItemInfoPopup.ToggleOpenClose(false);
@@ -195,15 +229,7 @@ public class GameController : MonoBehaviour {
             Time.timeScale = 1;
         }
 
-        //Get UI under mouse
-        var uiList = GetUiUnderMouse();
-        hoveringOverlay = false; 
-        foreach (var ui in uiList) {
-            if (ui.gameObject.GetComponentInParent<OverlayMenu>()) {
-                hoveringOverlay = true;
-                break;
-            }
-        }
+        
         
     }
 
@@ -396,6 +422,7 @@ public class GameController : MonoBehaviour {
         var itemCount = delivery.itemCount;
         GenerateLog("You're shipment of " + delivery.data.name + " (" + delivery.itemCount + ") has arrived.", Color.white, 4f);
         while (itemCount > 0) {
+            AudioManager.inst.Play3DSound(placement, "PackageSpawn");
             var newPackage = Instantiate(packagePrefab, (Vector2)placement,Quaternion.identity).GetComponent<Package>();
             newPackage.storage.data = delivery.data;
             newPackage.spriteRenderer.sprite = delivery.data.sprite;
@@ -596,7 +623,7 @@ public class GameController : MonoBehaviour {
             }
         }
 
-        if (contractList.Count < 8 + researchesCompleted && Random.value > .4f && recipeList.Count > 0) {
+        if (contractList.Count < 8 + researchesCompleted && (Random.value > .4f || contractList.Count == 0) && recipeList.Count > 0) {
             for (var j = 0; j < Random.Range(0, 3); j++) {
                 ItemContract newContract = new ItemContract();
                 newContract.clientName = GetClientName();
@@ -632,6 +659,7 @@ public class GameController : MonoBehaviour {
         }
         outboundStockOverlay.BuildMenu();
         UpdateMoney(contract.paymentAmount);
+        AudioManager.inst.PlaySound("GainMoney");
         contractList.RemoveAt(contractListing.transform.GetSiblingIndex()-1);
         contractsMenu.buttons.Remove(contractListing);
         Destroy(contractListing.gameObject);
@@ -696,7 +724,7 @@ public class GameController : MonoBehaviour {
 
     public IEnumerator Research() {
         while(researching) {
-            researchProgress += 1f;
+            researchProgress += 8f;
             hudResearchBar.rects[0].localScale = new Vector3(researchProgress / researching.cost, 1, 1);
             if (researchMenu.gameObject.activeSelf) researchMenu.BuildMenu();
             if (researchProgress >= researching.cost) {
@@ -736,7 +764,7 @@ public class GameController : MonoBehaviour {
         List<string> options = new List<string>();
         options.Add("Use Zone Filters");
         foreach(var inboundZone in inboundZones) {
-            options.Add("Inbound Zone #" + inboundZone.inboundPackageZoneID);
+            options.Add(inboundZone.inboundZoneTag == "" ? "Inbound Zone #" + inboundZone.inboundPackageZoneID : inboundZone.inboundZoneTag);
         }
         inboundZoneSelector.AddOptions(options);
     }
@@ -747,6 +775,18 @@ public class GameController : MonoBehaviour {
         List<RaycastResult> results = new List<RaycastResult>();
         EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
         return results;
+    }
+
+    public void EnteringTextToggle(bool isEnteringText) {
+        enteringText = isEnteringText;
+    }
+
+    public void CyclePlayerModel(int offset) {
+        playerModelSelected += offset;
+        if (playerModelSelected >= playerModels.Count) playerModelSelected = 0;
+        if (playerModelSelected < 0) playerModelSelected = playerModels.Count - 1;
+        player.spr.sprite = playerModels[playerModelSelected];
+        playerModelSelectOverlay.BuildMenu();
     }
 
     public void DebugCommand(string command) {

@@ -18,7 +18,10 @@ MonoBehaviour:
   placementSprite: {fileID: 21300000, guid: 5df279ede42b8aa4a8a63e0be4b1e38e, type: 3}
   cost: 15
   size: {x: 1, y: 1}
+  emptyTiles: []
   cantBeRotated: 0
   zPosValue: 0.5
   info: Item Grabbers will grab items off of Conveyor Belts and out of Storage Containers,
     and place them on the other side. Good for filtering items.
+  sounds:
+  - {fileID: 8300000, guid: 9997a3ff36477724cb4cbf7102e58f2c, type: 3}

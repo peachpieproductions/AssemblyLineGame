@@ -20,6 +20,7 @@ public class Package : MonoBehaviour {
     }
 
     private void OnMouseOver() {
+        if (GameController.inst.hoveringOverlay) return;
         if (Input.GetMouseButtonUp(1)) {
             UnpackageIntoInventory();
         }
@@ -32,6 +33,7 @@ public class Package : MonoBehaviour {
                 GameController.inst.selectedPackage = null;
             }
             Destroy(gameObject);
+            GameController.inst.outboundStockOverlay.BuildMenu();
         }
     }
 
@@ -42,6 +44,7 @@ public class Package : MonoBehaviour {
                 if (GameController.inst.selectedPackage == this) GameController.inst.PackageInfoPopup.ToggleOpenClose(false);
             }
             Destroy(gameObject);
+            GameController.inst.outboundStockOverlay.BuildMenu();
         }
     }
 

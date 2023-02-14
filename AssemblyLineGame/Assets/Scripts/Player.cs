@@ -16,7 +16,9 @@ public class Player : MonoBehaviour {
 
     private void FixedUpdate() {
 
-        rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")) * Time.deltaTime * 200;
+        if (!GameController.inst.enteringText) {
+            rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")) * Time.deltaTime * 200;
+        }
         //if (Input.GetAxisRaw("Horizontal") == 0 && Input.GetAxisRaw("Vertical") == 0) rb.velocity *= .85f;
         if (rb.velocity.x != 0) spr.flipX = rb.velocity.x < 0;
 

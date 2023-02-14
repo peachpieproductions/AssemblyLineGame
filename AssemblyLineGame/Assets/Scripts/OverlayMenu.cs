@@ -28,6 +28,7 @@ public class OverlayMenu : MonoBehaviour/*, IPointerEnterHandler, IPointerExitHa
     public TextMeshProUGUI miscText2;
     public TextMeshProUGUI miscText3;
     public Image miscImage1;
+    public TMP_InputField inputField;
 
     public RectTransform rect;
 
@@ -112,6 +113,10 @@ public class OverlayMenu : MonoBehaviour/*, IPointerEnterHandler, IPointerExitHa
                 miscButton1.gameObject.SetActive(selEntity is Assembler);
                 miscButton2.transform.parent.gameObject.SetActive(false);
                 miscText1.text = selEntity.data.name;
+                inputField.gameObject.SetActive(selEntity.useInputField);
+                if (selEntity is Zone && (selEntity as Zone).inboundPackageZone) {
+                    inputField.text = (selEntity as Zone).inboundZoneTag == "" ? "#" + (selEntity as Zone).inboundPackageZoneID : (selEntity as Zone).inboundZoneTag;
+                }
                 if (selEntity is Assembler) {
                     var assem = selEntity as Assembler;
                     miscButton1.image.enabled = assem.assemblingItem;
@@ -274,6 +279,7 @@ public class OverlayMenu : MonoBehaviour/*, IPointerEnterHandler, IPointerExitHa
                 }
             }
             GameController.inst.UpdateMarketplace();
+            GameController.inst.UpdateInboundZonesSelector();
         }
 
         else if (menuName == "Contracts") {
@@ -349,12 +355,18 @@ public class OverlayMenu : MonoBehaviour/*, IPointerEnterHandler, IPointerExitHa
                 else stock.Add(package.storage.data, package.storage.itemCount);
             }
             foreach(var stockEntry in stock) {
+                if (stockEntry.Value == 0) continue;
                 var newButton = Instantiate(temp, temp.transform.parent);
                 newButton.gameObject.SetActive(true);
                 buttons.Add(newButton);
                 newButton.image.sprite = stockEntry.Key.sprite;
                 newButton.text.text = stockEntry.Value.ToString();
             }
+        }
+
+        else if (menuName == "PlayerModelSelectOverlay") {
+            miscImage1.sprite = GameController.inst.playerModels[GameController.inst.playerModelSelected];
+            miscText1.text = GameController.inst.playerCharacterNames[GameController.inst.playerModelSelected];
         }
 
         else if (menuName == "Computer") {
@@ -378,6 +390,10 @@ public class OverlayMenu : MonoBehaviour/*, IPointerEnterHandler, IPointerExitHa
 
         else if (menuName == "RecipeListMenu") {
             GameController.inst.selectingItemData = false;
+        }
+
+        else if (menuName == "PlayerModelSelectOverlay") {
+            GameController.inst.clientNames.Remove(GameController.inst.playerCharacterNames[GameController.inst.playerModelSelected]);
         }
 
     }
@@ -406,15 +422,15 @@ public class OverlayMenu : MonoBehaviour/*, IPointerEnterHandler, IPointerExitHa
         }
     }
 
-    /*public void OnPointerEnter(PointerEventData ped) {
-        GameController.inst.hoveringOverlay = true;
-        if (!GameController.inst.hoveringList.Contains(this)) GameController.inst.hoveringList.Add(this);
+    public void InputFieldUpdated() {
+        var zone = GameController.inst.selectedEntity as Zone;
+        if (zone) {
+            if (zone.inboundPackageZone) {
+                zone.inboundZoneTag = inputField.text;
+                GameController.inst.selectedEntity.GetComponentInChildren<TextMeshPro>().text = zone.inboundZoneTag == "" ? "#" + zone.inboundPackageZoneID : zone.inboundZoneTag;
+            }
+        }
     }
-    public void OnPointerExit(PointerEventData ped) {
-        if (!ped.fullyExited) return;
-        GameController.inst.hoveringList.Remove(this);
-        if (GameController.inst.hoveringList.Count == 0) GameController.inst.hoveringOverlay = false;
-    }*/
 
     public void SetAsLastSibling() {
         transform.SetAsLastSibling();

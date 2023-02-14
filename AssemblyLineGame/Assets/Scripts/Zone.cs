@@ -7,6 +7,7 @@ public class Zone : BaseEntity {
 
     public bool inboundPackageZone;
     public int inboundPackageZoneID;
+    public string inboundZoneTag = "";
 
     public override void Start() {
         base.Start();

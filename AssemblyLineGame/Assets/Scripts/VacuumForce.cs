@@ -9,12 +9,16 @@ public class VacuumForce : MonoBehaviour {
     public List<Item> itemsInZone = new List<Item>();
     public List<Package> packagesInZone = new List<Package>();
 
+    float soundTimer;
+
     private void Start() {
         entity = GetComponentInParent<BaseEntity>();
     }
 
     private void FixedUpdate() {
+        if (soundTimer > 0) soundTimer -= Time.deltaTime;
         for (var i = itemsInZone.Count - 1; i >= 0; i--) {
+            if (soundTimer <= 0) { entity.PlaySound(1); soundTimer = 2f; }
             if (itemsInZone[i].gameObject.activeSelf) {
                 if (entity && entity.filters.Count > 0) {
                     if (!entity.filters.Contains(itemsInZone[i].data)) continue;
@@ -26,6 +30,7 @@ public class VacuumForce : MonoBehaviour {
             }
         }
         for (var i = packagesInZone.Count - 1; i >= 0; i--) {
+            if (soundTimer <= 0) { entity.PlaySound(1); soundTimer = 2f; }
             if (packagesInZone[i]) {
                 if (entity && entity.filters.Count > 0) {
                     if (!entity.filters.Contains(packagesInZone[i].storage.data)) continue;

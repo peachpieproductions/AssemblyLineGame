@@ -35,8 +35,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1, y: 0}
-  m_SizeDelta: {x: 7.94, y: 3.07}
+  m_AnchoredPosition: {x: 1.58, y: 0}
+  m_SizeDelta: {x: 12.9, y: 4.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &1096113501
 MeshRenderer:
@@ -130,11 +130,11 @@ MonoBehaviour:
   m_fontSize: 36
   m_fontSizeBase: 36
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMax: 36
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -246,8 +246,10 @@ MonoBehaviour:
   spr: {fileID: 212261964946539912}
   relevantItemSpriteCount: 3
   relevantItemSprites: []
+  useInputField: 1
   inboundPackageZone: 1
   inboundPackageZoneID: 1
+  inboundZoneTag: 
 --- !u!212 &212261964946539912
 SpriteRenderer:
   m_ObjectHideFlags: 0

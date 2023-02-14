@@ -31,12 +31,13 @@ public class Boxer : BaseEntity {
                 if (neighbors[currentNeighbor].entity) {
                     foreach (StorageSlot s in storage) {
                         if (s.itemCount >= 10) {
+                            PlaySound(0);
                             var inst = Instantiate(box, (Vector2)transform.position + neighbors[currentNeighbor].dir, Quaternion.identity).GetComponent<Package>();
                             inst.storage.data = s.data;
                             inst.spriteRenderer.sprite = s.data.sprite;
                             inst.storage.itemCount = 10;
                             if (neighbors[currentNeighbor].entity is Zone) {
-                                inst.GetComponent<Rigidbody2D>().velocity = neighbors[currentNeighbor].dir * 4 + new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f));
+                                inst.GetComponent<Rigidbody2D>().velocity = neighbors[currentNeighbor].dir * 4 + new Vector2(Random.Range(-2f, 2f), Random.Range(-2f, 2f));
                             }
                             s.itemCount -= 10;
                             if (s.itemCount == 0) s.data = null;

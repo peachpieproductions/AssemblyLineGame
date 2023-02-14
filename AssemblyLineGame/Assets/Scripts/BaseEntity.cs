@@ -29,14 +29,17 @@ public class BaseEntity : MonoBehaviour {
     public SpriteRenderer spr;
     public int relevantItemSpriteCount;
     public List<SpriteRenderer> relevantItemSprites;
+    public bool useInputField;
 
     protected GameController gCon;
+    AudioSource audioSource;
 
     /*private void OnMouseUp() {
         Clicked();
     }*/
 
     private void OnMouseOver() {
+        if (GameController.inst.hoveringOverlay) return;
         if (Input.GetMouseButtonUp(0)) {
             Clicked();
         }
@@ -55,10 +58,11 @@ public class BaseEntity : MonoBehaviour {
         if (dispense) StartCoroutine(DispenseCycle());
         if (storesItems) StartCoroutine(StoreItems());
         SetUpRelevantItemSprite();
+        SetUpAudioSource();
     }
 
     public void Clicked() {
-        if (!noEntityMenu && !GameController.inst.hoveringOverlay && !GameController.inst.buildMode) {
+        if (!noEntityMenu && !GameController.inst.buildMode) {
             GameController.inst.selectedEntity = this;
             GameController.inst.entityMenu.ToggleOpenClose(true);
         }
@@ -170,6 +174,7 @@ public class BaseEntity : MonoBehaviour {
                 if (storage[currentDispensingSlot].data && storage[currentDispensingSlot].itemCount > 0) {
                     var lastActiveNeighbor = currentNeighbor;
                     if (Dispense(storage[currentDispensingSlot].data)) {
+                        PlaySound(0);
                         storage[currentDispensingSlot].itemCount--;
                         if (storage[currentDispensingSlot].itemCount == 0) storage[currentDispensingSlot].data = null;
                         if (currentNeighbor <= lastActiveNeighbor) GetNextDispensingSlot();
@@ -289,6 +294,25 @@ public class BaseEntity : MonoBehaviour {
             relevantItemSprites.Add(newSpriteGO.AddComponent<SpriteRenderer>());
             relevantItemSprites[i].color = new Color(1f, 1f, 1f, .8f);
             newSpriteGO.SetActive(false);
+        }
+    }
+
+    public void PlaySound(int index) {
+        if (audioSource && data.sounds.Count > index) {
+            if (AudioManager.inst.CheckIfClipPlayedTooMuch(data.sounds[index])) return;
+            audioSource.clip = data.sounds[index];
+            audioSource.Play();
+            AudioManager.inst.AddClipToPlayedRecently(data.sounds[index]);
+        }
+    }
+
+    public void SetUpAudioSource() {
+        if(data.sounds.Count > 0) {
+            audioSource = gameObject.AddComponent<AudioSource>();
+            audioSource.spatialBlend = 1f;
+            audioSource.volume = .8f;
+            audioSource.playOnAwake = false;
+            audioSource.clip = data.sounds[0];
         }
     }
 

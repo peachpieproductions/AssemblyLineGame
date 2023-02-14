@@ -18,7 +18,10 @@ MonoBehaviour:
   placementSprite: {fileID: 0}
   cost: 25
   size: {x: 1, y: 1}
+  emptyTiles: []
   cantBeRotated: 0
   zPosValue: 0.5
   info: The Boxer will package your items into boxes. Make sure they end up in your
     Outbound Zone. It takes 10 products to fill 1 box.
+  sounds:
+  - {fileID: 8300000, guid: d9915317d7893ac4382b7410f575b5e8, type: 3}

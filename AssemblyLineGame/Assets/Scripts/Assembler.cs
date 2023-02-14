@@ -40,6 +40,7 @@ public class Assembler : BaseEntity {
                         if (canCraft) {
                             craftingSuccessful = true;
                             if (assemblingItem) {
+                                PlaySound(0);
                                 foreach (StorageSlot s in storage) {
                                     s.itemCount += s.differenceToApply;
                                     s.differenceToApply = 0;

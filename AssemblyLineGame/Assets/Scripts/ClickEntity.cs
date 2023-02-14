@@ -7,6 +7,7 @@ public class ClickEntity : MonoBehaviour {
     public BaseEntity entity;
 
     private void OnMouseOver() {
+        if (GameController.inst.hoveringOverlay) return;
         if (Input.GetMouseButtonUp(0)) {
             entity.Clicked();
         }

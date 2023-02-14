@@ -1,15 +1,11 @@
 
 
-
-- research should cost more
+- Auto-Buyer -> automatically buys items and dispenses at and interaval
 - Vaccine and Antidote require molecule or DNA or something
-- can name inbound zones (name shows up in checkout screen)
-- Can zoom camera out with scroll wheel
-
 - Create BuildingManager
 - Create UIManager and pull UI stuff out of GameManager
+- research costs need revising
 - press C to open contracts
-- can choose player model at beginning
 - can build a wall (eg to enclose the outbound zone and contain boxes)
 - can build fence (like wall but very skinny and only on edge, doesnt consume coordinate - can still build stuff on it)
 
@@ -17,14 +13,11 @@
 __Research Upgrades__
 - Multiple Filters I and II (give you the option to filter more than 1 item at an entity)
 - Catalog - allow you to pick what items you offer and get offers for
-
+- Popular I II an III - increase rate at which you get contracts
 
 
 __Sound Effects__
-- cha ching when completing contract
-- assembler create item
-- vacuum dispensor sucking (sounds like vacuum cleaner)
-- package spawn on deliveries (pop) or (cardboard box being set down)
+- 
 
 
 

@@ -18,7 +18,10 @@ MonoBehaviour:
   placementSprite: {fileID: 0}
   cost: 50
   size: {x: 1, y: 1}
+  emptyTiles: []
   cantBeRotated: 0
   zPosValue: 0.5
   info: The Assembler is used to craft Items. Feed it resources and tell it what
     to craft.
+  sounds:
+  - {fileID: 8300000, guid: c7c6ff8240a8a264fa38ca3c94ac8192, type: 3}

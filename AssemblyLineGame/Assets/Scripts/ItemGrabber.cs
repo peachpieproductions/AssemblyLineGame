@@ -61,8 +61,9 @@ public class ItemGrabber : BaseEntity {
                             }
                         }
                         if (transferingItem) {
+                            PlaySound(0);
                             transferingItem.parent = armPivot;
-                            transferingItem.localPosition = new Vector3(1, 0);
+                            transferingItem.localPosition = new Vector3(1, 0, -1);
                             transferingItem.GetComponent<Rigidbody2D>().simulated = false;
                         } else yield return new WaitForSeconds(.1f);
                     }
