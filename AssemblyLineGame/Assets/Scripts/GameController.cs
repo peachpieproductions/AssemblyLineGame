@@ -298,6 +298,7 @@ public class GameController : MonoBehaviour {
                 //Place Entity
                 if (Input.GetMouseButtonDown(0) && Input.mousePosition.x < Screen.width * .875f) { 
                     if (canPlace && money >= currentBuildEntity.cost) { //Check if entity already exists at position
+                        AudioManager.inst.PlaySound("BuildEntity");
                         UpdateMoney(-currentBuildEntity.cost);
                         var newEntity = Instantiate(currentBuildEntity.prefab, new Vector3(currentUnit.x + .5f, currentUnit.y + .5f, currentBuildEntity.zPosValue), currentBuildObject.rotation);
                         entities.Add(newEntity.GetComponent<BaseEntity>());
@@ -317,6 +318,7 @@ public class GameController : MonoBehaviour {
             //Sell Entity
             if (Input.GetMouseButtonDown(1)) { 
                 if (entityGrid[currentUnit.x, currentUnit.y] > 0) {
+                    AudioManager.inst.PlaySound("DestroyEntity");
                     var toSell = entities[entityGrid[currentUnit.x, currentUnit.y] - 1];
                     foreach(StorageSlot slot in toSell.storage) {
                         if (!AddToInventory(slot.data, slot.itemCount, slot)) {

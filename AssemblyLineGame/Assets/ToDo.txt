@@ -17,7 +17,8 @@ __Research Upgrades__
 
 
 __Sound Effects__
-- 
+- Place entity (thud)
+- Destroy entity (construction or metal breaking idk)
 
 
 

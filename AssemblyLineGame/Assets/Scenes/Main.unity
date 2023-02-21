@@ -11386,6 +11386,16 @@ MonoBehaviour:
     - {fileID: 8300000, guid: a4a2b54ea9709de47a1b4c57ddedb30f, type: 3}
     vol: 0.32
     pitchChange: 0.1
+  - key: BuildEntity
+    clips:
+    - {fileID: 8300000, guid: 12b0fdbae93930e438dba3069cbd5193, type: 3}
+    vol: 1
+    pitchChange: 0.1
+  - key: DestroyEntity
+    clips:
+    - {fileID: 8300000, guid: 6d72753c818fb934d8908342519c8576, type: 3}
+    vol: 0.6
+    pitchChange: 0.1
   audioSourcePool: []
   audioSourcePool3D: []
   musicOn: 1

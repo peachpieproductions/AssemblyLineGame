@@ -26,7 +26,7 @@ public class Conveyor : BaseEntity {
             var coll = Physics2D.OverlapBox(tunnelTriggerZone.transform.position, tunnelTriggerZone.size, transform.eulerAngles.z);
             if (coll) {
                 if (itemsInZone.Contains(coll.transform)) {
-                    coll.transform.position += transform.right * tunnelDistance;
+                    coll.transform.position = tunnelTriggerZone.transform.position + transform.right * (tunnelDistance - .2f);
                 }
             }
         } else {
